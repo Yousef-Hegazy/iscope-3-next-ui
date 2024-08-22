@@ -1,0 +1,72 @@
+{
+    "title": "Iscope",
+    "notFound": "The requested page does not exist",
+    "backToHome": "Back to the home page",
+    "settings": {
+        "title": "Theme Settings",
+        "color": "Color",
+        "radius": "Radius",
+        "themeMode": "Mode",
+        "colors": {
+            "zinc": "Zinc",
+            "gray": "Gray",
+            "slate": "Slate",
+            "stone": "Stone",
+            "neutral": "Neutral",
+            "red": "Red",
+            "rose": "Rose",
+            "orange": "Orange",
+            "green": "Green",
+            "blue": "Blue",
+            "yellow": "Yellow",
+            "violet": "Violet"
+        },
+        "language": "Language",
+        "layout": "Layout",
+        "modes": {
+            "light": "Light",
+            "dark": "Dark",
+            "system": "System"
+        }
+    },
+    "account": {
+        "title": "Account",
+        "settings": "Account Settings",
+        "profile": "Profile",
+        "logout": "Log Out"
+    },
+    "admin": "Admin",
+    "users": {
+        "title": "Security and Users",
+        "management": "User Management",
+        "settings": "Users Settings"
+    },
+    "dead": {
+        "title": "Dead",
+        "list": "Dead Records"
+    },
+    "mainPage": "Main Page",
+    "notifications": "Notifications",
+    "messages": "Messages",
+    "tasks": "Tasks",
+    "workOrderReport": "Work Order Completion Report",
+    "saudiArabiaProject": "Saudi Arabia Project, Riyadh, First Dist.",
+    "approveStudy": "Request for approval of a study",
+    "addProject": "Add a project",
+    "addContractor": "Add a contractor",
+    "addBiTask": "Add a BI task",
+    "announceCompetition": "Add a competition",
+    "relatedParties": "Related Parties",
+    "announcementsAndCompetitions": "Advertisements and Competitions",
+    "transactions": "Transactions",
+    "reports": "Reports",
+    "projects": {
+        "title": "Projects",
+        "underExecution": "Projects under execution"
+    },
+    "studies": {
+        "title": "Studies",
+        "management": "Studies Management"
+    },
+    "subRoutes": "Sub Routes"
+}

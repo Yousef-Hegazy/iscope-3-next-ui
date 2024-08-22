@@ -1,0 +1,72 @@
+{
+    "title": "آيسكوب",
+    "notFound": "الصفحة المطلوبة غير موجودة",
+    "backToHome": "العودة للصفحة الرئيسية",
+    "settings": {
+        "title": "اعدادات الواجهة",
+        "color": "اللون",
+        "radius": "القطر",
+        "themeMode": "الوضع",
+        "colors": {
+            "zinc": "الزنك",
+            "gray": "الرمادي",
+            "slate": "الأردواز",
+            "stone": "الحجري",
+            "neutral": "المحايد",
+            "red": "الأحمر",
+            "rose": "الزهري",
+            "orange": "البرتقالي",
+            "green": "الأخضر",
+            "blue": "الأزرق",
+            "yellow": "الأصفر",
+            "violet": "البنفسجي"
+        },
+        "language": "اللغة",
+        "layout": "التصميم",
+        "modes": {
+            "light": "الفاتح",
+            "dark": "الداكن",
+            "system": "النظام"
+        }
+    },
+    "account": {
+        "title": "الحساب",
+        "settings": "اعدادات الحساب",
+        "profile": "الملف الشخصي",
+        "logout": "تسجيل الخروج"
+    },
+    "admin": "مدير النظام",
+    "users": {
+        "title": "الحماية والمستخدمين",
+        "management": "ادارة المستخدمين",
+        "settings": "اعدادات المستخدمين"
+    },
+    "dead": {
+        "title": "المتوفين",
+        "list": "سجلات المتوفين"
+    },
+    "mainPage": "الصفحة الرئيسية",
+    "notifications": "الاشعارات",
+    "messages": "الرسائل",
+    "tasks": "المهام",
+    "workOrderReport": "محضر انجاز امر عمل",
+    "saudiArabiaProject": "مشروع السعودية الرياض المنطقة الأولى",
+    "approveStudy": "طلب اعتماد دراسة مشروع",
+    "addProject": "اضافة مشروع",
+    "addContractor": "اضافة مقاول",
+    "addBiTask": "اضافة مهمة ذكاء اعمال",
+    "announceCompetition": "اضافة اعلان منافسة",
+    "relatedParties": "الجهات ذات العلاقة",
+    "announcementsAndCompetitions": "الاعلانات والمنافسات",
+    "transactions": "المعاملات",
+    "reports": "التقارير",
+    "projects": {
+        "title": "المشاريع",
+        "underExecution": "المشاريع تحت التنفيذ"
+    },
+    "studies": {
+        "title": "الدراسات",
+        "management": "ادارة الدراسات"
+    },
+    "subRoutes": "الروابط الفرعية"
+}
