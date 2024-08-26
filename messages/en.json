@@ -62,11 +62,25 @@
     "reports": "Reports",
     "projects": {
         "title": "Projects",
-        "underExecution": "Projects under execution"
+        "underExecution": "Projects under execution",
+        "archived": "Archived Projects",
+        "projects-execution": "Projects Under Execution",
+        "none": "There are no Projects",
+        "status": {
+            "late": "Late",
+            "stumbling": "Stumbling",
+            "onSchedule": "Regular",
+            "early": "Advanced"
+        }
     },
     "studies": {
         "title": "Studies",
         "management": "Studies Management"
     },
-    "subRoutes": "Sub Routes"
+    "subRoutes": "Sub Routes",
+    "retry": "Retry",
+    "error": {
+        "unknown": "Something went wrong"
+    },
+    "more": "More"
 }

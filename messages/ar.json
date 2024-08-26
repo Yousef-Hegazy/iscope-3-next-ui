@@ -62,11 +62,25 @@
     "reports": "التقارير",
     "projects": {
         "title": "المشاريع",
-        "underExecution": "المشاريع تحت التنفيذ"
+        "underExecution": "المشاريع قيد التنفيذ",
+        "archived": "المشاريع المؤرشفة",
+        "projects-execution": "المشاريع قيد التنفيذ",
+        "none": "لا يوجد مشاريع",
+        "status": {
+            "late": "متأخر",
+            "stumbling": "متعثر",
+            "onSchedule": "منتظم",
+            "early": "متقدم"
+        }
     },
     "studies": {
         "title": "الدراسات",
         "management": "ادارة الدراسات"
     },
-    "subRoutes": "الروابط الفرعية"
+    "subRoutes": "الروابط الفرعية",
+    "retry": "إعادة المحاولة",
+    "error": {
+        "unknown": "حدث خطأ ما"
+    },
+    "more": "المزيد"
 }

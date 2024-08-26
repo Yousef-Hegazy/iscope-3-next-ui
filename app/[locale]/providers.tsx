@@ -1,9 +1,11 @@
 "use client";
 
 import { NextUIProvider } from "@nextui-org/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
-import { ThemeProvider as NextThemeProvider, useTheme } from "next-themes";
-import { ReactNode, useEffect } from "react";
+import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
 const themes = [
   "light-green",
@@ -32,13 +34,29 @@ const themes = [
   "dark-violet",
 ];
 
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+      refetchInterval: false,
+      refetchOnMount: false,
+      retry: false,
+    },
+  },
+});
+
 const Providers = ({ children }: { children: ReactNode }) => {
   const locale = useLocale();
+  const router = useRouter();
 
   return (
-    <NextUIProvider className="h-full overflow-hidden flex flex-col" locale={locale === "ar" ? "ar-SA" : "en-US"}>
+    <NextUIProvider
+      className="h-full overflow-hidden flex flex-col"
+      locale={locale === "ar" ? "ar-SA" : "en-US"}
+      navigate={router.push}
+    >
       <NextThemeProvider attribute="class" defaultTheme={themes[0]} themes={themes}>
-        {children}
+        <QueryClientProvider client={client}>{children}</QueryClientProvider>
       </NextThemeProvider>
     </NextUIProvider>
   );

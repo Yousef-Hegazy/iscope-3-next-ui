@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import Content from "./Content";
-import SubRoutes from "./Content/SubRoutes";
+import QuickActions from "./QuickActions";
+import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
 const LayoutWrapper = ({ children, locale }: { children: ReactNode; locale: string }) => {
@@ -8,9 +8,12 @@ const LayoutWrapper = ({ children, locale }: { children: ReactNode; locale: stri
     <>
       <Topbar params={{ locale }} />
       <div className="flex flex-row flex-grow overflow-hidden h-full w-full">
-        <Content />
+        <Sidebar />
 
-        <div className="flex-1 overflow-y-auto">{children}</div>
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <QuickActions />
+          <div className="flex-1 overflow-y-auto">{children}</div>
+        </div>
       </div>
     </>
   );

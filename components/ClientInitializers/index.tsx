@@ -8,8 +8,8 @@ const ClientInitializers = () => {
 
   useEffect(() => {
     if (resolvedTheme) {
-      if (resolvedTheme.includes("dark")) document.documentElement.setAttribute("data-mode", "dark");
-      else document.documentElement.setAttribute("data-mode", "");
+      if (resolvedTheme.includes("dark")) document.documentElement.dataset.mode = "dark";
+      else document.documentElement.dataset.mode = "";
     }
   }, [resolvedTheme]);
 

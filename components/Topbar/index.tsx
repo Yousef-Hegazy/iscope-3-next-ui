@@ -11,7 +11,7 @@ const Topbar = ({ params: { locale } }: { params: { locale: string } }) => {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-row items-center justify-between sticky top-0 w-full px-4 py-2 shadow border-b-1 border-b-transparent dark:border-b-neutral-600 bg-background/30 backdrop-blur-2xl">
+    <div className="flex flex-row items-center justify-between sticky top-0 w-full px-4 py-2 border-b-1 dark:border-b-neutral-600 bg-background/30 backdrop-blur-2xl">
       <div className="flex flex-row items-center gap-3">
         <AccountDropdown />
 

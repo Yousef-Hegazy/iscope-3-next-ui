@@ -1,7 +1,10 @@
+export type DynamicNavType = "projects.underExecution" | "projects.archived";
+
 export interface NavObject {
   title: string;
   route?: string;
   icon?: string;
+  key?: DynamicNavType;
   children?: NavObject[];
 }
 
@@ -22,18 +25,20 @@ const navConfig: NavObject[] = [
         title: "projects.underExecution",
         icon: "suitcase",
         route: "projects",
+        key: "projects.underExecution",
       },
       {
-        title: "users.settings",
-        icon: "settings-solid",
-        route: "users/settings",
-        children: [
-          {
-            title: "mainPage",
-            icon: "main-page",
-            route: "users/settings",
-          },
-        ],
+        title: "projects.archived",
+        icon: "archive",
+        route: "projects/archived",
+        key: "projects.archived",
+        // children: [
+        //   {
+        //     title: "mainPage",
+        //     icon: "main-page",
+        //     route: "users/settings",
+        //   },
+        // ],
       },
     ],
   },

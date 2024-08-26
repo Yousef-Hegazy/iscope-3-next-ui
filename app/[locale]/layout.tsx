@@ -40,6 +40,7 @@ export default async function LangLayout({
   params: { locale: string };
 }>) {
   unstable_setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
