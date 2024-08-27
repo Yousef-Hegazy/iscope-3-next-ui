@@ -10,16 +10,7 @@ const ArchivedProjects = () => {
   const locale = useLocale();
   const t = useTranslations();
 
-  const {
-    data: res,
-    refetch,
-    isFetching,
-    error,
-    isLoading,
-    hasNextPage,
-    fetchNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery<{
+  const query = useInfiniteQuery<{
     maxPages: number;
     projects: { id: string; name: string; status: string; percentage: number }[];
   }>({
@@ -44,17 +35,9 @@ const ArchivedProjects = () => {
   });
 
   return (
-    <InfiniteScrollSidebar
-      fetchNextPage={fetchNextPage}
-      hasNextPage={hasNextPage}
-      isFetchingNextPage={isFetchingNextPage}
-      error={error}
-      refetch={refetch}
-      isFetching={isFetching}
-      isLoading={isLoading}
-    >
-      {res?.pages ? (
-        res?.pages
+    <InfiniteScrollSidebar query={query}>
+      {query.data?.pages ? (
+        query.data?.pages
           .map((p) => p.projects)
           .flat()
           .map((item) => (

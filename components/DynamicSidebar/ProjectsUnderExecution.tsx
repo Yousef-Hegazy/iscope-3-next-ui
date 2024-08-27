@@ -4,23 +4,25 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useLocale, useTranslations } from "next-intl";
-import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
 import Icon from "../Icon";
+import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
 
 const ProjectsUnderExecution = () => {
   const locale = useLocale();
   const t = useTranslations();
 
-  const {
-    data: res,
-    refetch,
-    isFetching,
-    error,
-    isLoading,
-    hasNextPage,
-    fetchNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery<{
+  // const t = useCallback(
+  //   (key: string) => {
+  //     try {
+  //       return unsafeT(key);
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   },
+  //   [unsafeT]
+  // );
+
+  const query = useInfiniteQuery<{
     maxPages: number;
     projects: { id: string; name: string; status: string; percentage: number }[];
   }>({
@@ -45,30 +47,21 @@ const ProjectsUnderExecution = () => {
   });
 
   return (
-    <InfiniteScrollSidebar
-      error={error}
-      refetch={refetch}
-      isLoading={isLoading}
-      isFetching={isFetching}
-      hasNextPage={hasNextPage}
-      fetchNextPage={fetchNextPage}
-      isFetchingNextPage={isFetchingNextPage}
-    >
-      {res?.pages ? (
-        res?.pages
+    <InfiniteScrollSidebar query={query}>
+      {query.data?.pages ? (
+        query.data.pages
           .map((p) => p.projects)
           .flat()
           .map((item) => (
             <Tooltip
               showArrow
               key={item.id}
-              closeDelay={0}
-              className="max-w-xs w-full"
+              className="max-w-xs w-full text-justify"
               placement="right"
               content={item.name}
             >
               <div className="flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50">
-                <p className="line-clamp-1 text-small">{item.name}</p>
+                <p className="line-clamp-1 text-small text-justify">{item.name}</p>
                 <div className="flex flex-row items-center justify-between">
                   <div
                     className={`flex flex-row items-center gap-1.5 rounded-small text-background px-2 py-1 ${
@@ -83,8 +76,8 @@ const ProjectsUnderExecution = () => {
                         : ""
                     }`}
                   >
-                    <p>{item.percentage}%</p>
-                    <p className="text-sm">{t(`projects.status.${item.status}`)}</p>
+                    <p className="text-xs">{item.percentage}%</p>
+                    <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
                   </div>
 
                   <Button isIconOnly size="sm" variant="light">

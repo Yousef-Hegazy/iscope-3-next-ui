@@ -1,25 +1,18 @@
 "use client";
 
-import { DynamicNavType, getRoute, NavObject } from "@/lib/navConfig";
+import { getRoute, NavObject } from "@/lib/navConfig";
+import useRoutesStore from "@/stores/routesStore";
 import { Button, Tooltip } from "@nextui-org/react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useMemo } from "react";
 import Icon from "../Icon";
-import useRoutesStore from "@/stores/routesStore";
 
-const MainNavLink = ({
-  t,
-  mainRoute,
-  locale,
-  pathname,
-}: {
-  t: any;
-  mainRoute: NavObject;
-  locale: string;
-  pathname: string;
-}) => {
+const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: string }) => {
+  const locale = useLocale();
   const path = useMemo(() => getRoute(locale, mainRoute.route || ""), [locale, mainRoute.route]);
   const { setDynamicNavType } = useRoutesStore();
+  const t = useTranslations();
 
   const selected = useMemo(() => {
     const split = pathname.split("/");

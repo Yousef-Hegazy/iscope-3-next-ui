@@ -25,15 +25,26 @@ const SubRoute = ({ t, item }: { t: any; item: NavObject }) => {
 const SubRoutes = ({ subRoutes, mainRoute }: { subRoutes: NavObject[]; mainRoute: NavObject }) => {
   const t = useTranslations();
 
+  // const safeT = useCallback(
+  //   (key: string) => {
+  //     try {
+  //       return t(key);
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   },
+  //   [t]
+  // );
+
   return subRoutes.length ? (
-    <>
+    <div className="flex flex-col gap-3">
       <h2 className="text-sm text-center">{t(mainRoute?.title || "subRoutes")}</h2>
       <Divider />
 
       {subRoutes.map((item) => (
         <SubRoute key={item.route} item={item} t={t} />
       ))}
-    </>
+    </div>
   ) : null;
 };
 

@@ -1,29 +1,18 @@
 "use client";
 
 import useRoutesStore from "@/stores/routesStore";
-import { Button, Divider, Spinner } from "@nextui-org/react";
+import { Button, Divider, ScrollShadow, Spinner } from "@nextui-org/react";
+import { UseInfiniteQueryResult } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
 import Icon from "../Icon";
 
 const InfiniteScrollSidebar = ({
   children,
-  fetchNextPage,
-  hasNextPage,
-  isFetchingNextPage,
-  error,
-  refetch,
-  isFetching,
-  isLoading,
+  query: { fetchNextPage, hasNextPage, isFetchingNextPage, isFetching, refetch, error, isPending, isLoading },
 }: {
   children: ReactNode;
-  fetchNextPage: any;
-  hasNextPage: boolean;
-  isFetchingNextPage: boolean;
-  error: any;
-  refetch: any;
-  isFetching: boolean;
-  isLoading: boolean;
+  query: UseInfiniteQueryResult<any>;
 }) => {
   const t = useTranslations();
   const locale = useLocale();
@@ -66,8 +55,8 @@ const InfiniteScrollSidebar = ({
 
       <Divider />
 
-      <div className="flex-1 flex flex-col gap-3 overflow-y-auto h-full" ref={loadMoreRef}>
-        {isLoading ? (
+      <ScrollShadow hideScrollBar className="flex-1 flex flex-col gap-3 h-full pt-3 pb-6" ref={loadMoreRef}>
+        {isPending ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <Spinner color="primary" />
           </div>
@@ -79,20 +68,24 @@ const InfiniteScrollSidebar = ({
             </Button>
           </div>
         ) : (
-          children
+          <>
+            {children}
+
+            {isFetchingNextPage && <Spinner color="primary" />}
+          </>
         )}
 
         {hasNextPage ? (
           <>
             <Divider />
-            <Button onClick={() => fetchNextPage()} isLoading={isFetching} size="sm">
+            <Button onClick={() => fetchNextPage()} isLoading={isFetching || isLoading || isPending} size="sm">
               {t("more")}
             </Button>
           </>
         ) : (
           ""
         )}
-      </div>
+      </ScrollShadow>
     </div>
   );
 };
