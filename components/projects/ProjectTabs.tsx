@@ -20,7 +20,7 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
       {
         title: t("projects.percentageOnSite"),
         pie: [
-          { name: t("completed"), value: 10, fill: colors.cyan[500] },
+          { name: t("completed"), value: 10, fill: colors.cyan[600] },
           { name: t("remaining"), value: 90, fill: colors.cyan[900] },
         ],
       },
@@ -30,7 +30,7 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
           {
             name: t("completed"),
             value: 50,
-            fill: colors.cyan[500],
+            fill: colors.cyan[600],
           },
           {
             name: t("remaining"),
@@ -42,14 +42,14 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
       {
         title: t("projects.plannedPercentage"),
         pie: [
-          { name: t("completed"), value: 20, fill: colors.cyan[500] },
+          { name: t("completed"), value: 20, fill: colors.cyan[600] },
           { name: t("remaining"), value: 80, fill: colors.cyan[900] },
         ],
       },
       {
         title: t("projects.financialPercentage"),
         pie: [
-          { name: t("completed"), value: 60, fill: colors.cyan[500] },
+          { name: t("completed"), value: 60, fill: colors.cyan[600] },
           { name: t("remaining"), value: 40, fill: colors.cyan[900] },
         ],
       },
@@ -150,22 +150,27 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
             {cards.map((item, index) => (
               <Card key={index} radius="sm" className="w-full overflow-visible" shadow="sm">
                 <Tooltip content={item.title} className="max-w-xs text-small">
-                  <CardBody className="h-full w-full flex flex-row items-center gap-2 overflow-visible py-0">
-                    <ChartContainer config={{}} className="w-[100px] h-[100px] flex-shrink-0">
+                  <CardBody className="h-full w-full flex flex-row items-center overflow-visible py-0">
+                    <ChartContainer config={{}} className="w-[80px] h-[100px] flex-shrink-0">
                       <PieChart>
-                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <ChartTooltip
+                          position={{
+                            x: locale === "ar" ? -30 : 20,
+                          }}
+                          content={<ChartTooltipContent />}
+                        />
 
                         <Pie
                           data={item.pie}
                           width={100}
                           height={100}
-                          innerRadius={25}
+                          innerRadius={20}
                           paddingAngle={5}
                           cornerRadius={2}
                           dataKey="value"
                           nameKey="name"
                         >
-                          {/* <Cell fill={colors.cyan[500]} />
+                          {/* <Cell fill={colors.cyan[600]} />
 
                       <Cell fill={colors.cyan[900]} /> */}
 
