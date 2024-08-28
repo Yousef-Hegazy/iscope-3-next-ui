@@ -38,6 +38,8 @@ const ProjectsUnderExecution = () => {
         headers: { "Accept-Language": locale },
       });
 
+      console.log(data);
+
       return data;
     },
     refetchOnWindowFocus: true,
@@ -69,7 +71,7 @@ const ProjectsUnderExecution = () => {
             >
               <Link
                 scroll={false}
-                href={`/${locale}/projects/${item.name}`}
+                href={`/${locale}/projects/${item.id}`}
                 className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
                   isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20" : ""
                 }`}
