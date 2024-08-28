@@ -3,12 +3,14 @@ import ProjectTabs from "@/components/projects/ProjectTabs";
 import { Project } from "@/models/project";
 import { Button, Divider } from "@nextui-org/react";
 import axios from "axios";
-import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 const getProject = async (id: string, locale: string): Promise<Project | null> => {
   try {
-    const host = process.env.NEXT_PUBLIC_HOST || "http://localhost:3000";
+    const host =
+      process.env.NODE_ENV === "development"
+        ? process.env.NEXT_PUBLIC_HOST || "http://localhost:3000"
+        : "https://iscope-3-next-ui.vercel.app/";
     const { data } = await axios.get(`${host}/api/projects/${id}`, {
       headers: {
         "Accept-Language": locale,
