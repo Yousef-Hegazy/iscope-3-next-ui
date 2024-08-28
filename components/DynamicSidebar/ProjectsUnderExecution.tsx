@@ -4,12 +4,18 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useCallback } from "react";
 import Icon from "../Icon";
 import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
+import { Project } from "@/models/project";
 
 const ProjectsUnderExecution = () => {
   const locale = useLocale();
   const t = useTranslations();
+  const pathname = usePathname();
+  const isSelected = useCallback((id: string) => pathname.includes(id), [pathname]);
 
   // const t = useCallback(
   //   (key: string) => {
@@ -24,7 +30,7 @@ const ProjectsUnderExecution = () => {
 
   const query = useInfiniteQuery<{
     maxPages: number;
-    projects: { id: string; name: string; status: string; percentage: number }[];
+    projects: Project[];
   }>({
     queryKey: ["projects/under-execution"],
     queryFn: async ({ pageParam }) => {
@@ -34,6 +40,7 @@ const ProjectsUnderExecution = () => {
 
       return data;
     },
+    refetchOnWindowFocus: true,
     initialData: undefined,
     staleTime: Infinity,
     initialPageParam: 1,
@@ -60,8 +67,14 @@ const ProjectsUnderExecution = () => {
               placement="right"
               content={item.name}
             >
-              <div className="flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50">
-                <p className="line-clamp-1 text-small text-justify">{item.name}</p>
+              <Link
+                scroll={false}
+                href={`/${locale}/projects/${item.id}`}
+                className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
+                  isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20" : ""
+                }`}
+              >
+                <p className="line-clamp-1 text-small text-start">{item.name}</p>
                 <div className="flex flex-row items-center justify-between">
                   <div
                     className={`flex flex-row items-center gap-1.5 rounded-small text-background px-2 py-1 ${
@@ -80,11 +93,20 @@ const ProjectsUnderExecution = () => {
                     <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
                   </div>
 
-                  <Button isIconOnly size="sm" variant="light">
+                  <Button
+                    isIconOnly
+                    title="project actions"
+                    size="sm"
+                    variant="light"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
+                  >
                     <Icon icon="more-vertical" />
                   </Button>
                 </div>
-              </div>
+              </Link>
             </Tooltip>
           ))
       ) : (

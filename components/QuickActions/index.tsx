@@ -6,7 +6,7 @@ const QuickActions = async () => {
   const t = await getTranslations();
 
   return (
-    <div className="w-full p-2 flex flex-row gap-2 items-center justify-center shadow-md border-b border-transparent dark:border-b-neutral-600 bg-background/10 backdrop-blur-lg">
+    <div className="w-full py-2.5 px-2 flex flex-row gap-2 items-center justify-center shadow border-b border-transparent dark:border-b-neutral-600 bg-background/10 backdrop-blur-lg">
       <Button
         variant="bordered"
         size="sm"

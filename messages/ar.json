@@ -71,7 +71,42 @@
             "stumbling": "متعثر",
             "onSchedule": "منتظم",
             "early": "متقدم"
-        }
+        },
+        "date": "تاريخ العقد",
+        "contractNo": "رقم العقد",
+        "code": "الكود/الرقم",
+        "owner": "الجهة المالكة/المستفيدة",
+        "studyOrg": "جهة الداراسة",
+        "consultant": "الاستشاري التنفيذي",
+        "contractor": "المقاول",
+        "department": "الادارة",
+        "type": "النوع | النوع الفرعي",
+        "percentageOnSite": "الانجاز بالمواقع الاستلامات الفنية",
+        "percentageOnSitePayable": "الانجاز بالمواقع القابل للصرف الاستلامات المالية الفنية",
+        "plannedPercentage": "الانجاز المخطط الجداول الزمنية",
+        "financialPercentage": "الانجاز المالي المستخلصات المعتمدة",
+        "financialRecord": "السجل المالي للمشروع",
+        "durationRecord": "سجل مدد المشروع",
+        "datesRecord": "سجل تواريخ المشروع",
+        "externalDepsRefNo": "الأرقام المرجعية للجهات الخارجية",
+        "actionsRecord": "سجل الاجراءات",
+        "timeline": "المخطط الزمني",
+        "stopRequestReport": "طلب ايقاف مشروع",
+        "fineSigningReport": "محضر توقيع غرامة",
+        "meetingReport": "محضر اجتماع",
+        "worksEndReport": "محضر نهاية أعمال",
+        "extendDurationReport": "محضر تمديد مشروع",
+        "contractorWarning": "انذار مقاول",
+        "finalWarning": "انذار نهائي",
+        "cancelCompetitionReport": "محضر الغاء منافسة",
+        "cancelCostReport": "محضر الغاء تكاليف",
+        "monthlyReport": "محضر تقرير شهري",
+        "pullContractReport": "محضر عرض بسحب عقد",
+        "availableActions": "الاجراءات المتاح تنفيذها",
+        "mainData": "البيانات الأساسية",
+        "requests": "الطلبات",
+        "reports": "المحاضر",
+        "visits": "الزيارات"
     },
     "studies": {
         "title": "الدراسات",
@@ -82,5 +117,7 @@
     "error": {
         "unknown": "حدث خطأ ما"
     },
-    "more": "المزيد"
+    "more": "المزيد",
+    "completed": "المنتهي",
+    "remaining": "المتبقي"
 }

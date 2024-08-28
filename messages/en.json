@@ -71,7 +71,42 @@
             "stumbling": "Stumbling",
             "onSchedule": "Regular",
             "early": "Advanced"
-        }
+        },
+        "date": "Contract Date",
+        "contractNo": "Contract Number",
+        "code": "Code/Number",
+        "owner": "Owner/Beneficiary",
+        "studyOrg": "Study Entity",
+        "consultant": "Executive Consultant",
+        "contractor": "Contractor",
+        "department": "Department",
+        "type": "Type | Subtype",
+        "percentageOnSite": "Site Completion Technical Receipts",
+        "percentageOnSitePayable": "Site Completion Payable Financial Technical Receipts",
+        "plannedPercentage": "Planned Completion Timelines",
+        "financialPercentage": "Financial Completion Approved Extracts",
+        "financialRecord": "Project Financial Record",
+        "durationRecord": "Project Duration Record",
+        "datesRecord": "Project Date Record",
+        "externalDepsRefNo": "Third Party Reference Numbers",
+        "actionsRecord": "Action Record",
+        "timeline": "Timeline",
+        "stopRequestReport": "Project Stop Request",
+        "fineSigningReport": "Fine Signing Report",
+        "meetingReport": "Meeting Report",
+        "worksEndReport": "Work Completion Report",
+        "extendDurationReport": "Project Extension Report",
+        "contractorWarning": "Contractor Warning",
+        "finalWarning": "Final Warning",
+        "cancelCompetitionReport": "Competition Cancellation Report",
+        "cancelCostReport": "Cost Cancellation Report",
+        "monthlyReport": "Monthly Report",
+        "pullContractReport": "Contract Withdrawal Proposal Report",
+        "availableActions": "Available Actions",
+        "mainData": "Basic Data",
+        "requests": "Requests",
+        "reports": "Reports",
+        "visits": "Visits"
     },
     "studies": {
         "title": "Studies",
@@ -82,5 +117,7 @@
     "error": {
         "unknown": "Something went wrong"
     },
-    "more": "More"
+    "more": "More",
+    "completed": "Completed",
+    "remaining": "Remaining"
 }

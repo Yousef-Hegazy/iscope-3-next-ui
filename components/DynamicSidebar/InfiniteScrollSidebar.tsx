@@ -42,20 +42,35 @@ const InfiniteScrollSidebar = ({
     <div className="flex flex-col h-full w-full gap-3 overflow-hidden">
       <div className="flex flex-row gap-2 items-center justify-between">
         <div className="flex flex-row items-center gap-1.5">
-          <Button isIconOnly variant="light" size="sm" color="default" onClick={() => setDynamicNavType()}>
+          <Button
+            isIconOnly
+            title="Go back"
+            variant="light"
+            size="sm"
+            color="default"
+            onClick={() => setDynamicNavType()}
+          >
             <Icon icon={locale === "ar" ? "menu-arrow-right" : "menu-arrow-left"} />
           </Button>
           <h1 className="font-semibold text-base">{t(dynamicNavType)}</h1>
         </div>
 
-        <Button isIconOnly size="sm" variant="ghost" color="primary" onClick={() => refetch()} isLoading={isFetching}>
-          <Icon icon="refresh" />
+        <Button
+          isIconOnly
+          title="Refresh"
+          size="sm"
+          variant="ghost"
+          color="primary"
+          onClick={() => refetch()}
+          isLoading={isFetching}
+        >
+          <Icon icon="refresh" className="w-4 h-4" />
         </Button>
       </div>
 
       <Divider />
 
-      <ScrollShadow hideScrollBar className="flex-1 flex flex-col gap-3 h-full pt-3 pb-6" ref={loadMoreRef}>
+      <ScrollShadow hideScrollBar className="flex-1 flex flex-col gap-3 h-full pt-3 pb-8" ref={loadMoreRef}>
         {isPending ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <Spinner color="primary" />

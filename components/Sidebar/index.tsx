@@ -64,7 +64,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="max-w-32 w-full h-full shadow-md overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-center gap-3 p-3 dark:border-e-neutral-600 overflow-y-auto">
+      <div className="max-w-32 w-full h-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-center gap-3 p-3 dark:border-e-neutral-600 overflow-y-auto">
         {navConfig.map((item) => (
           <MainNavLink key={item.route} mainRoute={item} pathname={pathname} />
         ))}
@@ -72,7 +72,7 @@ const Sidebar = () => {
 
       <AnimatePresence initial={true} mode="wait">
         {mainRoute?.children ? (
-          <div className="max-w-xs h-full w-full shadow-md border-e-1 border-transparent dark:border-neutral-600 overflow-hidden">
+          <div className="max-w-72 h-full w-full shadow border-e-1 border-transparent dark:border-neutral-600 overflow-hidden">
             <motion.div
               key={dynamicNavType ? "dynamic-sidebar" : "static-sidebar"}
               variants={variants}
