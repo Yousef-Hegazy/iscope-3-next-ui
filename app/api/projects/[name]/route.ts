@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { paginatedProjects } from "../../constant-data";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
-  const id = params.id;
+export async function GET(request: NextRequest, { params }: { params: { name: string } }) {
+  const id = params.name;
   const projects = paginatedProjects[request.headers.get("Accept-Language") || "ar"];
 
   for (const [key, val] of Object.entries(projects)) {
     for (const project of val) {
-      if (project.id === id) {
+      if (project.name === id) {
         return NextResponse.json(project);
       }
     }
