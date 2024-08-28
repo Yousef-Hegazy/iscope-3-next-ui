@@ -206,6 +206,9 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
                 tabList: "w-full justify-evenly pb-0",
               }}
             >
+              <Tab key="financial-record" title={t("projects.financialRecord")}>
+                <p>Financial record</p>
+              </Tab>
               <Tab key="duration-record" title={t("projects.durationRecord")}>
                 <p>Durations record</p>
               </Tab>
