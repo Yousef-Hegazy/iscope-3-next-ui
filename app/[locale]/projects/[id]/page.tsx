@@ -10,7 +10,7 @@ const getProject = async (id: string, locale: string): Promise<Project | null> =
     const host =
       process.env.NODE_ENV === "development"
         ? process.env.NEXT_PUBLIC_HOST || "http://localhost:3000"
-        : "https://iscope-3-next-ui.vercel.app/";
+        : "https://iscope-3-next-ui.vercel.app";
     const { data } = await axios.get(`${host}/api/projects/${id}`, {
       headers: {
         "Accept-Language": locale,
