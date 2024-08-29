@@ -24,6 +24,7 @@ const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: 
       <Button
         as={Link}
         href={path}
+        prefetch={false}
         variant={selected ? "shadow" : "light"}
         className="h-fit px-2 py-3 w-full flex-shrink-0 flex flex-col gap-2 items-center"
         radius="sm"

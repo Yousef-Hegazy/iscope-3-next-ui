@@ -6,9 +6,17 @@ import { Card, CardBody, colors, Tab, Tabs, Tooltip } from "@nextui-org/react";
 import momentH from "moment-hijri";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
-import { Label, Pie, PieChart } from "recharts";
+import { Cell, Label, Pie, PieChart, Sector } from "recharts";
 import Icon from "../Icon";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "../ui/chart";
+import { PieSectorDataItem } from "recharts/types/polar/Pie";
 
 const yDay = momentH().add(-1, "day");
 
@@ -20,38 +28,78 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
       {
         title: t("projects.percentageOnSite"),
         pie: [
-          { name: t("completed"), value: 10, fill: colors.cyan[600] },
-          { name: t("remaining"), value: 90, fill: colors.cyan[900] },
+          { name: "completed", value: 10, fill: colors.cyan[600] },
+          { name: "remaining", value: 90, fill: colors.cyan[900] },
         ],
+        config: {
+          completed: {
+            label: t("completed"),
+          },
+          remaining: {
+            label: t("remaining"),
+          },
+        },
       },
       {
         title: t("projects.percentageOnSitePayable"),
         pie: [
           {
-            name: t("completed"),
+            name: "completed",
             value: 50,
             fill: colors.cyan[600],
           },
           {
-            name: t("remaining"),
+            name: "remaining",
             value: 50,
             fill: colors.cyan[900],
           },
         ],
+        config: {
+          completed: {
+            label: t("completed"),
+          },
+          remaining: {
+            label: t("remaining"),
+          },
+        },
       },
       {
         title: t("projects.plannedPercentage"),
         pie: [
-          { name: t("completed"), value: 20, fill: colors.cyan[600] },
-          { name: t("remaining"), value: 80, fill: colors.cyan[900] },
+          { name: "completed", value: 20, fill: colors.cyan[600] },
+          {
+            name: "remaining",
+            value: 80,
+            fill: colors.cyan[900],
+          },
         ],
+        config: {
+          completed: {
+            label: t("completed"),
+          },
+          remaining: {
+            label: t("remaining"),
+          },
+        },
       },
       {
         title: t("projects.financialPercentage"),
         pie: [
-          { name: t("completed"), value: 60, fill: colors.cyan[600] },
-          { name: t("remaining"), value: 40, fill: colors.cyan[900] },
+          { name: "completed", value: 60, fill: colors.cyan[600] },
+          {
+            name: "remaining",
+            value: 40,
+            fill: colors.cyan[900],
+          },
         ],
+        config: {
+          completed: {
+            label: t("completed"),
+          },
+          remaining: {
+            label: t("remaining"),
+          },
+        },
       },
     ],
     [t]
@@ -151,8 +199,9 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
               <Card key={index} radius="sm" className="w-full overflow-visible" shadow="sm">
                 <Tooltip content={item.title} className="max-w-xs text-small">
                   <CardBody className="h-full w-full flex flex-row items-center overflow-visible py-0">
-                    <ChartContainer config={{}} className="w-[80px] h-[100px] flex-shrink-0">
+                    <ChartContainer config={item.config as ChartConfig} className="w-[80px] h-[100px] flex-shrink-0">
                       <PieChart>
+                        {/* <ChartLegend orientation="horizontal" cx={50} content={<ChartLegendContent />} /> */}
                         <ChartTooltip
                           position={{
                             x: locale === "ar" ? -30 : 20,
@@ -162,18 +211,26 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
 
                         <Pie
                           data={item.pie}
-                          width={100}
-                          height={100}
+                          width={200}
+                          height={300}
                           innerRadius={20}
                           paddingAngle={5}
                           cornerRadius={2}
                           dataKey="value"
                           nameKey="name"
+                          // activeIndex={0}
+                          // activeShape={({ ...props }: PieSectorDataItem) => (
+                          //   <Sector
+                          //     {...props}
+                          //     stroke={colors.cyan[200]}
+                          //     strokeDasharray={2}
+                          //     strokeDashoffset={2}
+                          //     innerRadius={Number(props.innerRadius) - 3}
+                          //     outerRadius={Number(props.outerRadius) + 3}
+                          //     className="shadow-lg"
+                          //   />
+                          // )}
                         >
-                          {/* <Cell fill={colors.cyan[600]} />
-
-                      <Cell fill={colors.cyan[900]} /> */}
-
                           <Label
                             content={({ viewBox }) => {
                               if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -194,8 +251,7 @@ const ProjectTabs = ({ project, locale }: { project: Project; locale: string }) 
                         </Pie>
                       </PieChart>
                     </ChartContainer>
-
-                    <p className="text-start text-small line-clamp-2">{item.title}</p>
+                    <p className="text-start text-small line-clamp-3">{item.title}</p>
                   </CardBody>
                 </Tooltip>
               </Card>

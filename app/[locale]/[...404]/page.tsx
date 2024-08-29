@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
 
-const NotFoun = async ({ params: { locale } }: { params: { locale: string } }) => {
+const NotFound = async ({ params: { locale } }: { params: { locale: string } }) => {
   const t = await getTranslations();
 
   return (
@@ -18,4 +18,4 @@ const NotFoun = async ({ params: { locale } }: { params: { locale: string } }) =
   );
 };
 
-export default NotFoun;
+export default NotFound;
