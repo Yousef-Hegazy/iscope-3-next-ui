@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "./providers";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = localFont({
   src: "../../assets/fonts/Bahij_TheSansArabic-Plain.ttf",
@@ -46,6 +47,8 @@ export default async function LangLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={locale === "ar" ? inter.className : interEnglish.className}>
+        <NextTopLoader height={10} showSpinner={false} />
+
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <SVGs />

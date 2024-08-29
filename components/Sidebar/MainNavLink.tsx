@@ -2,11 +2,10 @@
 
 import { getRoute, NavObject } from "@/lib/navConfig";
 import useRoutesStore from "@/stores/routesStore";
-import { Button, Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
-import { useMemo } from "react";
-import Icon from "../Icon";
+import { Suspense, useMemo } from "react";
+import MainNavBtn from "./MainNavBtn";
 
 const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: string }) => {
   const locale = useLocale();
@@ -21,7 +20,7 @@ const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: 
 
   return (
     <Tooltip content={t(mainRoute.title)} placement="right" closeDelay={0}>
-      <Button
+      {/* <Button
         as={Link}
         href={path}
         prefetch={false}
@@ -38,7 +37,16 @@ const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: 
         >
           {t(mainRoute.title)}
         </p>
-      </Button>
+      </Button> */}
+      <Suspense>
+        <MainNavBtn
+          icon={mainRoute.icon}
+          path={path}
+          selected={selected}
+          title={t(mainRoute.title)}
+          setDynamicNavType={setDynamicNavType}
+        />
+      </Suspense>
     </Tooltip>
   );
 };

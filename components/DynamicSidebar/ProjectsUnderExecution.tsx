@@ -38,8 +38,6 @@ const ProjectsUnderExecution = () => {
         headers: { "Accept-Language": locale },
       });
 
-      console.log(data);
-
       return data;
     },
     refetchOnWindowFocus: true,
@@ -70,7 +68,7 @@ const ProjectsUnderExecution = () => {
               content={item.name}
             >
               <Link
-                prefetch={false}
+                prefetch={true}
                 scroll={false}
                 href={`/${locale}/projects/${item.id}`}
                 className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${

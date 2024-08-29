@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import QuickActions from "./QuickActions";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";

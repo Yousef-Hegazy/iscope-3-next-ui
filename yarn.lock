@@ -6283,6 +6283,7 @@ __metadata:
     next: "npm:14.2.5"
     next-intl: "npm:^3.17.3"
     next-themes: "npm:^0.3.0"
+    nextjs-toploader: "npm:^3.6.15"
     postcss: "npm:^8"
     react: "npm:^18"
     react-dom: "npm:^18"
@@ -6891,6 +6892,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nextjs-toploader@npm:^3.6.15":
+  version: 3.6.15
+  resolution: "nextjs-toploader@npm:3.6.15"
+  dependencies:
+    nprogress: "npm:^0.2.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    next: ">= 6.0.0"
+    react: ">= 16.0.0"
+    react-dom: ">= 16.0.0"
+  checksum: 10c0/f7a40227ef2e579aa6742af7a6e98cb3109b145d5c8fb0eee36008bef33f7e22cac4ae0b6712cfbddf4bccdebc480eb8720fb077a04e871a6d98d7fcfcb1c6ee
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 10.2.0
   resolution: "node-gyp@npm:10.2.0"
@@ -6926,6 +6941,13 @@ __metadata:
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
   checksum: 10c0/e008c8142bcc335b5e38cf0d63cfd39d6cf2d97480af9abdbe9a439221fd4d749763bab492a8ee708ce7a194bb00c9da6d0a115018672310850489137b3da046
+  languageName: node
+  linkType: hard
+
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: 10c0/eab9a923a1ad1eed71a455ecfbc358442dd9bcd71b9fa3fa1c67eddf5159360b182c218f76fca320c97541a1b45e19ced04e6dcb044a662244c5419f8ae9e821
   languageName: node
   linkType: hard
 
