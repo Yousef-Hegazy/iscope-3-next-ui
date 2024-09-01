@@ -1,14 +1,14 @@
 import ClientInitializers from "@/components/ClientInitializers";
-import LayoutWrapper from "@/components/LayoutWrapper";
-import SVGs from "@/components/SVGs";
+import LayoutWrapper from "@/components/ui/LayoutWrapper";
+import SVGs from "@/components/ui/SVGs";
 import { locales } from "@/lib/i18n";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import Providers from "./providers";
-import NextTopLoader from "nextjs-toploader";
 
 const inter = localFont({
   src: "../../assets/fonts/Bahij_TheSansArabic-Plain.ttf",
@@ -47,7 +47,7 @@ export default async function LangLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={locale === "ar" ? inter.className : interEnglish.className}>
-        <NextTopLoader height={10} showSpinner={false} />
+        {/* <NextTopLoader height={10} showSpinner={false} color="hsl(var(--nextui-primary))" /> */}
 
         <NextIntlClientProvider messages={messages}>
           <Providers>

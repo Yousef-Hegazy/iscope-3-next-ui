@@ -1,9 +1,11 @@
-import Icon from "@/components/Icon";
+import Icon from "@/components/ui/Icon";
+import ProjectFirstTab from "@/components/projects/ProjectFirstTabServerSide";
 import ProjectTabs from "@/components/projects/ProjectTabs";
 import { Project } from "@/models/project";
 import { Button, Divider } from "@nextui-org/react";
-import axios from "axios";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const getProject = async (id: string, locale: string): Promise<Project | null> => {
   try {
@@ -11,14 +13,22 @@ const getProject = async (id: string, locale: string): Promise<Project | null> =
       process.env.NODE_ENV === "development"
         ? process.env.NEXT_PUBLIC_HOST || "http://localhost:3000"
         : "https://iscope-3-next-ui.vercel.app";
-    const { data } = await axios.get(`${host}/api/projects/${id}`, {
+    const res = await fetch(`${host}/api/projects/${id}`, {
+      method: "GET",
+      cache: "no-store",
       headers: {
         "Accept-Language": locale,
       },
     });
-    return data;
+
+    if (!res.ok)
+      throw Error("Something went wrong", {
+        cause: await res.json(),
+      });
+
+    return await res.json();
   } catch (error) {
-    console.log(error);
+    console.log("error from method", error);
     return null;
   }
 };
@@ -27,7 +37,13 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
   try {
     const project = await getProject(id, locale);
 
-    return project ? (
+    if (!project) {
+      return notFound();
+    }
+
+    const t = await getTranslations();
+
+    return (
       <div className="flex flex-col flex-1 w-full h-full gap-3 p-4">
         <div className="flex flex-row items-center justify-between">
           <p>{project.name}</p>
@@ -57,14 +73,14 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
 
         <Divider />
 
-        <ProjectTabs project={project} locale={locale} />
+        <ProjectTabs project={project} locale={locale}>
+          <ProjectFirstTab project={project} locale={locale} t={t} />
+        </ProjectTabs>
       </div>
-    ) : (
-      <div className="flex flex-1 w-full h-full items-center justify-center">Something went wrong</div>
     );
   } catch (error) {
     console.log(error);
-    return <div className="flex flex-1 w-full h-full items-center justify-center">Something went wrong</div>;
+    return notFound();
   }
 };
 

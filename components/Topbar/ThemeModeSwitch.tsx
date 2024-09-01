@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import Icon from "../Icon";
+import Icon from "../ui/Icon";
 import { memo, useCallback, useEffect, useState } from "react";
 
 const ThemeModeSwitch = memo(() => {

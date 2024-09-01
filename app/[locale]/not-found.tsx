@@ -1,11 +1,12 @@
+"use client";
 import Icon from "@/components/ui/Icon";
 import { Button } from "@nextui-org/react";
-import { getTranslations } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import React from "react";
 
-const NotFound = async ({ params: { locale } }: { params: { locale: string } }) => {
-  const t = await getTranslations();
+const NotFound = () => {
+  const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <div className="p-4 flex flex-col items-center justify-center w-full h-full gap-3">

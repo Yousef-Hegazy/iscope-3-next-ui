@@ -2,10 +2,12 @@
 
 import { getRoute, NavObject } from "@/lib/navConfig";
 import useRoutesStore from "@/stores/routesStore";
-import { Tooltip } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
-import { Suspense, useMemo } from "react";
-import MainNavBtn from "./MainNavBtn";
+import Link from "next/link";
+import { useMemo } from "react";
+import AppTooltip from "../ui/AppTooltip";
+import Icon from "../ui/Icon";
 
 const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: string }) => {
   const locale = useLocale();
@@ -19,35 +21,27 @@ const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: 
   }, [mainRoute.route, path, pathname]);
 
   return (
-    <Tooltip content={t(mainRoute.title)} placement="right" closeDelay={0}>
-      {/* <Button
+    <AppTooltip content={t(mainRoute.title)} placement="right" closeDelay={0}>
+      <Button
         as={Link}
         href={path}
-        prefetch={false}
         variant={selected ? "shadow" : "light"}
-        className="h-fit px-2 py-3 w-full flex-shrink-0 flex flex-col gap-2 items-center"
+        className="h-max w-full px-2 py-3 flex-shrink-0 flex flex-col gap-2 items-center"
         radius="sm"
         color={selected ? "primary" : "default"}
-        onClick={() => setDynamicNavType()}
+        onClick={(e) => {
+          setDynamicNavType();
+        }}
       >
-        <Icon icon={mainRoute.icon || ""} className="" />
+        <Icon icon={mainRoute.icon || ""} />
 
         <p
           className={`max-w-full text-sm overflow-hidden text-nowrap text-ellipsis ${selected ? "font-semibold" : ""}`}
         >
           {t(mainRoute.title)}
         </p>
-      </Button> */}
-      <Suspense>
-        <MainNavBtn
-          icon={mainRoute.icon}
-          path={path}
-          selected={selected}
-          title={t(mainRoute.title)}
-          setDynamicNavType={setDynamicNavType}
-        />
-      </Suspense>
-    </Tooltip>
+      </Button>
+    </AppTooltip>
   );
 };
 

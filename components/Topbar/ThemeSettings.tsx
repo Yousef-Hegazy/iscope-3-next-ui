@@ -1,11 +1,12 @@
 "use client";
 
-import { Button, Divider, Modal, ModalBody, ModalContent, ModalHeader, Tooltip } from "@nextui-org/react";
+import { Button, Divider, Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { memo, Suspense, useState } from "react";
-import Icon from "../Icon";
+import AppTooltip from "../ui/AppTooltip";
+import Icon from "../ui/Icon";
 
 const lightColors: { [key: string]: string } = {
   orange: `hsl(24.6, 95%, 53.1%)`,
@@ -87,7 +88,7 @@ const ThemeSettingsComponent = memo(() => {
                     <div className="flex flex-row items-center flex-wrap gap-2">
                       {resolvedTheme.includes("dark")
                         ? Object.keys(darkColors).map((color) => (
-                            <Tooltip key={color} content={t(`settings.colors.${color}`)}>
+                            <AppTooltip key={color} content={t(`settings.colors.${color}`)}>
                               <Button
                                 variant="bordered"
                                 size="sm"
@@ -103,10 +104,10 @@ const ThemeSettingsComponent = memo(() => {
                                   style={{ backgroundColor: darkColors[color] }}
                                 ></div>
                               </Button>
-                            </Tooltip>
+                            </AppTooltip>
                           ))
                         : Object.keys(lightColors).map((color) => (
-                            <Tooltip key={color} content={t(`settings.colors.${color}`)}>
+                            <AppTooltip key={color} content={t(`settings.colors.${color}`)}>
                               <Button
                                 variant="bordered"
                                 size="sm"
@@ -123,7 +124,7 @@ const ThemeSettingsComponent = memo(() => {
                                   style={{ backgroundColor: lightColors[color] }}
                                 ></div>
                               </Button>
-                            </Tooltip>
+                            </AppTooltip>
                           ))}
                     </div>
                   )}

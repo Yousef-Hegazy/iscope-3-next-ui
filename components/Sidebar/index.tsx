@@ -9,6 +9,7 @@ import ArchivedProjects from "../DynamicSidebar/ArchivedProjects";
 import ProjectsUnderExecution from "../DynamicSidebar/ProjectsUnderExecution";
 import MainNavLink from "./MainNavLink";
 import SubRoutes from "./SubRoutes";
+import useClientConfigStore from "@/stores/configStore";
 
 const variants: Variants = {
   initial: {
@@ -32,6 +33,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const [mainRoute, setMainRoute] = useState<NavObject>();
   const { dynamicNavType } = useRoutesStore();
+  const { isSidebarOpen } = useClientConfigStore();
 
   useEffect(() => {
     let matches = undefined;
@@ -63,8 +65,12 @@ const Sidebar = () => {
   }, [dynamicNavType]);
 
   return (
-    <>
-      <div className="max-w-32 w-full h-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-center gap-3 p-3 dark:border-e-neutral-600 overflow-y-auto">
+    <div
+      className={`absolute start-0 top-0 flex flex-row z-[55] xl:translate-x-0 xl:relative xl:flex xl:flex-row max-w-full h-full bg-background transition-all duration-300 ${
+        isSidebarOpen ? "translate-x-0 " : "translate-x-full"
+      } `}
+    >
+      <div className="w-32 h-full max-w-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-stretch gap-3 p-3 dark:border-e-neutral-600 overflow-y-auto flex-shrink-0">
         {navConfig.map((item) => (
           <MainNavLink key={item.route} mainRoute={item} pathname={pathname} />
         ))}
@@ -72,7 +78,7 @@ const Sidebar = () => {
 
       <AnimatePresence initial={true} mode="wait">
         {mainRoute?.children ? (
-          <div className="max-w-72 h-full w-full shadow border-e-1 border-transparent dark:border-neutral-600 overflow-hidden">
+          <div className="w-72 max-w-full flex-1 h-full shadow border-e-1 border-transparent dark:border-neutral-600 overflow-hidden flex-shrink-0">
             <motion.div
               key={dynamicNavType ? "dynamic-sidebar" : "static-sidebar"}
               variants={variants}
@@ -88,7 +94,7 @@ const Sidebar = () => {
           ""
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

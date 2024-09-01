@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 const themes = [
   "light-green",
@@ -56,7 +57,17 @@ const Providers = ({ children }: { children: ReactNode }) => {
       navigate={router.push}
     >
       <NextThemeProvider attribute="class" defaultTheme={themes[0]} themes={themes}>
-        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <ProgressBar
+            color="hsl(var(--nextui-primary))"
+            height="10px"
+            shallowRouting
+            options={{
+              showSpinner: false,
+            }}
+          />
+          {children}
+        </QueryClientProvider>
       </NextThemeProvider>
     </NextUIProvider>
   );

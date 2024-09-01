@@ -1,32 +1,25 @@
 "use client";
 
-import { Button, Tooltip } from "@nextui-org/react";
+import { Project } from "@/models/project";
+import { Button } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
-import Icon from "../Icon";
+import AppTooltip from "../ui/AppTooltip";
+import Icon from "../ui/Icon";
 import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
-import { Project } from "@/models/project";
 
 const ProjectsUnderExecution = () => {
   const locale = useLocale();
-  const t = useTranslations();
-  const pathname = usePathname();
-  const isSelected = useCallback((id: string) => pathname.includes(id), [pathname]);
 
-  // const t = useCallback(
-  //   (key: string) => {
-  //     try {
-  //       return unsafeT(key);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   },
-  //   [unsafeT]
-  // );
+  const t = useTranslations();
+
+  const pathname = usePathname();
+
+  const isSelected = useCallback((id: string) => pathname.includes(id), [pathname]);
 
   const query = useInfiniteQuery<{
     maxPages: number;
@@ -56,60 +49,62 @@ const ProjectsUnderExecution = () => {
   return (
     <InfiniteScrollSidebar query={query}>
       {query.data?.pages ? (
-        query.data.pages
-          .map((p) => p.projects)
-          .flat()
-          .map((item) => (
-            <Tooltip
+        query.data.pages.map((p) =>
+          p.projects.map((item) => (
+            <AppTooltip
               showArrow
               key={item.id}
               className="max-w-xs w-full text-justify"
               placement="right"
               content={item.name}
             >
-              <Link
-                prefetch={true}
-                scroll={false}
-                href={`/${locale}/projects/${item.id}`}
-                className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
-                  isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20" : ""
-                }`}
-              >
-                <p className="line-clamp-1 text-small text-start">{item.name}</p>
-                <div className="flex flex-row items-center justify-between">
-                  <div
-                    className={`flex flex-row items-center gap-1.5 rounded-small text-background px-2 py-1 ${
-                      item.status === "stumbling"
-                        ? "bg-danger-600"
-                        : item.status === "late"
-                        ? "bg-warning-600"
-                        : item.status === "early"
-                        ? "bg-green-600"
-                        : item.status === "onSchedule"
-                        ? "bg-teal-600"
-                        : ""
-                    }`}
-                  >
-                    <p className="text-xs">{item.percentage}%</p>
-                    <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
-                  </div>
+              <Link prefetch={true} scroll={false} href={`/${locale}/projects/${item.id}`}>
+                <div
+                  className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
+                    isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20" : ""
+                  }`}
+                >
+                  <p className="line-clamp-1 text-small text-start">{item.name}</p>
+                  <div className="flex flex-row items-center justify-between">
+                    <div
+                      className={`flex flex-row items-center gap-1.5 rounded-small text-background px-2 py-1 ${
+                        item.status === "stumbling"
+                          ? "bg-danger-600"
+                          : item.status === "late"
+                          ? "bg-warning-600"
+                          : item.status === "early"
+                          ? "bg-green-600"
+                          : item.status === "onSchedule"
+                          ? "bg-teal-600"
+                          : ""
+                      }`}
+                    >
+                      <p className="text-xs">{item.percentage}%</p>
+                      <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
+                    </div>
 
-                  <Button
-                    isIconOnly
-                    title="project actions"
-                    size="sm"
-                    variant="light"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                    }}
-                  >
-                    <Icon icon="more-vertical" />
-                  </Button>
+                    <Button
+                      // data-disable-nprogress={true}
+                      data-prevent-nprogress={true}
+                      isIconOnly
+                      title="project actions"
+                      size="sm"
+                      variant="light"
+                      onClick={(e) => {
+                        e.nativeEvent.stopImmediatePropagation();
+                        e.nativeEvent.preventDefault();
+                        e.stopPropagation();
+                        e.preventDefault();
+                      }}
+                    >
+                      <Icon icon="more-vertical" />
+                    </Button>
+                  </div>
                 </div>
               </Link>
-            </Tooltip>
+            </AppTooltip>
           ))
+        )
       ) : (
         <div className="flex flex-col items-center justify-center">
           <p>{t("projects.none")}</p>

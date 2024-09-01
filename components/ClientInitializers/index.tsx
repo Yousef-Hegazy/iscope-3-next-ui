@@ -1,12 +1,18 @@
 "use client";
 
+import useClientConfigStore from "@/stores/configStore";
 import { useTheme } from "next-themes";
 import { useEffect } from "react";
 
 const ClientInitializers = () => {
   const { resolvedTheme } = useTheme();
-  // const [loading, setLoading] = useState(false);
-  // const router = useRouter();
+  const { setIsMobile } = useClientConfigStore();
+
+  useEffect(() => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      setIsMobile(true);
+    }
+  }, [setIsMobile]);
 
   useEffect(() => {
     if (resolvedTheme) {
@@ -15,22 +21,7 @@ const ClientInitializers = () => {
     }
   }, [resolvedTheme]);
 
-  // useEffect(() => {
-  //   const handleStart = () => setLoading(true);
-  //   const handleComplete = () => setLoading(false);
-
-  //   router.events.on('routeChangeStart', handleStart);
-  //   router.events.on('routeChangeComplete', handleComplete);
-  //   router.events.on('routeChangeError', handleComplete);
-
-  //   return () => {
-  //     router.events.off('routeChangeStart', handleStart);
-  //     router.events.off('routeChangeComplete', handleComplete);
-  //     router.events.off('routeChangeError', handleComplete);
-  //   };
-  // }, [router]);
-
-  return <div className="hidden"></div>;
+  return null;
 };
 
 export default ClientInitializers;

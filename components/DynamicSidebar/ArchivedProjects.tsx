@@ -1,9 +1,9 @@
 "use client";
 
-import { Tooltip } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useLocale, useTranslations } from "next-intl";
+import AppTooltip from "../ui/AppTooltip";
 import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
 
 const ArchivedProjects = () => {
@@ -41,7 +41,7 @@ const ArchivedProjects = () => {
           .map((p) => p.projects)
           .flat()
           .map((item) => (
-            <Tooltip
+            <AppTooltip
               showArrow
               content={item.name}
               closeDelay={0}
@@ -52,7 +52,7 @@ const ArchivedProjects = () => {
               <div className="rounded-small py-1 px-2 backdrop-blur-xl cursor-pointer hover:bg-neutral-200/50 hover:shadow">
                 <p className="line-clamp-1 text-small">{item.name}</p>
               </div>
-            </Tooltip>
+            </AppTooltip>
           ))
       ) : (
         <div className="flex flex-col items-center justify-center">

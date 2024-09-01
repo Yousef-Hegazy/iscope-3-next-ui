@@ -5,7 +5,7 @@ import { Button, Divider, ScrollShadow, Spinner } from "@nextui-org/react";
 import { UseInfiniteQueryResult } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
-import Icon from "../Icon";
+import Icon from "../ui/Icon";
 
 const InfiniteScrollSidebar = ({
   children,

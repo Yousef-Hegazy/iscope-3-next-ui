@@ -3,7 +3,7 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/react";
 import Image from "next/image";
 import { memo } from "react";
-import Icon from "../Icon";
+import Icon from "../ui/Icon";
 import { useTranslations } from "next-intl";
 
 const AccountDropdown = memo(() => {

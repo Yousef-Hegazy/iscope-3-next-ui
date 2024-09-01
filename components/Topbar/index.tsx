@@ -1,7 +1,8 @@
 import { Button } from "@nextui-org/react";
 import { getTranslations } from "next-intl/server";
-import Icon from "../Icon";
+import Icon from "../ui/Icon";
 import AccountDropdown from "./AccountDropdown";
+import SidebarControl from "./SidebarControl";
 import ThemeModeSwitch from "./ThemeModeSwitch";
 import ThemeSettings from "./ThemeSettings";
 
@@ -14,6 +15,8 @@ const Topbar = async ({ params: { locale } }: { params: { locale: string } }) =>
         <AccountDropdown />
 
         <ThemeSettings />
+
+        <SidebarControl />
 
         <ThemeModeSwitch />
       </div>
