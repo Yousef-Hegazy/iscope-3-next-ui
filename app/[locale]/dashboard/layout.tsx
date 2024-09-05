@@ -1,4 +1,5 @@
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 
 export default function DashboardLayout({
@@ -6,12 +7,16 @@ export default function DashboardLayout({
   quickActions,
   sidebar,
   topbar,
+  params: { locale },
 }: {
   children: ReactNode;
   topbar: ReactNode;
   sidebar: ReactNode;
   quickActions: ReactNode;
+  params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
+
   return (
     <>
       {topbar}

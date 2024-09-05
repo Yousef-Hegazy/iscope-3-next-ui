@@ -1,10 +1,12 @@
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import Icon from "@/components/ui/Icon";
 import { Button } from "@nextui-org/react";
-import { useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-const QuickActions = () => {
-  const t = useTranslations();
+const QuickActions = async ({ params: { locale } }: { params: { locale: string } }) => {
+  unstable_setRequestLocale(locale);
+
+  const t = await getTranslations();
 
   return (
     <AppScrollShadow
