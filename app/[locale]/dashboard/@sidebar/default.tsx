@@ -23,17 +23,10 @@ const variants: Variants = {
       duration: 0.5,
     },
   },
-  // exit: {
-  //   opacity: 0,
-  //   transition: {
-  //     duration: 0.5,
-  //   },
-  // },
 };
 
 const Sidebar = () => {
   const pathname = usePathname();
-  //   const [mainRoute, setMainRoute] = useState<NavObject>();
   const { mainRoute, setMainRoute } = useRoutesStore();
   const { dynamicNavType } = useRoutesStore();
   const { isSidebarOpen } = useClientConfigStore();

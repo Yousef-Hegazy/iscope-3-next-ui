@@ -1,14 +1,13 @@
-"use client";
-
+import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import Icon from "@/components/ui/Icon";
-import { Button, ScrollShadow } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 
 const QuickActions = () => {
   const t = useTranslations();
 
   return (
-    <ScrollShadow
+    <AppScrollShadow
       size={10}
       hideScrollBar
       orientation="horizontal"
@@ -63,7 +62,7 @@ const QuickActions = () => {
       >
         <p>{t("addBiTask")}</p>
       </Button>
-    </ScrollShadow>
+    </AppScrollShadow>
   );
 };
 
