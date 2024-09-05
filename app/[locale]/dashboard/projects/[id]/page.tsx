@@ -44,7 +44,7 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
     const t = await getTranslations();
 
     return (
-      <div className="flex flex-col flex-1 w-full h-full gap-3 p-4">
+      <main className="flex flex-col flex-1 w-full h-full gap-3 p-4">
         <div className="flex flex-row items-center justify-between">
           <p>{project.name}</p>
 
@@ -76,7 +76,7 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
         <ProjectTabs project={project} locale={locale}>
           <ProjectFirstTab project={project} locale={locale} t={t} />
         </ProjectTabs>
-      </div>
+      </main>
     );
   } catch (error) {
     console.log(error);
