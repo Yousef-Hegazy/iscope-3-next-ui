@@ -70,7 +70,7 @@ const InfiniteScrollSidebar = ({
 
       <Divider />
 
-      <ScrollShadow hideScrollBar className="flex-1 flex flex-col gap-3 h-full pt-3 pb-8" ref={loadMoreRef}>
+      <ScrollShadow size={10} hideScrollBar className="flex-1 flex flex-col gap-3 h-full pt-3 pb-8" ref={loadMoreRef}>
         {isPending ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <Spinner color="primary" />

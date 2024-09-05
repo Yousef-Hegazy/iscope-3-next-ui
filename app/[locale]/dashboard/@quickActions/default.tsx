@@ -1,15 +1,18 @@
-import { Button, ScrollShadow } from "@nextui-org/react";
-import { getTranslations } from "next-intl/server";
-import Icon from "../ui/Icon";
+"use client";
 
-const QuickActions = async () => {
-  const t = await getTranslations();
+import Icon from "@/components/ui/Icon";
+import { Button, ScrollShadow } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
+
+const QuickActions = () => {
+  const t = useTranslations();
 
   return (
     <ScrollShadow
+      size={10}
       hideScrollBar
       orientation="horizontal"
-      className="w-full py-2.5 px-4 flex flex-row gap-2 items-center justify-center shadow-md border-b border-transparent dark:border-b-neutral-600 bg-background/80 backdrop-blur-lg z-50"
+      className="w-full py-2.5 px-4 flex flex-row gap-2 items-center justify-center shadow-md border-b border-transparent dark:border-b-neutral-600 bg-background/80 backdrop-opacity-25 z-30"
     >
       <Button
         className="flex-shrink-0"

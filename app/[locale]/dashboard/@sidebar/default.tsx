@@ -1,15 +1,17 @@
 "use client";
 
-import navConfig, { NavObject } from "@/lib/navConfig";
+import ArchivedProjects from "@/components/DynamicSidebar/ArchivedProjects";
+import ProjectsUnderExecution from "@/components/DynamicSidebar/ProjectsUnderExecution";
+import MainNavLink from "@/components/Sidebar/MainNavLink";
+import SubRoutes from "@/components/Sidebar/SubRoutes";
+import navConfig from "@/lib/navConfig";
+import { cn } from "@/lib/utils";
+import useClientConfigStore from "@/stores/configStore";
 import useRoutesStore from "@/stores/routesStore";
+import { ScrollShadow } from "@nextui-org/react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
-import ArchivedProjects from "../DynamicSidebar/ArchivedProjects";
-import ProjectsUnderExecution from "../DynamicSidebar/ProjectsUnderExecution";
-import MainNavLink from "./MainNavLink";
-import SubRoutes from "./SubRoutes";
-import useClientConfigStore from "@/stores/configStore";
+import { useCallback, useEffect, useMemo } from "react";
 
 const variants: Variants = {
   initial: {
@@ -31,17 +33,31 @@ const variants: Variants = {
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [mainRoute, setMainRoute] = useState<NavObject>();
+  //   const [mainRoute, setMainRoute] = useState<NavObject>();
+  const { mainRoute, setMainRoute } = useRoutesStore();
   const { dynamicNavType } = useRoutesStore();
   const { isSidebarOpen } = useClientConfigStore();
+  const sidebarClasses = useMemo(
+    () =>
+      cn(
+        "absolute start-0 top-0 flex flex-row z-50 xl:translate-x-0 xl:relative xl:flex xl:flex-row max-w-full h-full bg-background transition-all duration-300",
+        {
+          "translate-x-0 ": isSidebarOpen,
+          "translate-x-full": !isSidebarOpen,
+        }
+      ),
+    [isSidebarOpen]
+  );
 
   useEffect(() => {
+    if (mainRoute) return;
+    console.log({ mainRoute, pathname });
+
     let matches = undefined;
 
     if (pathname) {
-      for (const object of navConfig) {
-        // const matching = `/${locale}/${object.route}`;
-        matches = pathname.split("/").find((x) => x === object.route);
+      for (const object of navConfig.slice(1)) {
+        matches = pathname.includes(object.route || "");
 
         if (matches) {
           setMainRoute(object);
@@ -50,8 +66,8 @@ const Sidebar = () => {
       }
     }
 
-    if (!matches) setMainRoute(undefined);
-  }, [pathname]);
+    if (!matches) setMainRoute(navConfig[0]);
+  }, [mainRoute, pathname, setMainRoute]);
 
   const renderDynamic = useCallback(() => {
     switch (dynamicNavType) {
@@ -65,16 +81,16 @@ const Sidebar = () => {
   }, [dynamicNavType]);
 
   return (
-    <div
-      className={`absolute start-0 top-0 flex flex-row z-[55] xl:translate-x-0 xl:relative xl:flex xl:flex-row max-w-full h-full bg-background transition-all duration-300 ${
-        isSidebarOpen ? "translate-x-0 " : "translate-x-full"
-      } `}
-    >
-      <div className="w-32 h-full max-w-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-stretch gap-3 p-3 dark:border-e-neutral-600 overflow-y-auto flex-shrink-0">
+    <div className={sidebarClasses}>
+      <ScrollShadow
+        size={10}
+        hideScrollBar
+        className="w-32 h-full max-w-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-stretch gap-3 p-3 dark:border-e-neutral-600 flex-shrink-0"
+      >
         {navConfig.map((item) => (
-          <MainNavLink key={item.route} mainRoute={item} pathname={pathname} />
+          <MainNavLink key={item.route} item={item} />
         ))}
-      </div>
+      </ScrollShadow>
 
       <AnimatePresence initial={true} mode="wait">
         {mainRoute?.children ? (
@@ -84,7 +100,7 @@ const Sidebar = () => {
               variants={variants}
               initial="initial"
               animate="animate"
-              // exit="exit"
+              exit="exit"
               className="h-full w-full p-2"
             >
               {dynamicNavType ? renderDynamic() : <SubRoutes mainRoute={mainRoute} subRoutes={mainRoute.children} />}

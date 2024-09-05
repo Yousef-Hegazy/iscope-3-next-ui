@@ -6284,7 +6284,6 @@ __metadata:
     next-intl: "npm:^3.17.3"
     next-nprogress-bar: "npm:^2.3.13"
     next-themes: "npm:^0.3.0"
-    nextjs-toploader: "npm:^3.6.15"
     postcss: "npm:^8"
     react: "npm:^18"
     react-dom: "npm:^18"
@@ -6899,20 +6898,6 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: 10c0/661ff5196f671d68ece76f3003d049848163cb21a946fe71673225e56f82726f647a1869085f010869a778e56dd601b9065221031823562aeb92026677f8a5fd
-  languageName: node
-  linkType: hard
-
-"nextjs-toploader@npm:^3.6.15":
-  version: 3.6.15
-  resolution: "nextjs-toploader@npm:3.6.15"
-  dependencies:
-    nprogress: "npm:^0.2.0"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    next: ">= 6.0.0"
-    react: ">= 16.0.0"
-    react-dom: ">= 16.0.0"
-  checksum: 10c0/f7a40227ef2e579aa6742af7a6e98cb3109b145d5c8fb0eee36008bef33f7e22cac4ae0b6712cfbddf4bccdebc480eb8720fb077a04e871a6d98d7fcfcb1c6ee
   languageName: node
   linkType: hard
 

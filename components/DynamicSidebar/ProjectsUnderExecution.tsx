@@ -1,7 +1,7 @@
 "use client";
 
 import { Project } from "@/models/project";
-import { Button } from "@nextui-org/react";
+import { Button, Chip } from "@nextui-org/react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useLocale, useTranslations } from "next-intl";
@@ -58,30 +58,33 @@ const ProjectsUnderExecution = () => {
               placement="right"
               content={item.name}
             >
-              <Link prefetch={true} scroll={false} href={`/${locale}/projects/${item.id}`}>
+              <Link prefetch={true} scroll={false} href={`/${locale}/dashboard/projects/${item.id}`}>
                 <div
                   className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
-                    isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20" : ""
+                    isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20 dark:hover:bg-primary/20" : ""
                   }`}
                 >
                   <p className="line-clamp-1 text-small text-start">{item.name}</p>
                   <div className="flex flex-row items-center justify-between">
-                    <div
-                      className={`flex flex-row items-center gap-1.5 rounded-small text-background px-2 py-1 ${
+                    <Chip
+                      radius="sm"
+                      size="sm"
+                      color={
                         item.status === "stumbling"
-                          ? "bg-danger-600"
+                          ? "danger"
                           : item.status === "late"
-                          ? "bg-warning-600"
+                          ? "warning"
                           : item.status === "early"
-                          ? "bg-green-600"
-                          : item.status === "onSchedule"
-                          ? "bg-teal-600"
-                          : ""
-                      }`}
+                          ? "success"
+                          : "default"
+                      }
+                      classNames={{
+                        base: item.status === "onSchedule" ? "bg-emerald-600 text-white" : "",
+                      }}
+                      startContent={<p className="text-xs p-1">{item.percentage}%</p>}
                     >
-                      <p className="text-xs">{item.percentage}%</p>
                       <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
-                    </div>
+                    </Chip>
 
                     <Button
                       // data-disable-nprogress={true}

@@ -1,18 +1,21 @@
-import { ReactNode, Suspense } from "react";
+import { ScrollShadow } from "@nextui-org/react";
+import { ReactNode } from "react";
 import QuickActions from "../QuickActions";
 import Sidebar from "../Sidebar";
 import Topbar from "../Topbar";
 
-const LayoutWrapper = ({ children, locale }: { children: ReactNode; locale: string }) => {
+const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <Topbar params={{ locale }} />
+      <Topbar />
       <div className="relative flex flex-row flex-grow overflow-hidden h-full w-full">
         <Sidebar />
 
         <div className="flex flex-col flex-1 overflow-hidden">
           <QuickActions />
-          <div className="flex-1 overflow-y-auto">{children}</div>
+          <ScrollShadow size={10} orientation="vertical" hideScrollBar className="flex-1">
+            {children}
+          </ScrollShadow>
         </div>
       </div>
     </>

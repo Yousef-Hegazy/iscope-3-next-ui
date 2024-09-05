@@ -9,19 +9,21 @@ import { useMemo } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
 
-const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: string }) => {
+const MainNavLink = ({ item }: { item: NavObject }) => {
+  const { mainRoute, setMainRoute } = useRoutesStore();
   const locale = useLocale();
-  const path = useMemo(() => getRoute(locale, mainRoute.route || ""), [locale, mainRoute.route]);
+  const path = useMemo(() => getRoute(locale, item?.route || ""), [locale, item?.route]);
   const { setDynamicNavType } = useRoutesStore();
   const t = useTranslations();
 
   const selected = useMemo(() => {
-    const split = pathname.split("/");
-    return path === `${pathname}/` || !!split.find((x) => x === mainRoute.route);
-  }, [mainRoute.route, path, pathname]);
+    // const split = pathname.split("/");
+    // return path === `${pathname}/` || !!split.find((x) => x === mainRoute.route);
+    return mainRoute?.route === item.route;
+  }, [item.route, mainRoute?.route]);
 
   return (
-    <AppTooltip content={t(mainRoute.title)} placement="right" closeDelay={0}>
+    <AppTooltip content={t(item?.title)} placement="right" closeDelay={0}>
       <Button
         as={Link}
         href={path}
@@ -30,15 +32,16 @@ const MainNavLink = ({ mainRoute, pathname }: { mainRoute: NavObject; pathname: 
         radius="sm"
         color={selected ? "primary" : "default"}
         onClick={(e) => {
+          setMainRoute(item);
           setDynamicNavType();
         }}
       >
-        <Icon icon={mainRoute.icon || ""} />
+        <Icon icon={item?.icon || ""} />
 
         <p
           className={`max-w-full text-sm overflow-hidden text-nowrap text-ellipsis ${selected ? "font-semibold" : ""}`}
         >
-          {t(mainRoute.title)}
+          {t(item?.title)}
         </p>
       </Button>
     </AppTooltip>

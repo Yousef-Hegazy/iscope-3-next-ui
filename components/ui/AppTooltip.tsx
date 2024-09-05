@@ -7,10 +7,7 @@ const AppTooltip: FC<TooltipProps> = ({ children, ...props }) => {
   const { isMobile } = useClientConfigStore();
   const [open, setOpen] = useState(false);
 
-  //   console.log(isMobile);
-
   const handleOpen = useCallback(() => {
-    console.log(isMobile);
     if (isMobile) {
       setOpen(true);
     }

@@ -14,43 +14,36 @@ const navConfig: NavObject[] = [
   {
     title: "title",
     icon: "home",
-    route: "",
+    route: "dashboard",
   },
   {
     title: "projects.title",
     icon: "suitcase",
-    route: "projects",
+    route: "dashboard/projects",
     children: [
       {
         title: "projects.underExecution",
         icon: "suitcase",
-        route: "projects",
+        route: "dashboard/projects",
         key: "projects.underExecution",
       },
       {
         title: "projects.archived",
         icon: "archive",
-        route: "projects/archived",
+        route: "dashboard/projects/archived",
         key: "projects.archived",
-        // children: [
-        //   {
-        //     title: "mainPage",
-        //     icon: "main-page",
-        //     route: "users/settings",
-        //   },
-        // ],
       },
     ],
   },
   {
     title: "studies.title",
     icon: "open-book",
-    route: "studies",
+    route: "dashboard/studies",
     children: [
       {
         title: "studies.management",
         icon: "open-book",
-        route: "studies",
+        route: "dashboard/studies",
       },
     ],
   },
