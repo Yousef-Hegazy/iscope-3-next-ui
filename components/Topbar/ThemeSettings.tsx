@@ -7,6 +7,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { memo, Suspense, useState } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
+import { cn } from "@/lib/utils";
 
 const lightColors: { [key: string]: string } = {
   orange: `hsl(24.6, 95%, 53.1%)`,
@@ -38,7 +39,7 @@ const darkColors: { [key: string]: string } = {
   violet: `hsl(263.4, 70%, 50.4%)`,
 };
 
-const ThemeSettingsComponent = memo(() => {
+const ThemeSettings = memo(({ className }: { className?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations();
@@ -55,7 +56,15 @@ const ThemeSettingsComponent = memo(() => {
 
   return (
     <>
-      <Button variant="light" isIconOnly onClick={() => setIsOpen(true)}>
+      <Button
+        variant="light"
+        type="button"
+        title="Theme settings"
+        size="sm"
+        isIconOnly
+        onClick={() => setIsOpen(true)}
+        className={className}
+      >
         <Icon icon="settings" />
       </Button>
 
@@ -202,15 +211,15 @@ const ThemeSettingsComponent = memo(() => {
   );
 });
 
-ThemeSettingsComponent.displayName = "ThemeSettingsComponent";
+// ThemeSettingsComponent.displayName = "ThemeSettingsComponent";
 
-const ThemeSettings = memo(() => {
-  return (
-    <Suspense>
-      <ThemeSettingsComponent />
-    </Suspense>
-  );
-});
+// const ThemeSettings = memo(({className}: {className?: string}) => {
+//   return (
+//     <Suspense>
+//       <ThemeSettingsComponent />
+//     </Suspense>
+//   );
+// });
 
 ThemeSettings.displayName = "ThemeSettings";
 

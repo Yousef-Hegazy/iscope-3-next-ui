@@ -9,6 +9,8 @@ import { ReactNode } from "react";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 const themes = [
+  "light-blue",
+  "light-yellow",
   "light-green",
   "light-orange",
   "light-slate",
@@ -18,8 +20,6 @@ const themes = [
   "light-neutral",
   "light-red",
   "light-rose",
-  "light-blue",
-  "light-yellow",
   "light-violet",
   "dark-orange",
   "dark-slate",

@@ -13,6 +13,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "zahid-blue-bg": "#1358d0",
+        "zahid-yellow-btn": "#fff250",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
