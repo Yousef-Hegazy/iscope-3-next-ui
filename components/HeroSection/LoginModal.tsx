@@ -1,15 +1,20 @@
 "use client";
 
+import useRoutesStore from "@/stores/routesStore";
 import { Button, Divider, Input, Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
-import { FormEvent, useState } from "react";
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const LoginModal = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const router = useRouter();
+  const locale = useLocale();
+  const { setMainRoute } = useRoutesStore();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -18,7 +23,10 @@ const LoginModal = () => {
     },
   });
 
-  const onSubmit = (data: { email: string; password: string }) => {};
+  const onSubmit = (data: { email: string; password: string }) => {
+    setMainRoute();
+    router.push(`/${locale}/dashboard`);
+  };
 
   return (
     <>
@@ -71,7 +79,7 @@ const LoginModal = () => {
                       Sign In
                     </Button>
 
-                    <Button onClick={onClose} variant="bordered" color="default" className="flex-1">
+                    <Button onClick={onClose} type="reset" variant="bordered" color="default" className="flex-1">
                       Cancel
                     </Button>
                   </div>
