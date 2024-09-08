@@ -116,6 +116,22 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
         </div>
       </SectionContainer>
 
+      <SectionContainer id="pricing" className="bg-zahid-blue-bg">
+        <div className="w-full h-full flex flex-col items-center justify-center px-4 lg:px-20">
+          <div className="w-full border-t-2 border-white/20 bg-white/50 relative z-1">
+            <div className="absolute top-0 start-[10%] flex flex-col items-center">
+              <div className="absolute top-0 -translate-y-1/2 border-l-2 border-white/50 h-4 z-[2]" />
+
+              <div className="mt-6 w-full text-center text-white">
+                <h6>Starter</h6>
+
+                <p className="text-xs text-white/80">Up to 50 employees</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+
       <footer id="footer" className="h-screen mt-10 bg-zahid-blue-bg flex justify-center items-center">
         <SectionContainer
           id="footer"
