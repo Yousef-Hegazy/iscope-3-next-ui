@@ -1,19 +1,9 @@
 "use client";
 
-import { Avatar, Button, Divider } from "@nextui-org/react";
-import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
-import StatsBar from "./StatsBar";
+import { Button, Divider } from "@nextui-org/react";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-
-const containerVariants: Variants = {
-  animate: {
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
-  },
-  exit: {
-    // transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  },
-};
+import StatsBar from "./StatsBar";
 
 const firstContainerVars: Variants = {
   initial: {
@@ -131,7 +121,6 @@ const barVars: Variants = {
   animate: {
     // opacity: 1,
     scaleY: 1,
-    transformOrigin: "bottom",
     transition: {
       type: "spring",
     },
@@ -143,18 +132,8 @@ const barVars: Variants = {
 };
 
 const ChartsContainer = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const inView = useInView(containerRef);
-
   return (
-    <motion.div
-      variants={containerVariants}
-      ref={containerRef}
-      initial="initial"
-      animate={inView ? "animate" : "exit"}
-      className="mx-auto max-w-5xl w-full flex flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4"
-    >
+    <div className="mx-auto max-w-5xl w-full flex flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4">
       {/* First One */}
       <motion.div
         variants={firstContainerVars}
@@ -340,15 +319,33 @@ const ChartsContainer = () => {
         </div>
 
         <div className="flex flex-row items-end justify-evenly gap-x-2.5">
-          <motion.div variants={barVars} className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small"></motion.div>
-          <motion.div variants={barVars} className="flex-1 h-32 bg-zahid-blue-bg/10 rounded-small"></motion.div>
-          <motion.div variants={barVars} className="flex-1 h-16 bg-zahid-blue-bg/10 rounded-small"></motion.div>
-          <motion.div variants={barVars} className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small"></motion.div>
-          <motion.div variants={barVars} className="flex-1 h-32 bg-zahid-blue-bg rounded-small"></motion.div>
-          <motion.div variants={barVars} className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small"></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small origin-bottom"
+          ></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-32 bg-zahid-blue-bg/10 rounded-small origin-bottom"
+          ></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-16 bg-zahid-blue-bg/10 rounded-small origin-bottom"
+          ></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small origin-bottom"
+          ></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-32 bg-zahid-blue-bg rounded-small origin-bottom"
+          ></motion.div>
+          <motion.div
+            variants={barVars}
+            className="flex-1 h-20 bg-zahid-blue-bg/10 rounded-small origin-bottom"
+          ></motion.div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
