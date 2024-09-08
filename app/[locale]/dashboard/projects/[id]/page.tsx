@@ -65,7 +65,14 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
               <Icon icon="more-vertical" />
             </Button>
 
-            <Button variant="light" as={Link} href={`/${locale}/projects`} isIconOnly size="sm" title="Go back">
+            <Button
+              variant="light"
+              as={Link}
+              href={`/${locale}/dashboard/projects`}
+              isIconOnly
+              size="sm"
+              title="Go back"
+            >
               <Icon icon={locale === "ar" ? "menu-arrow-left" : "menu-arrow-right"} />
             </Button>
           </div>

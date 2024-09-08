@@ -61,7 +61,6 @@ const AdvantageCard1 = () => {
       description="Make project monitoring a breeze with iScope, instant real-time changes from the work site to you directly, with full transparency and security."
     >
       <div
-        // variants={statsContainerVars}
         className="bg-background p-4"
         style={{
           borderRadius: "0.75rem 0 0.75rem 0",

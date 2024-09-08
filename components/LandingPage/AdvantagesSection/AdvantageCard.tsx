@@ -44,6 +44,26 @@ const textVars: Variants = {
   },
 };
 
+const scaleAnimation: Variants = {
+  initial: {
+    opacity: 0,
+    scale: 0.8,
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      staggerChildren: 0.07,
+      delayChildren: 0.2,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.8,
+  },
+};
+
 const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
   return (
     <motion.div variants={cardVars} className="rounded-medium bg-default-100 pt-6">
@@ -64,14 +84,15 @@ const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
         </motion.p>
       </div>
 
-      <div
+      <motion.div
+        variants={scaleAnimation}
         className="bg-default-300 p-2 ms-3 mt-6"
         style={{
           borderRadius: "0.75rem 0 0.75rem 0",
         }}
       >
         {children}
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

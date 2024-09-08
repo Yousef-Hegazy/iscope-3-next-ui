@@ -6,7 +6,7 @@ import { ReactNode, useMemo, useRef } from "react";
 
 const containerVariants: Variants = {
   animate: {
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
   },
   exit: {
     // transition: { staggerChildren: 0.05, staggerDirection: -1 }
