@@ -2,9 +2,10 @@
 import { motion, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
-const containervars: Variants = {
+const containerVars: Variants = {
   animate: {
     transition: {
+      delayChildren: 0.3,
       staggerChildren: 0.1,
     },
   },
@@ -31,11 +32,7 @@ const testVars: Variants = {
 
 export const TestimonyCardsContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <motion.div
-      variants={containervars}
-      whileInView="animate"
-      className="flex flex-row items-start justify-evenly mt-8 lg:mt-20 gap-x-6"
-    >
+    <motion.div variants={containerVars} className="flex flex-row items-start justify-evenly mt-8 lg:mt-20 gap-x-6">
       {children}
     </motion.div>
   );
