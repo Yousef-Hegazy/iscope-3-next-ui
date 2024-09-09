@@ -31,7 +31,10 @@ interface Props {
 
 const PricingTag: FC<Props> = ({ className, title, description, icon, customContent }) => {
   return (
-    <motion.div variants={tagVars} className={cn("absolute origin-top top-0 flex flex-col items-center", className)}>
+    <motion.div
+      variants={tagVars}
+      className={cn("absolute origin-top top-0 flex flex-col items-center max-w-20 lg:max-w-full", className)}
+    >
       <div
         className={cn("absolute top-0 -translate-y-1/2 z-[2]", {
           "border-l-2 border-white/50 h-4": !icon,

@@ -20,7 +20,7 @@ const imageVars: Variants = {
 
 const FeatureImageContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <motion.div variants={imageVars} className="flex-1 relative h-full">
+    <motion.div variants={imageVars} className="flex-1 relative h-full w-full flex items-center justify-center">
       {children}
     </motion.div>
   );

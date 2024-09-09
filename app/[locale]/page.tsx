@@ -17,7 +17,7 @@ import Image from "next/image";
 
 const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => {
   return (
-    <AppScrollShadow as="main" size={5} hideScrollBar className="flex-1 overflow-x-hidden">
+    <AppScrollShadow as="main" size={5} hideScrollBar className="flex-1 overflow-x-hidden max-w-full">
       <SectionContainer id="hero">
         <div className="h-[75vh] w-full bg-zahid-blue-bg relative flex flex-col items-center">
           <nav className="w-full p-4 bg-transparent flex flex-row items-center justify-between">
@@ -27,7 +27,7 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
               </Button>
             </div>
 
-            <ul className="flex flex-row items-center gap-x-2.5 justify-center flex-[2]">
+            <ul className="hidden lg:flex flex-row items-center gap-x-2.5 justify-center flex-[2]">
               <li className="inline">
                 <Button variant="light" className="text-white/80 font-semibold">
                   Product
@@ -61,7 +61,7 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
             </div>
           </nav>
 
-          <div className="mx-auto w-max max-w-lg mt-8 flex flex-col items-center">
+          <div className="mx-auto w-full max-w-lg mt-8 flex flex-col items-center px-4 lg:px-0">
             <Chip color="default" size="lg" className="text-sm bg-white/10 text-white mb-6">
               Trusted by multiple governments
             </Chip>
@@ -96,7 +96,17 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
           </SectionDescription>
         </div>
 
-        <div className="mt-6 flex flex-row gap-4 justify-evenly max-w-6xl">
+        <AppScrollShadow
+          orientation="horizontal"
+          size={0}
+          className="mt-6 flex flex-row gap-4 justify-evenly w-full lg:hidden overflow-x-auto px-4"
+        >
+          <AdvantageCard1 />
+          <AdvantageCard1 />
+          <AdvantageCard1 />
+        </AppScrollShadow>
+
+        <div className="hidden mt-6 lg:flex flex-row gap-4 justify-evenly w-full max-w-6xl">
           <AdvantageCard1 />
           <AdvantageCard1 />
           <AdvantageCard1 />
@@ -104,11 +114,13 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
       </SectionContainer>
 
       <SectionContainer id="features-1" className="mt-6">
-        <div className="mx-auto flex flex-row items-center justify-between gap-x-4 lg:gap-x-10 max-w-6xl h-full w-full">
+        <div className="mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-x-4 lg:gap-x-10 max-w-6xl h-full w-full gap-y-4 px-4 lg:px-8">
           <div className="flex-1">
-            <SectionH1 className="text-foreground text-start">Seamless solutions for every project you have</SectionH1>
+            <SectionH1 className="text-foreground text-center lg:text-start">
+              Seamless solutions for every project you have
+            </SectionH1>
 
-            <SectionDescription className="mt-4 text-start text-default-500">
+            <SectionDescription className="mt-4 text-center lg:text-start text-default-500">
               A comprehensive solution for managing all your projects, tasks, and teams. With iScope, you will take your
               project management to the next level.
             </SectionDescription>
@@ -122,7 +134,7 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
 
       <SectionContainer id="pricing" className="bg-zahid-blue-bg">
         <div className="w-full h-full flex flex-col items-center py-4 px-4 lg:px-20 lg:py-20">
-          <div className="max-w-xl space-y-4 mb-12">
+          <div className="max-w-xl space-y-4 mb-5">
             <p className="mx-auto w-max px-4 py-2 bg-white/10 text-white text-xs rounded-full ">Pricings</p>
 
             <SectionH1 className="mx-auto text-center mb-6">Affordable HR services, predictable pricing</SectionH1>
@@ -133,15 +145,15 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
             </SectionDescription>
           </div>
 
-          <div className="flex flex-row items-center justify-between w-full mb-14 text-white">
+          <div className="flex flex-row items-center justify-between w-full mb-5 text-white">
             <div className="flex flex-row items-center gap-x-4">
-              <p>Currency</p>
+              <p className="text-xs lg:text-sm">Currency</p>
               <p>-</p>
-              <p className="px-4 py-2 bg-white/10 text-xs rounded-full">EUR €</p>
-              <p className="px-4 py-2 bg-black/30 text-zahid-yellow-btn text-xs rounded-full">USD $</p>
+              <p className="px-2 lg:px-4 py-1 lg:py-2 bg-white/10 text-xs rounded-full">SAR</p>
+              {/* <p className="px-2 lg:px-4 py-1 lg:py-2 bg-black/30 text-zahid-yellow-btn text-xs rounded-full">SAR</p> */}
             </div>
 
-            <div className="flex flex-row items-center gap-x-2 text-sm">
+            <div className="flex flex-row items-center gap-x-2 text-xs lg:text-sm">
               <p>Yearly</p>
               <AppSwitch defaultChecked defaultSelected color="primary" />
               <p className="text-zahid-yellow-btn -ms-2">Monthly</p>
@@ -149,12 +161,12 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
           </div>
 
           <PricingBar>
-            <PricingTag className="start-[10%]" title="Starter" description="Up to 50 employees" />
+            <PricingTag className="-start-2.5 lg:start-[10%]" title="Starter" description="Up to 50 employees" />
 
-            <PricingTag className="start-[25%]" title="Basic" description="Up to 200 employees" />
+            <PricingTag className="start-[25%] hidden lg:block" title="Basic" description="Up to 200 employees" />
 
             <PricingTag
-              className="start-[calc(50%-6rem)]"
+              className="start-[calc(50%-3rem)] lg:start-[calc(50%-6rem)]"
               customContent={
                 <div className="w-48 mt-6 h-fit rounded-xl bg-white p-2 text-black text-start">
                   <h3 className="mt-2">Business</h3>
@@ -278,7 +290,7 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
               }
             />
 
-            <PricingTag className="start-[65%]" title="Optimal" description="Up to 2K employees" />
+            <PricingTag className="start-[65%] hidden lg:block" title="Optimal" description="Up to 2K employees" />
 
             <PricingTag className="start-[80%]" title="Premier" description="Unlimited employees" />
           </PricingBar>
@@ -388,7 +400,7 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
               <Image src="/logoiScope.svg" alt="Logo" width={10} height={10} className="w-20 h-20" />
             </Button>
 
-            <ul className="flex flex-row items-center gap-x-2.5 justify-center mt-6">
+            <ul className="hidden xl:flex xl:flex-row items-center gap-x-2.5 justify-center mt-6">
               <li className="inline">
                 <Button variant="light" className="text-white/80 font-semibold">
                   Product
@@ -414,14 +426,20 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
             <div className="absolute bottom-0 w-full">
               <Divider className="bg-white/20 mb-4" />
 
-              <div className="flex flex-row items-center justify-between w-full mb-4">
+              <div className="flex flex-row items-center justify-between w-full mb-4 px-2 lg:px-4 xl:px:0">
                 <p className="text-white text-xs">&copy; {new Date().getFullYear()} iScope. All rights reserved.</p>
 
-                <div className="flex flex-row items-center gap-x-3">
-                  <Button variant="light" className="text-white/80 font-semibold text-xs">
+                <div className="flex flex-row items-center gap-x-0 lg:gap-x-3">
+                  <Button
+                    variant="light"
+                    className="text-white/80 font-semibold text-[0.65rem] lg:text-xs px-2 lg:px-inherit"
+                  >
                     Privacy Policy
                   </Button>
-                  <Button variant="light" className="text-white/80 font-semibold text-xs">
+                  <Button
+                    variant="light"
+                    className="text-white/80 font-semibold text-[0.65rem] lg:text-xs px-2 lg:px-inherit"
+                  >
                     Terms & Conditions
                   </Button>
                 </div>

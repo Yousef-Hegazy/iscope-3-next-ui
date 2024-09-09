@@ -66,34 +66,68 @@ const scaleAnimation: Variants = {
 
 const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
   return (
-    <motion.div variants={cardVars} className="rounded-medium bg-default-100 pt-6">
-      <div className="px-4">
-        <motion.p
-          variants={textVars}
-          className="px-2 py-0.5 bg-background w-max rounded-full text-xs ring-4 ring-default-300"
+    <>
+      <motion.div variants={cardVars} className="rounded-medium bg-default-100 pt-6 hidden lg:block flex-1">
+        <div className="px-4">
+          <motion.p
+            variants={textVars}
+            className="px-2 py-0.5 bg-background w-max rounded-full text-xs ring-4 ring-default-300"
+          >
+            {number}
+          </motion.p>
+
+          <motion.h2 variants={textVars} className="font-semibold text-lg mt-4">
+            {title}
+          </motion.h2>
+
+          <motion.p variants={textVars} className="text-default-500 text-sm mt-5">
+            {description}
+          </motion.p>
+        </div>
+
+        <motion.div
+          variants={scaleAnimation}
+          className="bg-default-300 p-2 ms-3 mt-6"
+          style={{
+            borderRadius: "0.75rem 0 0.75rem 0",
+          }}
         >
-          {number}
-        </motion.p>
-
-        <motion.h2 variants={textVars} className="font-semibold text-lg mt-4">
-          {title}
-        </motion.h2>
-
-        <motion.p variants={textVars} className="text-default-500 text-sm mt-5">
-          {description}
-        </motion.p>
-      </div>
+          {children}
+        </motion.div>
+      </motion.div>
 
       <motion.div
-        variants={scaleAnimation}
-        className="bg-default-300 p-2 ms-3 mt-6"
-        style={{
-          borderRadius: "0.75rem 0 0.75rem 0",
-        }}
+        variants={cardVars}
+        className="rounded-medium bg-default-100 pt-6 lg:hidden min-w-[calc(100%-4rem)] w-full max-w-full"
       >
-        {children}
+        <div className="px-4">
+          <motion.p
+            variants={textVars}
+            className="px-2 py-0.5 bg-background w-max rounded-full text-xs ring-4 ring-default-300"
+          >
+            {number}
+          </motion.p>
+
+          <motion.h2 variants={textVars} className="font-semibold text-lg mt-4">
+            {title}
+          </motion.h2>
+
+          <motion.p variants={textVars} className="text-default-500 text-sm mt-5">
+            {description}
+          </motion.p>
+        </div>
+
+        <motion.div
+          variants={scaleAnimation}
+          className="bg-default-300 p-2 ms-3 mt-6"
+          style={{
+            borderRadius: "0.75rem 0 0.75rem 0",
+          }}
+        >
+          {children}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 };
 

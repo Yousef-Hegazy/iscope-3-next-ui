@@ -133,7 +133,7 @@ const barVars: Variants = {
 
 const ChartsContainer = () => {
   return (
-    <div className="mx-auto max-w-5xl w-full flex flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4">
+    <div className="hidden mx-auto max-w-5xl w-full xl:flex xl:flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4">
       {/* First One */}
       <motion.div
         variants={firstContainerVars}

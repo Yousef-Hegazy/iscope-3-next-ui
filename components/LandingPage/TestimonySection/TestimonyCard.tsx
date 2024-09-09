@@ -32,7 +32,10 @@ const testVars: Variants = {
 
 export const TestimonyCardsContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <motion.div variants={containerVars} className="flex flex-row items-start justify-evenly mt-8 lg:mt-20 gap-x-6">
+    <motion.div
+      variants={containerVars}
+      className="flex flex-col lg:flex-row lg:items-start lg:justify-evenly mt-8 lg:mt-20 gap-y-4 lg:gap-x-6"
+    >
       {children}
     </motion.div>
   );
