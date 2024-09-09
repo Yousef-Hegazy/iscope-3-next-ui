@@ -173,7 +173,7 @@ const ChartsContainer = () => {
               className="placeholder:text-[0.65rem] outline-0 text-xs"
             />
 
-            <Button size="sm" color="primary">
+            <Button size="sm" className="bg-zahid-blue-bg text-white">
               Check-In (
               {new Date().toLocaleTimeString("en-SA", {
                 hour: "2-digit",
@@ -217,8 +217,7 @@ const ChartsContainer = () => {
                   size="sm"
                   radius="sm"
                   variant="bordered"
-                  color="primary"
-                  className="text-xs w-full bg-primary/10"
+                  className="text-xs w-full bg-zahid-blue-bg/10 text-zahid-blue-bg border-zahid-blue-bg/50"
                 >
                   Onboarding
                 </Button>

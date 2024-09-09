@@ -45,7 +45,7 @@ const StatsBar: FC<{
               "rounded-none w-full h-3 bg-default-300/50 brightness-95",
               {
                 "rounded-s-[0.2rem]": i === 0,
-                "bg-primary": i < filled && background === "zahid",
+                "bg-zahid-blue-bg": i < filled && background === "zahid",
                 "bg-success-500": i < filled && background === "success",
                 "bg-danger-500": i < filled && background === "danger",
                 "rounded-e-[0.2rem]": i === 10,
