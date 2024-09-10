@@ -2,7 +2,7 @@
 
 import useRoutesStore from "@/stores/routesStore";
 import { Button, Divider, Input, Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ const LoginModal = () => {
   const router = useRouter();
   const locale = useLocale();
   const { setMainRoute } = useRoutesStore();
+  const t = useTranslations("landingPage");
   const {
     register,
     handleSubmit,
@@ -31,26 +32,26 @@ const LoginModal = () => {
   return (
     <>
       <Button onClick={() => setFormOpen(true)} radius="full" variant="solid" className="bg-white text-black">
-        Sign In
+        {t("login")}
       </Button>
 
-      <Modal isOpen={formOpen} onOpenChange={setFormOpen}>
+      <Modal placement="top-center" isOpen={formOpen} onOpenChange={setFormOpen}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader>Sign In</ModalHeader>
+              <ModalHeader>{t("login")}</ModalHeader>
 
               <Divider />
 
               <ModalBody className="py-4">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3 justify-start">
                   <Input
-                    label="Email"
+                    label={t("email")}
                     size="md"
                     variant="faded"
                     labelPlacement="outside"
                     title="Email"
-                    placeholder="Enter 'admin'"
+                    placeholder="admin"
                     radius="sm"
                     // color={errors.email ? "danger" : "default"}
                     {...register("email", { required: true, validate: (value) => value === "admin" })}
@@ -59,12 +60,12 @@ const LoginModal = () => {
                   />
 
                   <Input
-                    label="Password"
+                    label={t("password")}
                     variant="faded"
                     size="md"
                     labelPlacement="outside"
                     title="Password"
-                    placeholder="Enter 'admin'"
+                    placeholder="admin"
                     type="password"
                     radius="sm"
                     // color={errors.password ? "danger" : "default"}
@@ -76,11 +77,11 @@ const LoginModal = () => {
 
                   <div className="flex flex-row items-stretch justify-evenly gap-x-3">
                     <Button type="submit" variant="solid" className="bg-zahid-blue-bg text-white flex-1">
-                      Sign In
+                      {t("login")}
                     </Button>
 
                     <Button onClick={onClose} type="reset" variant="bordered" color="default" className="flex-1">
-                      Cancel
+                      {t("cancel")}
                     </Button>
                   </div>
                 </form>

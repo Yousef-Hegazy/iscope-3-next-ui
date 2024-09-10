@@ -13,9 +13,12 @@ import ThemeSettings from "@/components/Topbar/ThemeSettings";
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import AppSwitch from "@/components/ui/AppSwitch";
 import { Button, Chip, Divider } from "@nextui-org/react";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => {
+const LandingPage = async ({ params: { locale } }: { params: { locale: string } }) => {
+  const t = await getTranslations("landingPage");
+
   return (
     <AppScrollShadow as="main" size={5} hideScrollBar className="flex-1 overflow-x-hidden max-w-full">
       <SectionContainer id="hero">
@@ -55,26 +58,23 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
 
               <LoginModal />
 
-              <Button radius="full" variant="solid" className="bg-zahid-yellow-btn text-black">
+              {/* <Button radius="full" variant="solid" className="bg-zahid-yellow-btn text-black">
                 Get Access
-              </Button>
+              </Button> */}
             </div>
           </nav>
 
           <div className="mx-auto w-full max-w-lg mt-8 flex flex-col items-center px-4 lg:px-0">
             <Chip color="default" size="lg" className="text-sm bg-white/10 text-white mb-6">
-              Trusted by multiple governments
+              {t("trusted")}
             </Chip>
 
-            <SectionH1>Startup payroll and compliance simplified</SectionH1>
+            <SectionH1>{t("subtitle")}</SectionH1>
 
-            <SectionDescription className="text-wrap text-white/75">
-              Increase savings, automate busy work, and make better decisions by managing payroll, HR, IT & spend in one
-              place
-            </SectionDescription>
+            <SectionDescription className="mt-2 text-wrap text-white/75">{t("platformDesc")}</SectionDescription>
           </div>
 
-          <CTABtn className="mt-8">Start a Free Trial</CTABtn>
+          {/* <CTABtn className="mt-4">{t("login")}</CTABtn> */}
 
           <ChartsContainer />
         </div>
@@ -83,22 +83,19 @@ const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => 
       <SectionContainer id="advantages" className="mt-10 flex flex-col items-center h-screen">
         <div className="max-w-lg flex flex-col items-center">
           {/* <Chip title="Advantages" variant="bordered"> */}
-          <p className="text-xs px-4 py-2 ring-4 ring-default-200 rounded-full mb-4">Advantages</p>
+          <p className="text-xs px-4 py-2 ring-4 ring-default-200 rounded-full mb-4">{t("advantages.title")}</p>
           {/* </Chip> */}
 
           <SectionH1 className="text-xl lg:text-3xl text-center font-semibold text-foreground">
-            Transform project management with our software solution
+            {t("advantages.main")}
           </SectionH1>
 
-          <SectionDescription className="text-default-500 mt-3">
-            Revolutionize your HR Operations with our Comprehensive Software Appplication, Designed to Streamline Tasks,
-            and Enhance Efficiency.
-          </SectionDescription>
+          <SectionDescription className="text-default-500 mt-3">{t("advantages.subtitle")}</SectionDescription>
         </div>
 
         <AppScrollShadow
-          orientation="horizontal"
           size={0}
+          orientation="horizontal"
           className="mt-6 flex flex-row gap-4 justify-evenly w-full lg:hidden overflow-x-auto px-4"
         >
           <AdvantageCard1 />

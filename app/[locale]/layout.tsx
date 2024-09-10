@@ -23,7 +23,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   const t = await getTranslations({ locale });
 
   return {
-    title: t("title"),
+    title: t("landingPage.title"),
   };
 }
 

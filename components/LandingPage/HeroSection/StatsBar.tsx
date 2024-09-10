@@ -32,12 +32,12 @@ const StatsBar: FC<{
       <div className="flex flex-row justify-between items-center gap-x-2">
         <p className="text-xs leading-3 whitespace-nowrap font-semibold text-default-700">{title}</p>
         <p className="text-default-500 text-[0.65rem]">
-          {filled} / {max} used
+          {filled} / {max}
         </p>
       </div>
 
       <div className="flex flex-row items-center justify-evenly gap-x-[1px]">
-        {Array.from({ length: max }, (_, i) => (
+        {Array.from({ length: max / 10 }, (_, i) => (
           <motion.div
             variants={statusBarVariants}
             key={i}
@@ -45,9 +45,9 @@ const StatsBar: FC<{
               "rounded-none w-full h-3 bg-default-300/50 brightness-95",
               {
                 "rounded-s-[0.2rem]": i === 0,
-                "bg-zahid-blue-bg": i < filled && background === "zahid",
-                "bg-success-500": i < filled && background === "success",
-                "bg-danger-500": i < filled && background === "danger",
+                "bg-zahid-blue-bg": i < filled / 10 && background === "zahid",
+                "bg-success-500": i < filled / 10 && background === "success",
+                "bg-danger-500": i < filled / 10 && background === "danger",
                 "rounded-e-[0.2rem]": i === 10,
               },
               className

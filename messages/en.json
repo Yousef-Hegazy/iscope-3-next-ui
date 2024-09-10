@@ -1,5 +1,41 @@
 {
-    "title": "Iscope",
+    "landingPage": {
+        "title": "Iscope",
+        "subtitle": "The Future of Project Supervision",
+        "platformDesc": "iScope platform for managing and monitoring projects remotely",
+        "aboutIscope": "iScope offers you the solution through a set of integrated electronic solutions so that the official and decision-makers can have full knowledge of the reality of the projects, regardless of their geographical distance, according to the international standards for project management.",
+        "trusted": "Trusted by many government agencies",
+        "login": "Log In",
+        "cancel": "Cancel",
+        "email": "Email",
+        "password": "Password",
+        "currency": "SAR",
+        "amanda": "Amanda Rosch",
+        "contractor": "Contractor",
+        "project": "Project",
+        "finishedProjects": "Finished Projects",
+        "ongoingProjects": "Ongoing Projects",
+        "addNew": "Add New",
+        "typeNameHere": "Type name here",
+        "add": "Add",
+        "dataVisualization": "Data Visualization",
+        "edit": "Edit",
+        "projects": {
+            "aheadOfSchedule": "Projects ahead of schedule",
+            "onSchedule": "Projects on schedule",
+            "stumbling": "Stumbling projects",
+            "percentages": "Completion percentages",
+            "extract": "Extract"
+        },
+        "advantages": {
+            "title": "Advantages",
+            "main": "Transform projects management with iScope",
+            "subtitle": "iScope offers a set of integrated electronic solutions so that the decision-makers can have full knowledge of the reality of the projects, regardless of their geographical distance, according to the international standards for project management.",
+            "firstTitle": "Enhance the accuracy of project completion percentage and visualization",
+            "secondTitle": "Direct control of all projects",
+            "thirdTitle": "Automate extract auditing using flexible and efficient workflows."
+        }
+    },
     "notFound": "The requested page does not exist",
     "backToHome": "Back to the home page",
     "settings": {
@@ -33,7 +69,11 @@
         "title": "Account",
         "settings": "Account Settings",
         "profile": "Profile",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "changePassword": "Change Password",
+        "changeEmail": "Change Email",
+        "changePhone": "Change Phone",
+        "login": "Log In"
     },
     "admin": "Admin",
     "users": {

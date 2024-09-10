@@ -4,6 +4,7 @@ import { Button, Divider } from "@nextui-org/react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import StatsBar from "./StatsBar";
+import { useLocale, useTranslations } from "next-intl";
 
 const firstContainerVars: Variants = {
   initial: {
@@ -132,6 +133,9 @@ const barVars: Variants = {
 };
 
 const ChartsContainer = () => {
+  const t = useTranslations("landingPage");
+  const locale = useLocale();
+
   return (
     <div className="hidden mx-auto max-w-5xl w-full xl:flex xl:flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4">
       {/* First One */}
@@ -141,21 +145,20 @@ const ChartsContainer = () => {
       >
         <div className="h-full flex flex-col justify-between">
           <div className="flex flex-row justify-between items-center gap-x-2">
-            <p className="text-xs whitespace-nowrap font-semibold">Time Off</p>
-            <p className="text-zahid-blue-bg text-xs">Request now</p>
+            <p className="text-xs whitespace-nowrap font-semibold">{t("dataVisualization")}</p>
+            <p className="text-zahid-blue-bg text-xs">{t("edit")}</p>
           </div>
+          <Divider />
+
+          <StatsBar max={100} filled={30} title={t("projects.aheadOfSchedule")} background="success" />
 
           <Divider />
 
-          <StatsBar max={11} filled={7} title="Sick leave" />
+          <StatsBar max={100} filled={60} title={t("projects.onSchedule")} />
 
           <Divider />
 
-          <StatsBar max={11} filled={5} title="Vacation leave" background="success" />
-
-          <Divider />
-
-          <StatsBar max={11} filled={3} title="No news leave" background="danger" />
+          <StatsBar max={100} filled={10} title={t("projects.stumbling")} background="danger" />
         </div>
       </motion.div>
 
@@ -163,23 +166,24 @@ const ChartsContainer = () => {
       <motion.div className="flex-[2] flex flex-col gap-y-3 flex-shrink-0 my-auto">
         <motion.div variants={secondContainerVars} className="flex-1 shadow-large rounded-lg py-4 px-2.5 bg-background">
           <div className="flex flex-row items-center gap-x-1 rounded-lg border-1 border-default-300 ps-2 pe-1.5 py-1 justify-between">
-            <p className="text-xs font-semibold">00:00:00</p>
+            <p className="text-xs font-semibold">{t("addNew")}</p>
 
             <div className="w-[1px] h-4 max-h-full bg-default-300" />
 
             <input
               type="text"
-              placeholder="Write notes for clock-in here"
+              placeholder={t("typeNameHere")}
               className="placeholder:text-[0.65rem] outline-0 text-xs"
             />
 
             <Button size="sm" className="bg-zahid-blue-bg text-white">
-              Check-In (
+              {t("add")}
+              {/* (
               {new Date().toLocaleTimeString("en-SA", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
-              )
+              ) */}
             </Button>
           </div>
         </motion.div>
@@ -201,8 +205,8 @@ const ChartsContainer = () => {
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold mb-1.5">Amanda Rosch</p>
-                  <p className="text-xs text-default-500">Assistant Manager</p>
+                  <p className="text-xs font-semibold mb-1.5">{t("amanda")}</p>
+                  <p className="text-xs text-default-500">{t("contractor")}</p>
                 </div>
               </div>
 
@@ -210,7 +214,7 @@ const ChartsContainer = () => {
 
               <div className="flex flex-row items-end justify-evenly gap-x-2">
                 <Button size="sm" radius="sm" variant="bordered" className="text-xs text-default-500 w-full">
-                  3 Months
+                  {t("finishedProjects")}
                 </Button>
 
                 <Button
@@ -219,12 +223,12 @@ const ChartsContainer = () => {
                   variant="bordered"
                   className="text-xs w-full bg-zahid-blue-bg/10 text-zahid-blue-bg border-zahid-blue-bg/50"
                 >
-                  Onboarding
+                  {t("ongoingProjects")}
                 </Button>
               </div>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               variants={fourthContainerVars}
               className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2"
             >
@@ -253,18 +257,14 @@ const ChartsContainer = () => {
                 <p className="text-xs text-default-500 w-full">4 years covered</p>
 
                 <p className="text-base w-full tracking-tighter">
-                  {Number(2680).toLocaleString("en-SA", {
-                    currency: "SAR",
-                    style: "currency",
-                  })}
-
-                  {/* {new Intl.NumberFormat("en-SA", {
-                    style: "currency",
-                    currency: "SAR",
-                  }).format(2680)} */}
+                  {new Intl.NumberFormat(`${locale}-SA`, {
+                    style: "decimal",
+                    notation: "compact",
+                  }).format(2680)}{" "}
+                  {t("currency")}
                 </p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </motion.div>
@@ -275,23 +275,23 @@ const ChartsContainer = () => {
         className="flex-1 flex-shrink-0 shadow-large rounded-lg py-4 px-2.5 bg-background"
       >
         <div className="flex flex-row justify-between items-center gap-x-2">
-          <p className="text-xs whitespace-nowrap font-semibold">Payroll Summary</p>
-          <p className="text-zahid-blue-bg text-xs">Download</p>
+          <p className="text-xs whitespace-nowrap font-semibold">{t("projects.percentages")}</p>
+          <p className="text-zahid-blue-bg text-xs">{t("projects.extract")}</p>
         </div>
 
         <Divider className="my-3" />
 
-        <p className="text-zahid-blue-bg text-lg font-semibold mb-1.5">
+        {/* <p className="text-zahid-blue-bg text-lg font-semibold mb-1.5">
           {(18000).toLocaleString("en-SA", {
             currency: "SAR",
             style: "currency",
             trailingZeroDisplay: "stripIfInteger",
           })}
-        </p>
+        </p> */}
 
         <div className="mb-2">
           <p className="text-sm text-default-500 inline-block me-1">
-            {new Date().toLocaleString("en-SA", {
+            {new Date().toLocaleString(`${locale}-SA`, {
               month: "long",
               day: "2-digit",
               year: "numeric",
