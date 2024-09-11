@@ -18,7 +18,7 @@ const SectionContainer = ({ children, id, className }: { children: ReactNode; id
 
   const inView = useInView(containerRef);
 
-  const classes = useMemo(() => cn("h-screen max-w-full", className), [className]);
+  const classes = useMemo(() => cn("min-h-screen max-w-full", className), [className]);
 
   return (
     <motion.section

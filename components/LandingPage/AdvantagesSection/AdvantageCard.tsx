@@ -1,14 +1,8 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import { FC, ReactNode } from "react";
-
-interface Props {
-  number: string;
-  title: string;
-  description: string;
-  children: ReactNode;
-}
 
 const cardVars: Variants = {
   initial: {
@@ -64,11 +58,18 @@ const scaleAnimation: Variants = {
   },
 };
 
-const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const AdvantageCard: FC<Props> = ({ number, title, description, image }) => {
   return (
     <>
-      <motion.div variants={cardVars} className="rounded-medium bg-default-100 pt-6 hidden lg:block flex-1">
-        <div className="px-4">
+      <motion.div variants={cardVars} className="rounded-medium bg-default-100/60 pt-6 w-full flex flex-col h-full">
+        <div className="px-4 mb-4">
           <motion.p
             variants={textVars}
             className="px-2 py-0.5 bg-background w-max rounded-full text-xs ring-4 ring-default-300"
@@ -87,16 +88,32 @@ const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
 
         <motion.div
           variants={scaleAnimation}
-          className="bg-default-300 p-2 ms-3 mt-6"
+          className="bg-default-300 p-2 mt-auto"
           style={{
             borderRadius: "0.75rem 0 0.75rem 0",
           }}
         >
-          {children}
+          <div
+            className="bg-background p-4 relative w-full h-[250px]"
+            style={{
+              borderRadius: "0.75rem 0 0.75rem 0",
+            }}
+          >
+            <Image
+              src={image}
+              alt="Feature Image"
+              fill
+              className="w-full h-auto object-fill"
+              sizes="300px"
+              style={{
+                borderRadius: "0.75rem 0 0.75rem 0",
+              }}
+            />
+          </div>
         </motion.div>
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={cardVars}
         className="rounded-medium bg-default-100 pt-6 lg:hidden min-w-[calc(100%-4rem)] w-full max-w-full"
       >
@@ -124,9 +141,16 @@ const AdvantageCard: FC<Props> = ({ number, title, description, children }) => {
             borderRadius: "0.75rem 0 0.75rem 0",
           }}
         >
-          {children}
+          <div
+            className="bg-background p-4 relative w-full max-h-[300px]"
+            style={{
+              borderRadius: "0.75rem 0 0.75rem 0",
+            }}
+          >
+            <Image src={image} alt="Feature Image" fill sizes="300px" />
+          </div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </>
   );
 };

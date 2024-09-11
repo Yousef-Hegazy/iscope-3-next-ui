@@ -10,8 +10,10 @@
         "email": "Email",
         "password": "Password",
         "currency": "SAR",
-        "amanda": "Amanda Rosch",
-        "contractor": "Contractor",
+        "amanda": "Contractor 1",
+        "contractor": "Construction Contracting Company",
+        "credibility": "Credibility and transparency",
+        "credibilityDesc": "We work hard to provide reliable services to all our customers",
         "project": "Project",
         "finishedProjects": "Finished Projects",
         "ongoingProjects": "Ongoing Projects",
@@ -31,9 +33,20 @@
             "title": "Advantages",
             "main": "Transform projects management with iScope",
             "subtitle": "iScope offers a set of integrated electronic solutions so that the decision-makers can have full knowledge of the reality of the projects, regardless of their geographical distance, according to the international standards for project management.",
-            "firstTitle": "Enhance the accuracy of project completion percentage and visualization",
-            "secondTitle": "Direct control of all projects",
-            "thirdTitle": "Automate extract auditing using flexible and efficient workflows."
+            "firstTitle": "Enhancing the accuracy of project completion",
+            "firstDesc": "The system provides various and diverse mechanisms for monitoring project completion rates in line with the mechanisms followed by each entity",
+            "secondTitle": "Governance of all projects",
+            "secondDesc": "The system provides a disciplined framework for managing project life and provides different work cycles for all project-related procedures, such as minutes, committees, meetings, etc.",
+            "thirdTitle": "Managing and following up on projects through timetables",
+            "thirdDesc": "There is no doubt that timetables are a main axis for managing projects and following up on their various works and activities and the level of Advance workflow, identify critical points, and identify expected obstacles in advance and address them before they occur.",
+            "fourthTitle": "Automated auditing of extracts using flexible and effective work cycles",
+            "fourthDesc": "Without conflicting with any other systems, each party can get used to dispensing with the hierarchical method of approving extracts and switching to the electronic method using flexible work cycles."
+        },
+        "howCanWeHelp": "How can we help you?",
+        "qa": {
+            "title": "Q & A",
+            "first": "How to make final receipt of contract",
+            "second": "How to update the financial achievement"
         }
     },
     "notFound": "The requested page does not exist",

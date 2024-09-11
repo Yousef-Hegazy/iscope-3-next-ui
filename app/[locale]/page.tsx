@@ -1,22 +1,19 @@
-import AdvantageCard1 from "@/components/LandingPage/AdvantagesSection/AdvantageCard1";
-import CTABtn from "@/components/LandingPage/Common/CTABtn";
+import AdvantageCard from "@/components/LandingPage/AdvantagesSection/AdvantageCard";
 import SectionContainer from "@/components/LandingPage/Common/SectionContainer";
 import SectionDescription from "@/components/LandingPage/Common/SectionDescription";
 import SectionH1 from "@/components/LandingPage/Common/SectionH1";
-import FeatureImageContainer from "@/components/LandingPage/FeaturesSection/FeatureImageContainer";
 import ChartsContainer from "@/components/LandingPage/HeroSection/ChartsContainer";
 import LoginModal from "@/components/LandingPage/HeroSection/LoginModal";
-import PricingBar from "@/components/LandingPage/PricingSection/PricingBar";
-import PricingTag from "@/components/LandingPage/PricingSection/PricingTag";
+import QAAccordions from "@/components/LandingPage/QuestionsSection/QAAccordions";
 import TestimonyCard, { TestimonyCardsContainer } from "@/components/LandingPage/TestimonySection/TestimonyCard";
 import ThemeSettings from "@/components/Topbar/ThemeSettings";
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
-import AppSwitch from "@/components/ui/AppSwitch";
 import { Button, Chip, Divider } from "@nextui-org/react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 const LandingPage = async ({ params: { locale } }: { params: { locale: string } }) => {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("landingPage");
 
   return (
@@ -80,7 +77,7 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
         </div>
       </SectionContainer>
 
-      <SectionContainer id="advantages" className="mt-10 flex flex-col items-center h-screen">
+      <SectionContainer id="advantages" className="min-h-fit mt-10 pb-4 lg:pb-10 flex flex-col items-center">
         <div className="max-w-lg flex flex-col items-center">
           {/* <Chip title="Advantages" variant="bordered"> */}
           <p className="text-xs px-4 py-2 ring-4 ring-default-200 rounded-full mb-4">{t("advantages.title")}</p>
@@ -93,209 +90,50 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
           <SectionDescription className="text-default-500 mt-3">{t("advantages.subtitle")}</SectionDescription>
         </div>
 
-        <AppScrollShadow
-          size={0}
-          orientation="horizontal"
-          className="mt-6 flex flex-row gap-4 justify-evenly w-full lg:hidden overflow-x-auto px-4"
-        >
-          <AdvantageCard1 />
-          <AdvantageCard1 />
-          <AdvantageCard1 />
-        </AppScrollShadow>
+        <div className="px-4 mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xl:p-0 w-full max-w-6xl">
+          <AdvantageCard
+            title={t("advantages.firstTitle")}
+            description={t("advantages.firstDesc")}
+            image="/features-1.png"
+            number="01"
+          />
 
-        <div className="hidden mt-6 lg:flex flex-row gap-4 justify-evenly w-full max-w-6xl">
-          <AdvantageCard1 />
-          <AdvantageCard1 />
-          <AdvantageCard1 />
-        </div>
-      </SectionContainer>
+          <AdvantageCard
+            title={t("advantages.secondTitle")}
+            description={t("advantages.secondDesc")}
+            image="/features-2.png"
+            number="02"
+          />
 
-      <SectionContainer id="features-1" className="mt-6">
-        <div className="mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-x-4 lg:gap-x-10 max-w-6xl h-full w-full gap-y-4 px-4 lg:px-8">
-          <div className="flex-1">
-            <SectionH1 className="text-foreground text-center lg:text-start">
-              Seamless solutions for every project you have
-            </SectionH1>
+          <AdvantageCard
+            title={t("advantages.thirdTitle")}
+            description={t("advantages.thirdDesc")}
+            image="/features-3.png"
+            number="03"
+          />
 
-            <SectionDescription className="mt-4 text-center lg:text-start text-default-500">
-              A comprehensive solution for managing all your projects, tasks, and teams. With iScope, you will take your
-              project management to the next level.
-            </SectionDescription>
-          </div>
-
-          <FeatureImageContainer>
-            <Image src="/features-1.png" alt="Features 1" fill className="py-10 lg:py-20 rounded-lg" />
-          </FeatureImageContainer>
+          <AdvantageCard
+            title={t("advantages.fourthTitle")}
+            description={t("advantages.fourthDesc")}
+            image="/features-4.png"
+            number="04"
+          />
         </div>
       </SectionContainer>
 
       <SectionContainer id="pricing" className="bg-zahid-blue-bg">
-        <div className="w-full h-full flex flex-col items-center py-4 px-4 lg:px-20 lg:py-20">
-          <div className="max-w-xl space-y-4 mb-5">
-            <p className="mx-auto w-max px-4 py-2 bg-white/10 text-white text-xs rounded-full ">Pricings</p>
+        <div className="w-full h-full flex flex-col items-center p-4 xl:p-20">
+          <div className="max-w-lg w-full text-center">
+            <SectionH1>{t("qa.title")}</SectionH1>
+            <SectionDescription className="text-base text-white/70 mt-4">{t("howCanWeHelp")}</SectionDescription>
 
-            <SectionH1 className="mx-auto text-center mb-6">Affordable HR services, predictable pricing</SectionH1>
-
-            <SectionDescription className="text-white/75 text-center text-sm font-light">
-              Over 27,000 companies have enlisted 1.5 million candidates through Workable. Streamline your entire HR
-              process, from discovering top talents to overseeing their management
-            </SectionDescription>
+            <QAAccordions />
           </div>
-
-          <div className="flex flex-row items-center justify-between w-full mb-5 text-white">
-            <div className="flex flex-row items-center gap-x-4">
-              <p className="text-xs lg:text-sm">Currency</p>
-              <p>-</p>
-              <p className="px-2 lg:px-4 py-1 lg:py-2 bg-white/10 text-xs rounded-full">SAR</p>
-              {/* <p className="px-2 lg:px-4 py-1 lg:py-2 bg-black/30 text-zahid-yellow-btn text-xs rounded-full">SAR</p> */}
-            </div>
-
-            <div className="flex flex-row items-center gap-x-2 text-xs lg:text-sm">
-              <p>Yearly</p>
-              <AppSwitch defaultChecked defaultSelected color="primary" />
-              <p className="text-zahid-yellow-btn -ms-2">Monthly</p>
-            </div>
-          </div>
-
-          <PricingBar>
-            <PricingTag className="-start-2.5 lg:start-[10%]" title="Starter" description="Up to 50 employees" />
-
-            <PricingTag className="start-[25%] hidden lg:block" title="Basic" description="Up to 200 employees" />
-
-            <PricingTag
-              className="start-[calc(50%-3rem)] lg:start-[calc(50%-6rem)]"
-              customContent={
-                <div className="w-48 mt-6 h-fit rounded-xl bg-white p-2 text-black text-start">
-                  <h3 className="mt-2">Business</h3>
-                  <p className="text-xs text-slate-500 mt-1">Up to 500 employees</p>
-
-                  <div className="flex flex-col gap-y-2 mt-4">
-                    <div className="flex flex-row items-center gap-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-zahid-blue-bg w-4 h-4"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 48 48"
-                      >
-                        <defs>
-                          <mask id="ipSCheckOne0">
-                            <g fill="none" stroke-linejoin="round" stroke-width="4">
-                              <path
-                                fill="#fff"
-                                stroke="#fff"
-                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
-                              />
-                              <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
-                            </g>
-                          </mask>
-                        </defs>
-                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
-                      </svg>
-
-                      <p className="text-xs font-semibold">4 Free Features</p>
-                    </div>
-
-                    <div className="flex flex-row items-center gap-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-zahid-blue-bg w-4 h-4"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 48 48"
-                      >
-                        <defs>
-                          <mask id="ipSCheckOne0">
-                            <g fill="none" stroke-linejoin="round" stroke-width="4">
-                              <path
-                                fill="#fff"
-                                stroke="#fff"
-                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
-                              />
-                              <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
-                            </g>
-                          </mask>
-                        </defs>
-                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
-                      </svg>
-
-                      <p className="text-xs font-semibold">6 HR</p>
-                    </div>
-
-                    <div className="flex flex-row items-center gap-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-zahid-blue-bg w-4 h-4"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 48 48"
-                      >
-                        <defs>
-                          <mask id="ipSCheckOne0">
-                            <g fill="none" stroke-linejoin="round" stroke-width="4">
-                              <path
-                                fill="#fff"
-                                stroke="#fff"
-                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
-                              />
-                              <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
-                            </g>
-                          </mask>
-                        </defs>
-                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
-                      </svg>
-
-                      <p className="text-xs font-semibold">8 Recruiting</p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-lg bg-zahid-blue-bg p-4 flex flex-row items-center  justify-between w-full text-xs text-white mt-4">
-                    <p>Only</p>
-
-                    <p className="text-zahid-yellow-btn text-xs">SAR 3,193</p>
-                  </div>
-                </div>
-              }
-              icon={
-                <div className="flex flex-row items-center text-zahid-blue-bg py-2 px-0 rounded-full bg-zahid-yellow-btn">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 20 20"
-                    className="-rotate-90 w-4 h-4 translate-x-1"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M11.199 4.6c-.6-.8-1.801-.8-2.401 0l-4.496 6.002c-.74.989-.035 2.4 1.2 2.4h8.995c1.236 0 1.941-1.412 1.2-2.4zM4 15a.5.5 0 0 0 0 1h12a.5.5 0 0 0 0-1z"
-                    />
-                  </svg>
-
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 20 20"
-                    className="rotate-90 w-4 h-4 -translate-x-1"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M11.199 4.6c-.6-.8-1.801-.8-2.401 0l-4.496 6.002c-.74.989-.035 2.4 1.2 2.4h8.995c1.236 0 1.941-1.412 1.2-2.4zM4 15a.5.5 0 0 0 0 1h12a.5.5 0 0 0 0-1z"
-                    />
-                  </svg>
-                </div>
-              }
-            />
-
-            <PricingTag className="start-[65%] hidden lg:block" title="Optimal" description="Up to 2K employees" />
-
-            <PricingTag className="start-[80%]" title="Premier" description="Unlimited employees" />
-          </PricingBar>
         </div>
       </SectionContainer>
 
       <SectionContainer id="testimonies" className="mt-10">
-        <div className="w-full h-full flex flex-col items-center py-4 px-4 lg:px-20 lg:py-20">
+        <div className="w-full h-full flex flex-col items-center p-4 xl:p-20">
           <div className="max-w-lg">
             <p className="w-max mx-auto text-xs px-4 py-2 ring-4 ring-default-200 rounded-full mb-4">Testimony</p>
             <SectionH1 className="text-center text-foreground">Users love us</SectionH1>

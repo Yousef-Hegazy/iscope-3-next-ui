@@ -2,9 +2,9 @@
 
 import { Button, Divider } from "@nextui-org/react";
 import { motion, Variants } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import StatsBar from "./StatsBar";
-import { useLocale, useTranslations } from "next-intl";
 
 const firstContainerVars: Variants = {
   initial: {
@@ -192,7 +192,7 @@ const ChartsContainer = () => {
           <div className="flex flex-row items-center justify-between gap-x-2">
             <motion.div
               variants={thirdContainerVars}
-              className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2"
+              className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2 flex-shrink-0"
             >
               <div className="flex flex-row items-center gap-x-2">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
@@ -206,7 +206,7 @@ const ChartsContainer = () => {
 
                 <div>
                   <p className="text-xs font-semibold mb-1.5">{t("amanda")}</p>
-                  <p className="text-xs text-default-500">{t("contractor")}</p>
+                  <p className="text-xs text-default-500 line-clamp-1">{t("contractor")}</p>
                 </div>
               </div>
 
@@ -228,12 +228,12 @@ const ChartsContainer = () => {
               </div>
             </motion.div>
 
-            {/* <motion.div
+            <motion.div
               variants={fourthContainerVars}
               className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2"
             >
-              <div className="flex flex-row items-center gap-x-2">
-                <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-success-50">
+              <div className="flex flex-col gap-y-2 text-center items-center">
+                <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-success-50 flex-shrink-0">
                   <svg className="text-success-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <motion.path
                       variants={svgVariants}
@@ -246,12 +246,12 @@ const ChartsContainer = () => {
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold mb-1.5">Insurance</p>
-                  <p className="text-[0.65rem] text-default-500">Insurance to cover your work</p>
+                  <p className="text-xs font-semibold mb-1.5">{t("credibility")}</p>
+                  <p className="text-[0.65rem] text-default-500">{t("credibilityDesc")}</p>
                 </div>
               </div>
 
-              <Divider className="my-2" />
+              {/* <Divider className="my-2" />
 
               <div className="flex flex-row items-center justify-evenly gap-x-2">
                 <p className="text-xs text-default-500 w-full">4 years covered</p>
@@ -263,8 +263,8 @@ const ChartsContainer = () => {
                   }).format(2680)}{" "}
                   {t("currency")}
                 </p>
-              </div>
-            </motion.div> */}
+              </div> */}
+            </motion.div>
           </div>
         </div>
       </motion.div>
