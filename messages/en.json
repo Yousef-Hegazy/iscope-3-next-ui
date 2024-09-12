@@ -45,8 +45,12 @@
         "howCanWeHelp": "How can we help you?",
         "qa": {
             "title": "Q & A",
-            "first": "How to make final receipt of contract",
-            "second": "How to update the financial achievement"
+            "1": "How to make final receipt of contract",
+            "2": "How to update the financial achievement",
+            "3": "How to make a minutes of offer to withdraw a contract",
+            "4": "How to make final receipt of the integrated contract",
+            "5": "How to make the initial receipt of the contract",
+            "6": "How to make initial receipt of the integrated contract"
         }
     },
     "notFound": "The requested page does not exist",
