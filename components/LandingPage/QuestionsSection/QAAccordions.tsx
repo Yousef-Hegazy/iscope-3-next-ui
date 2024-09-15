@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Accordion, AccordionItem, Button, Pagination } from "@nextui-org/react";
-import { AnimatePresence, motion, useMotionValue, Variants } from "framer-motion";
+import { Accordion, AccordionItem, Pagination } from "@nextui-org/react";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import React, { ReactNode, useCallback, useMemo, useState } from "react";
 import { v4 as uuid } from "uuid";
@@ -104,14 +104,14 @@ const PagesContainer = ({ children, pageSize = 4 }: { children: ReactNode; pageS
   const pages = Math.ceil(React.Children.count(children) / pageSize);
 
   const handleSetPage = useCallback(
-    (newDirection: number) => {
-      setPage([page + newDirection, newDirection]);
+    (newPage: number) => {
+      setPage([newPage, newPage > page ? 1 : -1]);
     },
     [page]
   );
 
   return (
-    <div className="mt-6 flex flex-col gap-y-4 justify-center items-stretch overflow-hidden">
+    <div className="mt-6 flex flex-col gap-y-4 justify-center overflow-hidden min-h-[333px]">
       <AnimatePresence mode="wait">
         {React.Children.toArray(children)
           .slice((page - 1) * pageSize, page * pageSize)
@@ -128,8 +128,8 @@ const PagesContainer = ({ children, pageSize = 4 }: { children: ReactNode; pageS
             </motion.div>
           ))}
       </AnimatePresence>
-      <div className="w-full h-full p-2 bg-white shadow-md rounded-xl flex items-center justify-center">
-        <Pagination total={pages} color="primary" onChange={(newPage) => handleSetPage(newPage > page ? 1 : -1)} />
+      <div className="w-full h-full p-2 bg-white shadow-md rounded-xl flex items-center justify-center mt-auto">
+        <Pagination total={pages} color="primary" onChange={handleSetPage} />
       </div>
     </div>
   );
