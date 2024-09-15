@@ -12,7 +12,7 @@ export const getRoute = (locale: string, route: string) => `/${locale}/${route}`
 
 const navConfig: NavObject[] = [
   {
-    title: "title",
+    title: "landingPage.title",
     icon: "home",
     route: "dashboard",
   },

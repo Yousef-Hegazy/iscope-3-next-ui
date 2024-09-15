@@ -4,13 +4,41 @@ import SectionDescription from "@/components/LandingPage/Common/SectionDescripti
 import SectionH1 from "@/components/LandingPage/Common/SectionH1";
 import ChartsContainer from "@/components/LandingPage/HeroSection/ChartsContainer";
 import LoginModal from "@/components/LandingPage/HeroSection/LoginModal";
+import CarouselContainer from "@/components/LandingPage/ImagesSection/CarouselContainer";
 import QAAccordions from "@/components/LandingPage/QuestionsSection/QAAccordions";
-import TestimonyCard, { TestimonyCardsContainer } from "@/components/LandingPage/TestimonySection/TestimonyCard";
 import ThemeSettings from "@/components/Topbar/ThemeSettings";
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
+import { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel";
 import { Button, Chip, Divider } from "@nextui-org/react";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
+
+const carouselImags = [
+  {
+    src: "/images/iScopeMobileApp.jpg",
+    title: "mobileApps",
+  },
+  {
+    src: "/images/portfolio-2.jpg",
+    title: "projectGeoData",
+  },
+  {
+    src: "/images/portfolio-3.jpg",
+    title: "projectProcedures",
+  },
+  {
+    src: "/images/portfolio-4.jpg",
+    title: "projectsUnderStudy",
+  },
+  {
+    src: "/images/portfolio-5.jpg",
+    title: "projectsKPI",
+  },
+  {
+    src: "/images/portfolio-6.jpg",
+    title: "finishedProjects",
+  },
+];
 
 const LandingPage = async ({ params: { locale } }: { params: { locale: string } }) => {
   unstable_setRequestLocale(locale);
@@ -94,28 +122,28 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
           <AdvantageCard
             title={t("advantages.firstTitle")}
             description={t("advantages.firstDesc")}
-            image="/features-1.png"
+            image="/images/features-1.png"
             number="01"
           />
 
           <AdvantageCard
             title={t("advantages.secondTitle")}
             description={t("advantages.secondDesc")}
-            image="/features-2.png"
+            image="/images/features-2.png"
             number="02"
           />
 
           <AdvantageCard
             title={t("advantages.thirdTitle")}
             description={t("advantages.thirdDesc")}
-            image="/features-3.png"
+            image="/images/features-3.png"
             number="03"
           />
 
           <AdvantageCard
             title={t("advantages.fourthTitle")}
             description={t("advantages.fourthDesc")}
-            image="/features-4.png"
+            image="/images/features-4.png"
             number="04"
           />
         </div>
@@ -134,7 +162,7 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
 
       <SectionContainer id="testimonies" className="mt-10">
         <div className="w-full h-full flex flex-col items-center p-4 xl:p-20">
-          <div className="max-w-lg">
+          {/* <div className="max-w-lg">
             <p className="w-max mx-auto text-xs px-4 py-2 ring-4 ring-default-200 rounded-full mb-4">Testimony</p>
             <SectionH1 className="text-center text-foreground">Users love us</SectionH1>
 
@@ -207,7 +235,31 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
                 <p className="text-xs text-default-500">www.finoptis.com</p>
               </div>
             </TestimonyCard>
-          </TestimonyCardsContainer>
+          </TestimonyCardsContainer> */}
+
+          <CarouselContainer>
+            <CarouselContent className="w-full max-w-full ps-4">
+              {carouselImags.map((image, index) => (
+                <CarouselItem key={image.src} className="basis-full py-4">
+                  <div className="relative w-full h-[400px] group transition-all duration-300">
+                    <Image
+                      src={image.src}
+                      alt="Carousel Image"
+                      fill
+                      sizes="600px"
+                      className="w-full h-full rounded-xl shadow-lg ring-1 ring-zahid-blue-bg group-hover:scale-95 transition-all duration-300 object-cover"
+                    />
+
+                    <div className="absolute bottom-0 left-0 right-0 w-full opacity-0 translate-y-full pointer-events-none p-4 text-start bg-gray-900/60 backdrop-blur-xl rounded-t-xl group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                      <p className="text-white">{t(`images.${image.title}`)}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </CarouselContainer>
         </div>
       </SectionContainer>
 
