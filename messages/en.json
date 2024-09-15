@@ -22,6 +22,13 @@
         "add": "Add",
         "dataVisualization": "Data Visualization",
         "edit": "Edit",
+        "nav": {
+            "home": "Home",
+            "advantages": "Advantages",
+            "qa": "Questions and Inquiries",
+            "images": "System Images",
+            "contact": "Contact Us"
+        },
         "projects": {
             "aheadOfSchedule": "Projects ahead of schedule",
             "onSchedule": "Projects on schedule",
@@ -57,13 +64,23 @@
             "10": "How to submit a request for an extract"
         },
         "images": {
+            "title": "Images from the System",
             "mobileApps": "Mobile Apps",
             "projectGeoData": "Project Geographic data",
             "projectProcedures": "Project Procedures",
             "projectsUnderStudy": "Projects Under Study",
             "projectsKPI": "Key Performance Indicators",
             "finishedProjects": "Finished Projects"
-        }
+        },
+        "footer": {
+            "title": "Revamp your project management with iScope",
+            "subtitle": "You can now improve your project management and follow up better with iScope, which provides you with many integrated and advanced services",
+            "contactUs": "Contact Us",
+            "copyRight": "iScope. All rights reserved.",
+            "terms": "Terms & Conditions",
+            "privacy": "Privacy Policy"
+        },
+        "scrollToTop": "Scroll to top"
     },
     "notFound": "The requested page does not exist",
     "backToHome": "Back to the home page",

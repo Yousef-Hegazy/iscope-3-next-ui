@@ -16,7 +16,7 @@ const CarouselContainer = ({ children }: { children: ReactNode }) => {
         loop: true,
       }}
       plugins={[autoplay.current]}
-      className="w-full max-w-3xl"
+      className="w-full max-w-3xl mt-4 mx-2"
       onMouseEnter={() => autoplay.current.stop()}
       onMouseLeave={() => autoplay.current.play()}
     >
