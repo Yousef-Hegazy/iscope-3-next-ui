@@ -5,6 +5,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { headers } from "next/headers";
+import { notFound } from "next/navigation";
 import "./globals.css";
 import Providers from "./providers";
 
@@ -39,6 +41,13 @@ export default async function LangLayout({
   params: { locale: string };
 }>) {
   unstable_setRequestLocale(locale);
+
+  const header = headers(); // new lines
+  const localeHeader = header.get("x-next-intl-locale"); // new lines
+  if (localeHeader === null) {
+    // new lines
+    notFound(); // new lines
+  }
 
   const messages = await getMessages();
 

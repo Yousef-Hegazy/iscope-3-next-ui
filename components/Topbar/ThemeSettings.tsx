@@ -42,7 +42,7 @@ const darkColors: { [key: string]: string } = {
 const ThemeSettings = memo(({ className }: { className?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const t = useTranslations();
+  const t = useTranslations("settings");
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -76,7 +76,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
             <>
               <ModalHeader>
                 <div className="flex flex-row gap-2 items-center justify-between w-full">
-                  <p>{t("settings.title")}</p>
+                  <p>{t("title")}</p>
 
                   <Button onClick={onClose} size="sm" isIconOnly variant="light">
                     <Icon icon="close" />
@@ -90,7 +90,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                 <div className="flex flex-col gap-3.5">
                   <div className="flex flex-row gap-2 items-center bg-primary/10 p-2 rounded-lg">
                     <Icon icon="paint" />
-                    <p className="text-base font-semibold">{t("settings.color")}</p>
+                    <p className="text-base font-semibold">{t("color")}</p>
                   </div>
 
                   {resolvedTheme && (
@@ -101,15 +101,17 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                               <Button
                                 variant="bordered"
                                 size="sm"
+                                radius="md"
                                 isIconOnly
                                 onClick={() => {
                                   setTheme(`dark-${color}`);
                                 }}
+                                className="border-default-200"
                               >
                                 <div
-                                  className={`w-3 h-3 rounded-full transition-all ${
-                                    resolvedTheme.includes(color) ? "scale-150" : "scale-100"
-                                  }`}
+                                  className={cn("w-3 h-3 rounded-full transition-all scale-100", {
+                                    "scale-150": resolvedTheme.includes(color),
+                                  })}
                                   style={{ backgroundColor: darkColors[color] }}
                                 ></div>
                               </Button>
@@ -120,11 +122,13 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                               <Button
                                 variant="bordered"
                                 size="sm"
+                                radius="md"
                                 isIconOnly
+                                title={color}
                                 onClick={() => {
                                   setTheme(`light-${color}`);
                                 }}
-                                className={resolvedTheme?.includes(color) ? "bg-primary/20" : ""}
+                                className="border-default-200"
                               >
                                 <div
                                   className={`w-3 h-3 rounded-full transition-all ${
@@ -142,7 +146,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
 
                   <div className="flex flex-row gap-2 items-center bg-primary/10 p-2  rounded-lg">
                     <Icon icon="theme-mode" />
-                    <p className="text-base font-semibold">{t("settings.themeMode")}</p>
+                    <p className="text-base font-semibold">{t("themeMode")}</p>
                   </div>
 
                   {resolvedTheme && (
@@ -181,21 +185,21 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
 
                   <div className="flex flex-row gap-2 items-center bg-primary/10 p-2  rounded-lg">
                     <Icon icon="language" />
-                    <p className="text-base font-semibold">{t("settings.language")}</p>
+                    <p className="text-base font-semibold">{t("language")}</p>
                   </div>
 
                   <div className="flex flex-row gap-4 justify-center items-center">
                     <Button
-                      variant="bordered"
-                      className={locale === "en" ? "bg-primary/20" : ""}
+                      color="primary"
+                      variant={locale === "en" ? "shadow" : "bordered"}
                       onClick={() => changeLocale("en")}
                     >
                       English
                     </Button>
 
                     <Button
-                      variant="bordered"
-                      className={locale === "ar" ? "bg-primary/20" : ""}
+                      color="primary"
+                      variant={locale === "ar" ? "shadow" : "bordered"}
                       onClick={() => changeLocale("ar")}
                     >
                       العربية

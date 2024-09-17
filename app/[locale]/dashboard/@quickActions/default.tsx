@@ -6,7 +6,7 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 const QuickActions = async ({ params: { locale } }: { params: { locale: string } }) => {
   unstable_setRequestLocale(locale);
 
-  const t = await getTranslations();
+  const t = await getTranslations("quickActions");
 
   return (
     <AppScrollShadow
@@ -22,7 +22,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         color="primary"
         startContent={<Icon icon="open-book" className="text-inherit w-5 h-5" />}
       >
-        <p>{t("approveStudy")}</p>
+        <p>{t("ai")}</p>
       </Button>
 
       <Button
@@ -32,7 +32,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         color="primary"
         startContent={<Icon icon="language" className="text-inherit" />}
       >
-        <p>{t("announceCompetition")}</p>
+        <p>{t("iot")}</p>
       </Button>
 
       <Button
@@ -42,7 +42,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         color="primary"
         startContent={<Icon icon="add-home" className="text-inherit" />}
       >
-        <p>{t("addProject")}</p>
+        <p>{t("schedules")}</p>
       </Button>
 
       <Button
@@ -52,7 +52,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         color="primary"
         startContent={<Icon icon="contractor" className="text-inherit" />}
       >
-        <p>{t("addContractor")}</p>
+        <p>{t("powerBI")}</p>
       </Button>
 
       <Button
@@ -62,7 +62,17 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         color="primary"
         startContent={<Icon icon="medal" className="text-inherit w-5 h-5" />}
       >
-        <p>{t("addBiTask")}</p>
+        <p>{t("integration")}</p>
+      </Button>
+
+      <Button
+        className="flex-shrink-0"
+        variant="bordered"
+        size="sm"
+        color="primary"
+        startContent={<Icon icon="medal" className="text-inherit w-5 h-5" />}
+      >
+        <p>{t("GIS")}</p>
       </Button>
     </AppScrollShadow>
   );

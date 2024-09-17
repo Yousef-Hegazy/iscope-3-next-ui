@@ -1,6 +1,7 @@
 {
+    "dashboard": "Home",
     "landingPage": {
-        "title": "Iscope",
+        "title": "iScope Project Monitoring System ايسكوب",
         "subtitle": "The Future of Project Supervision",
         "platformDesc": "iScope platform for managing and monitoring projects remotely",
         "aboutIscope": "iScope offers you the solution through a set of integrated electronic solutions so that the official and decision-makers can have full knowledge of the reality of the projects, regardless of their geographical distance, according to the international standards for project management.",
@@ -8,6 +9,7 @@
         "login": "Log In",
         "cancel": "Cancel",
         "email": "Email",
+        "username": "Username",
         "password": "Password",
         "currency": "SAR",
         "amanda": "Contractor 1",
@@ -70,7 +72,8 @@
             "projectProcedures": "Project Procedures",
             "projectsUnderStudy": "Projects Under Study",
             "projectsKPI": "Key Performance Indicators",
-            "finishedProjects": "Finished Projects"
+            "finishedProjects": "Finished Projects",
+            "nationalProduct": "National Native Product"
         },
         "footer": {
             "title": "Revamp your project management with iScope",
@@ -81,6 +84,26 @@
             "privacy": "Privacy Policy"
         },
         "scrollToTop": "Scroll to top"
+    },
+    "quickActions": {
+        "ai": "Artificial Intelligence",
+        "iot": "Internet of Things",
+        "schedules": "Timelines",
+        "powerBI": "Business Intelligence",
+        "integration": "Integration",
+        "GIS": "Geographic Information Systems"
+    },
+    "mainNav": {
+        "home": "Home",
+        "projects": "PMO",
+        "studies": "Studies"
+    },
+    "subNav": {
+        "projectsUnderExec": "Projects",
+        "portfolios": "Portfolios",
+        "programs": "Programs",
+        "achivedProjects": "Archived Projects",
+        "studiesManagement": "Studies Management"
     },
     "notFound": "The requested page does not exist",
     "backToHome": "Back to the home page",
@@ -148,6 +171,7 @@
     "reports": "Reports",
     "projects": {
         "title": "Projects",
+        "add": "Add Project",
         "underExecution": "Projects under execution",
         "archived": "Archived Projects",
         "projects-execution": "Projects Under Execution",
@@ -192,7 +216,9 @@
         "mainData": "Basic Data",
         "requests": "Requests",
         "reports": "Reports",
-        "visits": "Visits"
+        "visits": "Visits",
+        "completed": "Completed",
+        "remaining": "Remaining"
     },
     "studies": {
         "title": "Studies",
@@ -203,7 +229,5 @@
     "error": {
         "unknown": "Something went wrong"
     },
-    "more": "More",
-    "completed": "Completed",
-    "remaining": "Remaining"
+    "more": "More"
 }

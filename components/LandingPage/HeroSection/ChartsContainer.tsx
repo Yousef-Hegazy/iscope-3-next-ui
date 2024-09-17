@@ -139,9 +139,9 @@ const ChartsContainer = () => {
   return (
     <div className="hidden mx-auto max-w-5xl w-full xl:flex xl:flex-row items-stretch justify-between gap-x-3 absolute bottom-0 translate-y-1/2 py-4">
       {/* First One */}
-      <motion.div
+      {/* <motion.div
         variants={firstContainerVars}
-        className="flex-1 flex-shrink-0 shadow-large rounded-lg py-4 px-2.5 bg-background"
+        className="hidden flex-1 flex-shrink-0 shadow-large rounded-lg py-4 px-2.5 bg-background"
       >
         <div className="h-full flex flex-col justify-between">
           <div className="flex flex-row justify-between items-center gap-x-2">
@@ -160,11 +160,14 @@ const ChartsContainer = () => {
 
           <StatsBar max={100} filled={10} title={t("projects.stumbling")} background="danger" />
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Second one */}
       <motion.div className="flex-[2] flex flex-col gap-y-3 flex-shrink-0 my-auto">
-        <motion.div variants={secondContainerVars} className="flex-1 shadow-large rounded-lg py-4 px-2.5 bg-background">
+        {/* <motion.div
+          variants={secondContainerVars}
+          className="hidden flex-1 shadow-large rounded-lg py-4 px-2.5 bg-background"
+        >
           <div className="flex flex-row items-center gap-x-1 rounded-lg border-1 border-default-300 ps-2 pe-1.5 py-1 justify-between">
             <p className="text-xs font-semibold">{t("addNew")}</p>
 
@@ -178,21 +181,17 @@ const ChartsContainer = () => {
 
             <Button size="sm" className="bg-zahid-blue-bg text-white">
               {t("add")}
-              {/* (
-              {new Date().toLocaleTimeString("en-SA", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-              ) */}
+         
             </Button>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         <div className="flex-1 max-w-full">
           <div className="flex flex-row items-center justify-between gap-x-2">
-            <motion.div
+            {/* AddContractorSection */}
+            {/* <motion.div
               variants={thirdContainerVars}
-              className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2 flex-shrink-0"
+              className="hidden bg-background rounded-medium shadow-large p-3 flex-1 flex-col gap-y-2 flex-shrink-0"
             >
               <div className="flex flex-row items-center gap-x-2">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
@@ -226,8 +225,9 @@ const ChartsContainer = () => {
                   {t("ongoingProjects")}
                 </Button>
               </div>
-            </motion.div>
+            </motion.div> */}
 
+            {/* TrustSection */}
             <motion.div
               variants={fourthContainerVars}
               className="bg-background rounded-medium shadow-large p-3 flex-1 flex flex-col gap-y-2"
@@ -246,24 +246,10 @@ const ChartsContainer = () => {
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold mb-1.5">{t("credibility")}</p>
-                  <p className="text-[0.65rem] text-default-500">{t("credibilityDesc")}</p>
+                  <p className="text-xl font-semibold mb-1.5">{t("credibility")}</p>
+                  <p className="text-lg text-default-500">{t("credibilityDesc")}</p>
                 </div>
               </div>
-
-              {/* <Divider className="my-2" />
-
-              <div className="flex flex-row items-center justify-evenly gap-x-2">
-                <p className="text-xs text-default-500 w-full">4 years covered</p>
-
-                <p className="text-base w-full tracking-tighter">
-                  {new Intl.NumberFormat(`${locale}-SA`, {
-                    style: "decimal",
-                    notation: "compact",
-                  }).format(2680)}{" "}
-                  {t("currency")}
-                </p>
-              </div> */}
             </motion.div>
           </div>
         </div>
@@ -272,7 +258,7 @@ const ChartsContainer = () => {
       {/* Last one */}
       <motion.div
         variants={fifthContainerVars}
-        className="flex-1 flex-shrink-0 shadow-large rounded-lg py-4 px-2.5 bg-background"
+        className="hidden flex-1 flex-shrink-0 shadow-large rounded-lg py-4 px-2.5 bg-background"
       >
         <div className="flex flex-row justify-between items-center gap-x-2">
           <p className="text-xs whitespace-nowrap font-semibold">{t("projects.percentages")}</p>
@@ -280,14 +266,6 @@ const ChartsContainer = () => {
         </div>
 
         <Divider className="my-3" />
-
-        {/* <p className="text-zahid-blue-bg text-lg font-semibold mb-1.5">
-          {(18000).toLocaleString("en-SA", {
-            currency: "SAR",
-            style: "currency",
-            trailingZeroDisplay: "stripIfInteger",
-          })}
-        </p> */}
 
         <div className="mb-2">
           <p className="text-sm text-default-500 inline-block me-1">

@@ -41,7 +41,7 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
       return notFound();
     }
 
-    const t = await getTranslations();
+    const t = await getTranslations("projects");
 
     return (
       <main className="flex flex-col flex-1 w-full h-full gap-3 p-4">

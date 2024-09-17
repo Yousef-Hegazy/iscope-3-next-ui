@@ -12,23 +12,35 @@ export const getRoute = (locale: string, route: string) => `/${locale}/${route}`
 
 const navConfig: NavObject[] = [
   {
-    title: "landingPage.title",
+    title: "home",
     icon: "home",
     route: "dashboard",
   },
   {
-    title: "projects.title",
-    icon: "suitcase",
+    title: "projects",
+    icon: "project-outlined",
     route: "dashboard/projects",
     children: [
       {
-        title: "projects.underExecution",
-        icon: "suitcase",
+        title: "programs",
+        icon: "program",
+        route: "dashboard/programs",
+      },
+      {
+        title: "portfolios",
+        icon: "portfolio",
+        route: "dashboard/portfolios",
+      },
+
+      {
+        title: "projectsUnderExec",
+        icon: "project-outlined",
         route: "dashboard/projects",
         key: "projects.underExecution",
       },
+
       {
-        title: "projects.archived",
+        title: "achivedProjects",
         icon: "archive",
         route: "dashboard/projects/archived",
         key: "projects.archived",
@@ -36,12 +48,12 @@ const navConfig: NavObject[] = [
     ],
   },
   {
-    title: "studies.title",
+    title: "studies",
     icon: "open-book",
     route: "dashboard/studies",
     children: [
       {
-        title: "studies.management",
+        title: "studiesManagement",
         icon: "open-book",
         route: "dashboard/studies",
       },

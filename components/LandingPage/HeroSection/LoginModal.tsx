@@ -31,7 +31,7 @@ const LoginModal = () => {
 
   return (
     <>
-      <Button onClick={() => setFormOpen(true)} radius="full" variant="solid" className="bg-white text-black">
+      <Button onClick={() => setFormOpen(true)} variant="solid" className="bg-white text-black">
         {t("login")}
       </Button>
 
@@ -46,13 +46,12 @@ const LoginModal = () => {
               <ModalBody className="py-4">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3 justify-start">
                   <Input
-                    label={t("email")}
+                    label={t("username")}
                     size="md"
                     variant="faded"
                     labelPlacement="outside"
                     title="Email"
                     placeholder="admin"
-                    radius="sm"
                     // color={errors.email ? "danger" : "default"}
                     {...register("email", { required: true, validate: (value) => value === "admin" })}
                     isInvalid={!!errors.email}
@@ -67,7 +66,6 @@ const LoginModal = () => {
                     title="Password"
                     placeholder="admin"
                     type="password"
-                    radius="sm"
                     // color={errors.password ? "danger" : "default"}
                     {...register("password", { required: true, validate: (value) => value === "admin" })}
                     isInvalid={!!errors.password}

@@ -67,7 +67,6 @@ const ProjectsUnderExecution = () => {
                   <p className="line-clamp-1 text-small text-start">{item.name}</p>
                   <div className="flex flex-row items-center justify-between">
                     <Chip
-                      radius="sm"
                       size="sm"
                       color={
                         item.status === "stumbling"

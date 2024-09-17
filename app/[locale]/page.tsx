@@ -10,6 +10,7 @@ import QAAccordions from "@/components/LandingPage/QuestionsSection/QAAccordions
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel";
 import Icon from "@/components/ui/Icon";
+import { cn } from "@/lib/utils";
 import { Button, Chip, Divider } from "@nextui-org/react";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
@@ -19,26 +20,37 @@ const carouselImags = [
   {
     src: "/images/iScopeMobileApp.jpg",
     title: "mobileApps",
+    fill: true,
   },
   {
     src: "/images/portfolio-2.jpg",
     title: "projectGeoData",
+    fill: true,
   },
   {
     src: "/images/portfolio-3.jpg",
     title: "projectProcedures",
+    fill: true,
   },
   {
     src: "/images/portfolio-4.jpg",
     title: "projectsUnderStudy",
+    fill: true,
   },
   {
     src: "/images/portfolio-5.jpg",
     title: "projectsKPI",
+    fill: true,
   },
   {
     src: "/images/portfolio-6.jpg",
     title: "finishedProjects",
+    fill: true,
+  },
+  {
+    src: "/images/portfolio-7.jpg",
+    title: "nationalProduct",
+    fill: false,
   },
 ];
 
@@ -51,31 +63,18 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
       <ScrollToTopButton />
       <SectionContainer id="hero">
         <div className="h-[75vh] w-full bg-zahid-blue-bg relative flex flex-col items-center">
-          {/* <nav className="w-full p-4 bg-transparent flex flex-row items-center justify-between">
-            <div className="flex-1">
-              <Button as={Link} href={`/${locale}`} variant="solid" className="bg-white">
-                <Image src="/logoiScope.svg" alt="Logo" width={10} height={10} className="w-20 h-20" />
-              </Button>
-            </div>
-
-            <NavLinks />
-
-            <div className="flex flex-row items-center justify-end gap-x-2.5 flex-1">
-              <ThemeSettings className="bg-white/20 text-white rounded-full" />
-
-              <LoginModal />
-            </div>
-          </nav> */}
           <Navigation />
 
           <div className="mx-auto w-full max-w-lg mt-8 flex flex-col items-center px-4 lg:px-0">
-            <Chip color="default" size="lg" className="text-sm bg-white/10 text-white mb-6">
+            <Chip color="default" size="lg" radius="md" className="text-sm bg-white/10 text-white mb-6">
               {t("trusted")}
             </Chip>
 
             <SectionH1>{t("subtitle")}</SectionH1>
 
-            <SectionDescription className="mt-2 text-wrap text-white/75">{t("platformDesc")}</SectionDescription>
+            <SectionDescription className="mt-2 text-base text-wrap text-white/75">
+              {t("platformDesc")}
+            </SectionDescription>
           </div>
 
           <ChartsContainer />
@@ -143,13 +142,19 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
             <CarouselContent className="w-full max-w-full ps-4">
               {carouselImags.map((image, index) => (
                 <CarouselItem key={image.src} className="basis-full py-2 flex flex-col items-center justify-center">
-                  <div className="relative w-full h-[350px] group transition-all duration-300">
+                  <div className="relative w-full h-max min-h-[350px] group transition-all duration-300">
                     <Image
                       src={image.src}
                       alt="Carousel Image"
                       fill
                       sizes="600px"
-                      className="w-full h-full rounded-xl shadow-lg ring-1 ring-zahid-blue-bg group-hover:scale-95 transition-all duration-300 object-fill"
+                      className={cn(
+                        "w-full h-full rounded-xl shadow-lg ring-1 ring-zahid-blue-bg group-hover:scale-95 transition-all duration-300 aspect-square",
+                        {
+                          "object-fill": image.fill,
+                          "object-contain": !image.fill,
+                        }
+                      )}
                     />
 
                     <div className="absolute bottom-0 left-0 right-0 w-full opacity-0 translate-y-full pointer-events-none p-4 text-center bg-gray-900/60 backdrop-blur-xl rounded-t-xl group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
@@ -180,11 +185,11 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
                 <Button
                   size="sm"
                   title="Linkedin"
-                  variant="light"
-                  color="primary"
+                  variant="bordered"
                   isIconOnly
                   as={Link}
                   target="_blank"
+                  className="text-zahid-blue-bg hover:bg-zahid-blue-bg hover:text-white border-0 transition-all duration-150 hover:shadow hover:scale-110"
                   href="https://www.linkedin.com/company/syadtech/posts/?feedView=all"
                 >
                   <Icon icon="linkedin" className="w-6 h-6" />
@@ -192,9 +197,9 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
 
                 <Button
                   size="sm"
-                  variant="light"
+                  variant="bordered"
                   title="Youtube"
-                  color="danger"
+                  className="text-rose-500 hover:bg-rose-500 hover:text-rose-50 border-0 transition-all duration-150 hover:shadow hover:scale-110"
                   isIconOnly
                   as={Link}
                   target="_blank"
@@ -206,53 +211,33 @@ const LandingPage = async ({ params: { locale } }: { params: { locale: string } 
                 <Button
                   size="sm"
                   title="Twitter (X)"
-                  variant="light"
-                  color="primary"
+                  variant="bordered"
                   isIconOnly
                   as={Link}
+                  className="text-cyan-500 hover:bg-cyan-500 hover:text-cyan-50 border-0 transition-all duration-150 hover:shadow hover:scale-110"
                   target="_blank"
-                  href="https://x.com/Syad_tech"
+                  href="https://x.com/Syadtech"
                 >
                   <Icon icon="twitter" className="w-6 h-6" />
+                </Button>
+
+                <Button
+                  size="sm"
+                  title="Website"
+                  variant="bordered"
+                  isIconOnly
+                  as={Link}
+                  className="text-blue-500 hover:bg-blue-500 hover:text-blue-50 border-0 transition-all duration-150 hover:shadow hover:scale-110"
+                  target="_blank"
+                  href="https://www.syadtech.com/"
+                >
+                  <Icon icon="website" className="w-6 h-6" />
                 </Button>
               </SectionDescription>
             </div>
           </div>
 
           <div className="w-full mt-10 flex flex-col items-center justify-center">
-            {/* <Button as={Link} href={`/${locale}`} variant="solid" className="bg-white">
-              <Image src="/logoiScope.svg" alt="Logo" width={10} height={10} className="w-20 h-20" />
-            </Button> */}
-
-            {/* <ul className="mt-4 hidden md:flex flex-row items-center gap-x-2.5 justify-center flex-[2]">
-              <li className="inline">
-                <Button scroll={false} as={Link} href="#hero" variant="light" className="text-white/80 font-semibold">
-                  {t("nav.home")}
-                </Button>
-              </li>
-              <li className="inline">
-                <Button
-                  scroll={false}
-                  as={Link}
-                  href="#advantages"
-                  variant="light"
-                  className="text-white/80 font-semibold"
-                >
-                  {t("nav.advantages")}
-                </Button>
-              </li>
-              <li className="inline">
-                <Button scroll={false} as={Link} href="#qa" variant="light" className="text-white/80 font-semibold">
-                  {t("nav.qa")}
-                </Button>
-              </li>
-              <li className="inline">
-                <Button scroll={false} as={Link} href="#images" variant="light" className="text-white/80 font-semibold">
-                  {t("nav.images")}
-                </Button>
-              </li>
-            </ul> */}
-
             <div className="absolute bottom-0 w-full">
               <Divider className="bg-white/20 mb-4" />
 

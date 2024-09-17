@@ -7,7 +7,8 @@ import Icon from "../ui/Icon";
 import { useTranslations } from "next-intl";
 
 const AccountDropdown = memo(() => {
-  const t = useTranslations();
+  const t = useTranslations("account");
+
   return (
     <Dropdown>
       <DropdownTrigger>
@@ -23,20 +24,20 @@ const AccountDropdown = memo(() => {
       </DropdownTrigger>
 
       <DropdownMenu aria-label="Profile Actions" variant="solid" title="Account">
-        <DropdownSection title={t("account.title")}>
+        <DropdownSection title={t("title")}>
           <DropdownItem startContent={<Icon icon="profile" className="w-5 h-5" />} key="Profile">
-            {t("account.profile")}
+            {t("profile")}
           </DropdownItem>
           <DropdownItem
             startContent={<Icon icon="edit-account" className="w-5 h-5" />}
             key="AccountSettings"
             showDivider
           >
-            {t("account.settings")}
+            {t("settings")}
           </DropdownItem>
 
           <DropdownItem key="Logout" color="danger" startContent={<Icon icon="logout" className="w-5 h-5" />}>
-            {t("account.logout")}
+            {t("logout")}
           </DropdownItem>
         </DropdownSection>
       </DropdownMenu>

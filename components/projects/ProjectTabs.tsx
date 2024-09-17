@@ -7,11 +7,10 @@ import { ReactNode } from "react";
 import Icon from "../ui/Icon";
 
 const ProjectTabs = ({ project, locale, children }: { project: Project; locale: string; children: ReactNode }) => {
-  const t = useTranslations();
+  const t = useTranslations("projects");
 
   return (
     <Tabs
-      radius="sm"
       variant="solid"
       color="primary"
       classNames={{
@@ -24,7 +23,7 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
         title={
           <div className="flex flex-row items-center gap-2 justify-center">
             <Icon icon="open-book" />
-            <p>{t("projects.mainData")}</p>
+            <p>{t("mainData")}</p>
           </div>
         }
       >
@@ -40,19 +39,19 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
                 tabList: "w-full justify-evenly pb-0",
               }}
             >
-              <Tab key="financial-record" title={t("projects.financialRecord")}>
+              <Tab key="financial-record" title={t("financialRecord")}>
                 <p>Financial record</p>
               </Tab>
-              <Tab key="duration-record" title={t("projects.durationRecord")}>
+              <Tab key="duration-record" title={t("durationRecord")}>
                 <p>Durations record</p>
               </Tab>
-              <Tab key="date-record" title={t("projects.datesRecord")}>
+              <Tab key="date-record" title={t("datesRecord")}>
                 <p>Date record</p>
               </Tab>
-              <Tab key="externalDepsRefNo-record" title={t("projects.externalDepsRefNo")}>
+              <Tab key="externalDepsRefNo-record" title={t("externalDepsRefNo")}>
                 <p>External Departments Reference Number</p>
               </Tab>
-              <Tab key="timeline" title={t("projects.timeline")}>
+              <Tab key="timeline" title={t("timeline")}>
                 <p>Timeline</p>
               </Tab>
             </Tabs>
@@ -65,7 +64,7 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
         title={
           <div className="flex flex-row items-center gap-2 justify-center">
             <Icon icon="language" />
-            <p>{t("projects.timeline")}</p>
+            <p>{t("timeline")}</p>
           </div>
         }
       >
@@ -77,7 +76,7 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
         title={
           <div className="flex flex-row items-center gap-2 justify-center">
             <Icon icon="suitcase" />
-            <p>{t("projects.requests")}</p>
+            <p>{t("requests")}</p>
           </div>
         }
       >
@@ -89,7 +88,7 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
         title={
           <div className="flex flex-row items-center gap-2 justify-center">
             <Icon icon="users" />
-            <p>{t("projects.reports")}</p>
+            <p>{t("reports")}</p>
           </div>
         }
       >
@@ -101,7 +100,7 @@ const ProjectTabs = ({ project, locale, children }: { project: Project; locale: 
         title={
           <div className="flex flex-row items-center gap-2 justify-center">
             <Icon icon="medal" />
-            <p>{t("projects.visits")}</p>
+            <p>{t("visits")}</p>
           </div>
         }
       >

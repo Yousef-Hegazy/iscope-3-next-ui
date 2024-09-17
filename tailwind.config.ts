@@ -28,6 +28,13 @@ const config: Config = {
   },
   plugins: [
     nextui({
+      layout: {
+        radius: {
+          small: "0.2rem", // rounded-small
+          medium: "0.5rem", // rounded-medium
+          large: "0.8rem", // rounded-large
+        },
+      },
       themes: {
         "light-orange": {
           extend: "light",

@@ -7,8 +7,9 @@ import { useTranslations } from "next-intl";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
 
-const SubRoute = ({ t, item }: { t: any; item: NavObject }) => {
+const SubRoute = ({ item }: { item: NavObject }) => {
   const { setDynamicNavType } = useRoutesStore();
+  const t = useTranslations("subNav");
 
   return (
     <AppTooltip content={t(item.title)} placement="right" closeDelay={0}>
@@ -24,26 +25,15 @@ const SubRoute = ({ t, item }: { t: any; item: NavObject }) => {
 };
 
 const SubRoutes = ({ subRoutes, mainRoute }: { subRoutes: NavObject[]; mainRoute: NavObject }) => {
-  const t = useTranslations();
-
-  // const safeT = useCallback(
-  //   (key: string) => {
-  //     try {
-  //       return t(key);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   },
-  //   [t]
-  // );
+  const t = useTranslations("mainNav");
 
   return subRoutes.length ? (
     <div className="flex flex-col gap-3">
-      <h2 className="text-sm text-center">{t(mainRoute?.title || "subRoutes")}</h2>
+      <h2 className="text-sm text-center">{t(mainRoute.title ? mainRoute.title : "subRoutes")}</h2>
       <Divider />
 
       {subRoutes.map((item) => (
-        <SubRoute key={item.route} item={item} t={t} />
+        <SubRoute key={item.route} item={item} />
       ))}
     </div>
   ) : null;

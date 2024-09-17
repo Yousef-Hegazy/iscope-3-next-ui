@@ -14,7 +14,7 @@ const MainNavLink = ({ item }: { item: NavObject }) => {
   const locale = useLocale();
   const path = useMemo(() => getRoute(locale, item?.route || ""), [locale, item?.route]);
   const { setDynamicNavType } = useRoutesStore();
-  const t = useTranslations();
+  const t = useTranslations("mainNav");
 
   const selected = useMemo(() => {
     // const split = pathname.split("/");
@@ -29,7 +29,6 @@ const MainNavLink = ({ item }: { item: NavObject }) => {
         href={path}
         variant={selected ? "shadow" : "light"}
         className="h-max w-full px-2 py-3 flex-shrink-0 flex flex-col gap-2 items-center"
-        radius="sm"
         color={selected ? "primary" : "default"}
         onClick={(e) => {
           setMainRoute(item);
