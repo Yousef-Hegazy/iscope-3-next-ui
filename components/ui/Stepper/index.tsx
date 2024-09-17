@@ -2,8 +2,30 @@
 
 import { cn } from "@/lib/utils";
 import { Button, ScrollShadow } from "@nextui-org/react";
-import { motion, Variants } from "framer-motion";
-import { ReactNode, useState } from "react";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { Children, cloneElement, ReactElement, ReactNode, useMemo, useState } from "react";
+
+const container: Variants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 1,
+    },
+  },
+};
+
+const line: Variants = {
+  initial: {
+    scaleX: 0,
+  },
+  animate: {
+    scaleX: 1,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+    },
+  },
+};
 
 const iconContainer: Variants = {
   normal: {
@@ -12,7 +34,9 @@ const iconContainer: Variants = {
   },
   inView: {
     transition: {
-      delayChildren: 0.1,
+      type: "spring",
+      damping: 10,
+      stiffness: 150,
     },
     opacity: 1,
     scale: 1,
@@ -27,27 +51,83 @@ const icon: Variants = {
     pathLength: 1,
     transition: {
       duration: 0.5,
+      type: "spring",
     },
   },
 };
 
-type Step = {
+const contentVars: Variants = {
+  initial: {
+    display: "none",
+    opacity: 0,
+    scale: 0.7,
+  },
+  animate: {
+    display: "flex",
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+    },
+  },
+};
+
+type StepProps = {
+  children: ReactNode;
+  isActive?: boolean;
   title: string;
-  content: ReactNode;
+  className?: string;
 };
 
 interface Props {
-  steps: Step[];
+  children: ReactNode;
 }
 
-const Stepper = ({ steps }: Props) => {
-  const [activeStep, setActiveStep] = useState(1);
+export const Step = ({
+  children,
+  isActive = false,
+  title,
+
+  className,
+}: StepProps) => {
+  return (
+    isActive && (
+      <motion.div
+        key={title}
+        className={cn("w-full p-2", className, "h-max")}
+        variants={contentVars}
+        aria-label="Step contents"
+        initial="initial"
+        animate="animate"
+      >
+        {children}
+      </motion.div>
+    )
+  );
+};
+
+const Stepper = ({ children }: Props) => {
+  const stepsCount = useMemo(() => Children.count(children), [children]);
+
+  const [activeStepKey, setActiveStepKey] = useState((children as ReactElement[])?.[0]?.key);
+
+  const activeStepIndex = useMemo(
+    () => (children as ReactElement[])?.map((c: any) => c?.key).indexOf(activeStepKey),
+    [activeStepKey, children]
+  );
 
   return (
-    <section aria-label="stepper" className="h-full w-full overflow-hidden">
-      <ScrollShadow size={0} orientation="horizontal" hideScrollBar className="flex flex-row gap-x-2 px-4">
-        {steps.map((step, index) => (
-          <div key={step.title} className="flex flex-col gap-y-2 w-full h-full flex-1 min-w-28">
+    <motion.section
+      variants={container}
+      initial="initial"
+      animate="animate"
+      aria-label="stepper"
+      className="h-full w-full overflow-hidden flex flex-col gap-y-4"
+    >
+      <ScrollShadow size={0} orientation="horizontal" hideScrollBar className="flex flex-row gap-x-2 px-4 py-2">
+        {(children as ReactElement<StepProps>[]).map((step, index) => (
+          <div key={step.props.title} className="flex flex-col gap-y-2 w-full h-full flex-1 min-w-28">
             <div className="flex flex-row items-center gap-x-2">
               <div className="px-4">
                 <Button
@@ -55,66 +135,70 @@ const Stepper = ({ steps }: Props) => {
                   size="sm"
                   radius="full"
                   variant="bordered"
-                  color={activeStep >= index + 1 ? "primary" : "default"}
+                  color={activeStepIndex >= index ? "primary" : "default"}
                   className="flex-shrink-0 text-lg relative overflow-hidden"
-                  onClick={() => setActiveStep(index + 1)}
+                  onClick={() => setActiveStepKey(step.key)}
                 >
-                  {activeStep > index + 1 ? (
-                    <motion.div
-                      className="flex w-full h-full items-center justify-center rounded-full bg-primary shadow-lg flex-shrink-0 origin-center"
-                      variants={iconContainer}
-                      initial="normal"
-                      whileInView="inView"
+                  <motion.div
+                    className="absolute flex w-full h-full items-center justify-center rounded-full bg-primary shadow-lg flex-shrink-0 z-10"
+                    variants={iconContainer}
+                    initial="normal"
+                    animate={activeStepIndex > index ? "inView" : "normal"}
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-4 h-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <motion.path
-                          className="text-white origin-left"
-                          variants={icon}
-                          initial="normal"
-                          whileInView="inView"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="3"
-                          fill="none"
-                          d="m4.5 12.75l6 6l9-13.5"
-                        />
-                      </svg>
-                    </motion.div>
-                  ) : (
-                    index + 1
-                  )}
+                      <motion.path
+                        className="text-white origin-left"
+                        variants={icon}
+                        initial="normal"
+                        whileInView="inView"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3"
+                        fill="none"
+                        d="m4.5 12.75l6 6l9-13.5"
+                      />
+                    </svg>
+                  </motion.div>
+
+                  <p className="relative z-5">{index + 1}</p>
                 </Button>
               </div>
               <div
                 className={cn("w-8 h-1 bg-default-300 rounded flex-1 relative overflow-hidden", {
-                  hidden: index === steps.length - 1,
+                  hidden: index === stepsCount - 1,
                 })}
               >
-                <div
-                  className={cn(
-                    "absolute bg-primary origin-left rtl:origin-right h-full w-full scale-x-0 transition-all duration-200 ease-in-out",
-                    {
-                      "scale-x-100": activeStep >= index + 2,
-                    }
-                  )}
-                ></div>
+                <motion.div
+                  variants={line}
+                  className="absolute bg-primary origin-left rtl:origin-right h-full w-full"
+                  initial="initial"
+                  animate={activeStepIndex > index ? "animate" : "initial"}
+                ></motion.div>
               </div>
             </div>
 
-            <h2 className="w-max cursor-pointer text-start px-2.5" onClick={() => setActiveStep(index + 1)}>
-              {step.title}
+            <h2 className="w-max cursor-pointer text-start px-2.5" onClick={() => setActiveStepKey(step.key)}>
+              {step.props.title}
             </h2>
           </div>
         ))}
       </ScrollShadow>
-    </section>
+
+      <ScrollShadow hideScrollBar size={0} className="w-full h-full overflow-y-auto p-2 flex-1">
+        <AnimatePresence mode="wait">
+          {Children.map(children as ReactElement[], (child: ReactElement) =>
+            cloneElement(child, { isActive: child.key === activeStepKey })
+          )}
+        </AnimatePresence>
+      </ScrollShadow>
+    </motion.section>
   );
 };
 
