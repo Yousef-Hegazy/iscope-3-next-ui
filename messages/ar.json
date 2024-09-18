@@ -105,6 +105,12 @@
         "achivedProjects": "المشاريع المؤرشفة",
         "studiesManagement": "ادارة الدراسات"
     },
+    "dynamicNav": {
+        "projects": {
+            "underExecution": "المشاريع",
+            "archived": "المشاريع المؤرشفة"
+        }
+    },
     "notFound": "الصفحة المطلوبة غير موجودة",
     "backToHome": "العودة للصفحة الرئيسية",
     "settings": {
@@ -234,9 +240,13 @@
         "management": "ادارة الدراسات"
     },
     "subRoutes": "الروابط الفرعية",
-    "retry": "إعادة المحاولة",
-    "error": {
-        "unknown": "حدث خطأ ما"
-    },
-    "more": "المزيد"
+    "common": {
+        "more": "المزيد",
+        "next": "التالي",
+        "previous": "السابق",
+        "retry": "إعادة المحاولة",
+        "error": {
+            "unknown": "حدث خطأ ما"
+        }
+    }
 }

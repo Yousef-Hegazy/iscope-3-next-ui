@@ -105,6 +105,12 @@
         "achivedProjects": "Archived Projects",
         "studiesManagement": "Studies Management"
     },
+    "dynamicNav": {
+        "projects": {
+            "underExecution": "Projects",
+            "archived": "Archived Projects"
+        }
+    },
     "notFound": "The requested page does not exist",
     "backToHome": "Back to the home page",
     "settings": {
@@ -225,9 +231,13 @@
         "management": "Studies Management"
     },
     "subRoutes": "Sub Routes",
-    "retry": "Retry",
-    "error": {
-        "unknown": "Something went wrong"
-    },
-    "more": "More"
+    "common": {
+        "more": "More",
+        "next": "Next",
+        "previous": "Previous",
+        "retry": "Retry",
+        "error": {
+            "unknown": "Something went wrong"
+        }
+    }
 }

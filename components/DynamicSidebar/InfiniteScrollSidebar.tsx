@@ -14,7 +14,8 @@ const InfiniteScrollSidebar = ({
   children: ReactNode;
   query: UseInfiniteQueryResult<any>;
 }) => {
-  const t = useTranslations();
+  const t = useTranslations("dynamicNav");
+  const commonT = useTranslations("common");
   const locale = useLocale();
   const { dynamicNavType, setDynamicNavType } = useRoutesStore();
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -77,9 +78,9 @@ const InfiniteScrollSidebar = ({
           </div>
         ) : error ? (
           <div className="flex flex-col w-full h-full items-center justify-center gap-2">
-            <p className="text-lg">{t("error.unknown")}</p>
+            <p className="text-lg">{commonT("error.unknown")}</p>
             <Button color="primary" variant="solid" onClick={() => refetch()} isLoading={isFetching}>
-              {t("retry")}
+              {commonT("retry")}
             </Button>
           </div>
         ) : (
@@ -94,7 +95,7 @@ const InfiniteScrollSidebar = ({
           <>
             <Divider />
             <Button onClick={() => fetchNextPage()} isLoading={isFetching || isLoading || isPending} size="sm">
-              {t("more")}
+              {commonT("more")}
             </Button>
           </>
         ) : (
