@@ -238,6 +238,9 @@
         "retry": "Retry",
         "error": {
             "unknown": "Something went wrong"
-        }
+        },
+        "cancel": "Cancel",
+        "save": "Save",
+        "saveAndReturn": "Save & Return"
     }
 }

@@ -92,19 +92,6 @@ const contentVars: Variants = {
   },
 };
 
-type StepProps = {
-  children: ReactNode;
-  isActive?: boolean;
-  title: string;
-  className?: string;
-  stepKey: string;
-  icon?: string;
-};
-
-interface Props {
-  children: ReactNode;
-}
-
 const StepperContext = createContext<{
   activeStepKey: string | null;
   steps: (string | null)[];
@@ -123,6 +110,15 @@ const StepperProvider = ({
   children: ReactNode;
 }) => {
   return <StepperContext.Provider value={{ activeStepKey, steps }}>{children}</StepperContext.Provider>;
+};
+
+type StepProps = {
+  children: ReactNode;
+  isActive?: boolean;
+  title: string;
+  className?: string;
+  stepKey: string;
+  icon?: string;
 };
 
 export const Step = memo(({ children, stepKey, title, className }: StepProps) => {
@@ -144,7 +140,14 @@ export const Step = memo(({ children, stepKey, title, className }: StepProps) =>
 
 Step.displayName = "Step";
 
-const Stepper = ({ children }: Props) => {
+interface Props {
+  children: ReactNode;
+  onCancel?: () => void;
+  hideSubmit?: boolean;
+  setIsReturn?: (isReturn: boolean) => void;
+}
+
+const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) => {
   const t = useTranslations("common");
   const steps = useMemo(() => (children as ReactElement<StepProps>[]).map((c) => c.props.stepKey), [children]);
   const stepsCount = useMemo(() => steps.length, [steps]);
@@ -261,36 +264,79 @@ const Stepper = ({ children }: Props) => {
           </div>
         </ScrollShadow>
 
-        <ScrollShadow
-          hideScrollBar
-          size={0}
-          className="w-full flex-1 rounded-small shadow-medium outline outline-1 outline-default-300"
-        >
+        <ScrollShadow hideScrollBar size={0} className="w-full flex-1">
           {children}
         </ScrollShadow>
 
         <div className="flex flex-row items-center justify-between w-full flex-shrink-0">
-          <Button
-            size="sm"
-            onClick={handlePrev}
-            color={activeStepIndex === 0 ? "default" : "primary"}
-            disabled={activeStepIndex === 0}
-          >
-            {t("previous")}
-          </Button>
+          <div className="flex flex-row gap-x-2">
+            <Button
+              size="sm"
+              onClick={handlePrev}
+              color={activeStepIndex === 0 ? "default" : "primary"}
+              disabled={activeStepIndex === 0}
+              startContent={<Icon icon="menu-arrow-left" className="w-4 h-4 rtl:rotate-180" />}
+            >
+              {t("previous")}
+            </Button>
 
-          <Button
-            size="sm"
-            onClick={handleNext}
-            color={activeStepIndex === stepsCount - 1 ? "default" : "primary"}
-            disabled={activeStepIndex === stepsCount - 1}
-          >
-            {t("next")}
-          </Button>
+            <Button
+              size="sm"
+              onClick={handleNext}
+              color={activeStepIndex === stepsCount - 1 ? "default" : "primary"}
+              disabled={activeStepIndex === stepsCount - 1}
+              endContent={<Icon icon="menu-arrow-right" className="w-4 h-4 rtl:rotate-180" />}
+            >
+              {t("next")}
+            </Button>
+          </div>
+
+          <div className="flex flex-row gap-x-2 items-center">
+            {!hideSubmit && (
+              <Button
+                size="sm"
+                startContent={<Icon icon="double-check" className="w-5 h-5" />}
+                color="success"
+                type="submit"
+                variant="solid"
+                onClick={() => setIsReturn?.(false)}
+              >
+                {t("save")}
+              </Button>
+            )}
+
+            {!hideSubmit && (
+              <Button
+                startContent={<Icon icon="return" className="w-4 h-4" />}
+                size="sm"
+                color="primary"
+                type="submit"
+                variant="ghost"
+                onClick={() => setIsReturn?.(true)}
+              >
+                {t("saveAndReturn")}
+              </Button>
+            )}
+
+            {onCancel && (
+              <Button
+                startContent={<Icon icon="close" className="w-5 h-5" />}
+                size="sm"
+                color="danger"
+                variant="light"
+                type="button"
+                onClick={onCancel}
+              >
+                {t("cancel")}
+              </Button>
+            )}
+          </div>
         </div>
       </motion.section>
     </StepperProvider>
   );
-};
+});
+
+Stepper.displayName = "Stepper";
 
 export default Stepper;
