@@ -1,6 +1,16 @@
 "use client";
 
-import { Button, Divider, Listbox, ListboxItem, Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
+import {
+  Button,
+  Divider,
+  Listbox,
+  ListboxItem,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ScrollShadow,
+} from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
@@ -30,7 +40,7 @@ const AvailableActions = () => {
 
               <Divider />
 
-              <ModalBody>
+              <ModalBody as={ScrollShadow} hideScrollBar>
                 <Listbox title={t("availableActions")}>
                   <ListboxItem
                     startContent={<Icon icon="stop-circle" className="w-6 h-6" />}
@@ -39,9 +49,8 @@ const AvailableActions = () => {
                     href="#"
                     key="stopRequest"
                     title={t("stopRequestReport")}
-                  >
-                    {t("stopRequestReport")}
-                  </ListboxItem>
+                    showDivider
+                  />
 
                   <ListboxItem
                     startContent={<Icon icon="sign" className="w-6 h-6" />}
@@ -50,9 +59,8 @@ const AvailableActions = () => {
                     href="#"
                     key="fineSign"
                     title={t("fineSigningReport")}
-                  >
-                    {t("fineSigningReport")}
-                  </ListboxItem>
+                    showDivider
+                  />
 
                   <ListboxItem
                     startContent={<Icon icon="people" className="w-6 h-6" />}
@@ -61,9 +69,8 @@ const AvailableActions = () => {
                     href="#"
                     key="meetingReport"
                     title={t("meetingReport")}
-                  >
-                    {t("meetingReport")}
-                  </ListboxItem>
+                    showDivider
+                  />
 
                   <ListboxItem
                     startContent={<Icon icon="end" className="w-6 h-6 rtl:rotate-180" />}
@@ -72,9 +79,68 @@ const AvailableActions = () => {
                     href="#"
                     key="worksEndReport"
                     title={t("worksEndReport")}
-                  >
-                    {t("worksEndReport")}
-                  </ListboxItem>
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="add-time" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="extendDurationReport"
+                    title={t("extendDurationReport")}
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="contractor-warn" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="contractorWarning"
+                    title={t("contractorWarning")}
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="final-warning" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="finalWarning"
+                    title={t("finalWarning")}
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="cancel-competition" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="cancelCompetitionReport"
+                    title={t("cancelCompetitionReport")}
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="cancel-finance" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="cancelCostReport"
+                    title={t("cancelCostReport")}
+                    showDivider
+                  />
+
+                  <ListboxItem
+                    startContent={<Icon icon="cancel-contract" className="w-6 h-6" />}
+                    onClick={onClose}
+                    as={Link}
+                    href="#"
+                    key="pullContractReport"
+                    title={t("pullContractReport")}
+                    showDivider
+                  />
                 </Listbox>
               </ModalBody>
             </>

@@ -4,7 +4,9 @@ import { Button } from "@nextui-org/react";
 import Icon from "../ui/Icon";
 
 const SidebarControl = () => {
-  const { setIsSidebarOpen, isSidebarOpen } = useClientConfigStore();
+  const isSidebarOpen = useClientConfigStore((store) => store.isSidebarOpen);
+
+  const setIsSidebarOpen = useClientConfigStore((store) => store.setIsSidebarOpen);
 
   return (
     <Button

@@ -95,7 +95,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
           {children}
         </ScrollShadow>
 
-        <div className="flex flex-row items-center justify-between w-full flex-shrink-0 border-t border-default-300 py-2">
+        <div className="flex flex-row items-center justify-between gap-x-2 w-full flex-shrink-0 border-t border-default-300 py-2">
           <div className="flex flex-row gap-x-2">
             <Button
               size="sm"

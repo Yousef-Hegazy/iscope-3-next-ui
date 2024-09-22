@@ -11,11 +11,11 @@ import { cn } from "@/lib/utils";
 
 const lightColors: { [key: string]: string } = {
   orange: `hsl(24.6, 95%, 53.1%)`,
-  slate: `hsl(222.2, 47.4%, 11.2%)`,
+  // slate: `hsl(222.2, 47.4%, 11.2%)`,
   zinc: `hsl(240, 5.9%, 10%)`,
-  stone: `hsl(24, 9.8%, 10%)`,
-  gray: `hsl(220.9, 39.3%, 11%)`,
-  neutral: `hsl(0, 0%, 9%)`,
+  // stone: `hsl(24, 9.8%, 10%)`,
+  // gray: `hsl(220.9, 39.3%, 11%)`,
+  // neutral: `hsl(0, 0%, 9%)`,
   red: `hsl(0, 72.2%, 50.6%)`,
   rose: `hsl(346.8, 77.2%, 49.8%)`,
   green: `hsl(142.1, 76.2%, 36.3%)`,
@@ -26,11 +26,11 @@ const lightColors: { [key: string]: string } = {
 
 const darkColors: { [key: string]: string } = {
   orange: `hsl(20.5, 90.2%, 48.2%)`,
-  slate: `hsl(210, 40%, 98%)`,
   zinc: `hsl(0, 0%, 98%)`,
-  stone: `hsl(60, 9.1%, 97.8%)`,
-  gray: `hsl(210, 20%, 98%)`,
-  neutral: `hsl(0, 0%, 98%)`,
+  // slate: `hsl(210, 40%, 98%)`,
+  // stone: `hsl(60, 9.1%, 97.8%)`,
+  // gray: `hsl(210, 20%, 98%)`,
+  // neutral: `hsl(0, 0%, 98%)`,
   red: `hsl(0, 72.2%, 50.6%)`,
   rose: `hsl(346.8, 77.2%, 49.8%)`,
   green: `hsl(142.1, 70.6%, 45.3%)`,
@@ -95,7 +95,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                     <div className="flex flex-row items-center flex-wrap gap-2">
                       {resolvedTheme.includes("dark")
                         ? Object.keys(darkColors).map((color) => (
-                            <AppTooltip key={color} content={t(`settings.colors.${color}`)}>
+                            <AppTooltip key={color} content={t(`colors.${color}`)}>
                               <Button
                                 variant="bordered"
                                 size="sm"
@@ -116,7 +116,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                             </AppTooltip>
                           ))
                         : Object.keys(lightColors).map((color) => (
-                            <AppTooltip key={color} content={t(`settings.colors.${color}`)}>
+                            <AppTooltip key={color} content={t(`colors.${color}`)}>
                               <Button
                                 variant="bordered"
                                 size="sm"

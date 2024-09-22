@@ -11,6 +11,7 @@ import { useCallback } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
 import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
+import useClientConfigStore from "@/stores/configStore";
 
 const ProjectsUnderExecution = () => {
   const locale = useLocale();
@@ -20,6 +21,8 @@ const ProjectsUnderExecution = () => {
   const pathname = usePathname();
 
   const isSelected = useCallback((id: string) => pathname.includes(id), [pathname]);
+
+  const setIsSidebarOpen = useClientConfigStore((state) => state.setIsSidebarOpen);
 
   const query = useInfiniteQuery<{
     maxPages: number;
@@ -57,8 +60,14 @@ const ProjectsUnderExecution = () => {
               className="max-w-xs w-full text-justify"
               placement="right"
               content={item.name}
+              closeDelay={0}
             >
-              <Link prefetch={true} scroll={false} href={`/${locale}/dashboard/projects/${item.id}`}>
+              <Link
+                prefetch={true}
+                scroll={false}
+                href={`/${locale}/dashboard/projects/${item.id}`}
+                onClick={() => setIsSidebarOpen(false)}
+              >
                 <div
                   className={`flex flex-col rounded-small p-2 backdrop-blur-xl gap-2 cursor-pointer hover:bg-neutral-200/50 hover:shadow dark:hover:bg-neutral-500/50 transition-all ${
                     isSelected(item.id) ? "bg-primary/10 shadow hover:bg-primary/20 dark:hover:bg-primary/20" : ""
