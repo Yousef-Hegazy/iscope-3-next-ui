@@ -13,67 +13,69 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
       size={10}
       hideScrollBar
       orientation="horizontal"
-      className="w-full py-2.5 px-4 flex flex-row gap-2 items-center justify-center shadow-md border-b border-transparent dark:border-b-neutral-600 bg-background/80 backdrop-opacity-25 z-30"
+      className="w-full max-w-full flex-shrink-0 shadow-md border-b border-transparent dark:border-b-neutral-600 bg-background/80 backdrop-opacity-25 z-30"
     >
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="ai" className="text-inherit w-5 h-5" />}
-      >
-        <p>{t("ai")}</p>
-      </Button>
+      <section className="py-2.5 px-4 min-w-fit w-full inline-flex flex-row gap-x-2 items-center justify-center">
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="ai" className="text-inherit w-5 h-5" />}
+        >
+          <p>{t("ai")}</p>
+        </Button>
 
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="iot" className="text-inherit" />}
-      >
-        <p>{t("iot")}</p>
-      </Button>
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="iot" className="text-inherit" />}
+        >
+          <p>{t("iot")}</p>
+        </Button>
 
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="timeline" className="text-inherit" />}
-      >
-        <p>{t("schedules")}</p>
-      </Button>
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="timeline" className="text-inherit" />}
+        >
+          <p>{t("schedules")}</p>
+        </Button>
 
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="bi" className="text-inherit" />}
-      >
-        <p>{t("powerBI")}</p>
-      </Button>
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="bi" className="text-inherit" />}
+        >
+          <p>{t("powerBI")}</p>
+        </Button>
 
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="integration" className="text-inherit w-5 h-5" />}
-      >
-        <p>{t("integration")}</p>
-      </Button>
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="integration" className="text-inherit w-5 h-5" />}
+        >
+          <p>{t("integration")}</p>
+        </Button>
 
-      <Button
-        className="flex-shrink-0"
-        variant="bordered"
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="gis" className="text-inherit w-5 h-5" />}
-      >
-        <p>{t("GIS")}</p>
-      </Button>
+        <Button
+          className="flex-shrink-0 min-w-fit"
+          variant="bordered"
+          size="sm"
+          color="primary"
+          startContent={<Icon icon="gis" className="text-inherit w-5 h-5" />}
+        >
+          <p>{t("GIS")}</p>
+        </Button>
+      </section>
     </AppScrollShadow>
   );
 };
