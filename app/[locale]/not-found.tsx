@@ -1,20 +1,19 @@
-"use client";
-import Icon from "@/components/ui/Icon";
-import { Button } from "@nextui-org/react";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import BackButton from "@/components/ui/BackButton";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
-const NotFound = () => {
-  const t = useTranslations();
-  const locale = useLocale();
+const NotFound = async () => {
+  const t = await getTranslations();
 
   return (
-    <main className="p-4 flex flex-col items-center justify-center w-full h-full gap-3">
-      <h1 className="font-semibold text-lg">{t("notFound")}</h1>
+    <main className="relative p-4 flex flex-col items-center justify-start pt-20 w-full h-full gap-3">
+      <Image src="/svgs/not-found-2.svg" alt="Not found" fill className="h-auto max-w-full rounded-md shadow z-5" />
 
-      <Button as={Link} href={`/${locale}`} startContent={<Icon icon="home" />} variant="shadow" color="primary">
-        {t("backToHome")}
-      </Button>
+      <div className="relative z-10 bg-default-800/5 text-slate-700 flex flex-col items-center justify-center gap-y-4 rounded-small p-6 max-w-full backdrop-blur-xl">
+        <h1 className="font-semibold text-lg">{t("notFound")}</h1>
+
+        <BackButton />
+      </div>
     </main>
   );
 };

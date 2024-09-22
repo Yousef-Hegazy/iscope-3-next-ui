@@ -45,7 +45,7 @@ const Navigation = () => {
 
         <NavbarBrand>
           <Button as={Link} href={`/${locale}`} variant="solid" className="bg-white">
-            <Image src="/logoiScope.svg" alt="Logo" width={10} height={10} className="w-20 h-20" />
+            <Image src="/svgs/logoiScope.svg" alt="Logo" width={10} height={10} className="w-20 h-20" />
           </Button>
         </NavbarBrand>
       </NavbarContent>

@@ -191,6 +191,9 @@
         "date": "Contract Date",
         "contractNo": "Contract Number",
         "code": "Code/Number",
+        "eitimadRefNo": "Reference Number of Eitimad Platform",
+        "compNo": "Competition Number",
+        "finLinkNo": "Financial Link Number",
         "owner": "Owner/Beneficiary",
         "studyOrg": "Study Entity",
         "consultant": "Executive Consultant",
@@ -219,12 +222,16 @@
         "monthlyReport": "Monthly Report",
         "pullContractReport": "Contract Withdrawal Proposal Report",
         "availableActions": "Available Actions",
-        "mainData": "Basic Data",
         "requests": "Requests",
         "reports": "Reports",
         "visits": "Visits",
         "completed": "Completed",
-        "remaining": "Remaining"
+        "remaining": "Remaining",
+        "mainData": "Basic Data",
+        "executionData": "Execution Data",
+        "executingParties": "Executing Parties",
+        "supplementaryData": "Supplementary Data",
+        "affiliatedMuns": "Affiliated Municipalities"
     },
     "studies": {
         "title": "Studies",
@@ -241,6 +248,8 @@
         },
         "cancel": "Cancel",
         "save": "Save",
-        "saveAndReturn": "Save & Return"
+        "saveAndReturn": "Save & Return",
+        "arName": "Name in Arabic",
+        "enName": "Name in English"
     }
 }

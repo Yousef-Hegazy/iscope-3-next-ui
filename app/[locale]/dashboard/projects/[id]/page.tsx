@@ -6,6 +6,7 @@ import { Button, Divider } from "@nextui-org/react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AvailableActions from "@/components/projects/AvailableActions";
 
 const getProject = async (id: string, locale: string): Promise<Project | null> => {
   try {
@@ -49,9 +50,7 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
           <p>{project.name}</p>
 
           <div className="flex flex-row gap-2 items-center">
-            <Button variant="light" isIconOnly size="sm" title="Stack">
-              <Icon icon="stack" />
-            </Button>
+            <AvailableActions />
 
             <Button variant="light" isIconOnly size="sm" title="Calendar">
               <Icon icon="calendar" />

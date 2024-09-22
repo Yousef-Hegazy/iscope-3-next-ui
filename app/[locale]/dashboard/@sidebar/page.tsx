@@ -44,7 +44,6 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (mainRoute) return;
-    console.log({ mainRoute, pathname });
 
     let matches = undefined;
 

@@ -68,10 +68,8 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
         <Icon icon="settings" />
       </Button>
 
-      <Modal size="xs" hideCloseButton isOpen={isOpen} onOpenChange={(o) => setIsOpen(o)}>
-        <ModalContent
-          className={`absolute ${locale === "ar" ? "right-0" : "left-0"} h-full m-0 sm:m-0 overflow-y-auto`}
-        >
+      <Modal size="xs" hideCloseButton isOpen={isOpen} onOpenChange={setIsOpen}>
+        <ModalContent className="absolute start-0 h-full m-0 sm:m-0 overflow-y-auto">
           {(onClose) => (
             <>
               <ModalHeader>

@@ -44,7 +44,6 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (mainRoute) return;
-    console.log({ mainRoute, pathname });
 
     let matches = undefined;
 
@@ -85,7 +84,7 @@ const Sidebar = () => {
         ))}
       </ScrollShadow>
 
-      <AnimatePresence initial={true} mode="wait">
+      <AnimatePresence initial={false} mode="wait">
         {mainRoute?.children ? (
           <div className="w-72 max-w-full flex-1 h-full shadow border-e-1 border-transparent dark:border-neutral-600 overflow-hidden flex-shrink-0">
             <motion.div
@@ -93,7 +92,7 @@ const Sidebar = () => {
               variants={variants}
               initial="initial"
               animate="animate"
-              exit="exit"
+              exit="initial"
               className="h-full w-full p-2"
             >
               {dynamicNavType ? renderDynamic() : <SubRoutes mainRoute={mainRoute} subRoutes={mainRoute.children} />}

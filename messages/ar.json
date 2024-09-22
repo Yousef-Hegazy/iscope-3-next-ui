@@ -200,6 +200,9 @@
         "date": "تاريخ العقد",
         "contractNo": "رقم العقد",
         "code": "الكود/الرقم",
+        "eitimadRefNo": "الرقم المرجعي منصة اعتماد",
+        "compNo": "رقم المنافسة",
+        "finLinkNo": "رقم الارتباط المالي",
         "owner": "الجهة المالكة/المستفيدة",
         "studyOrg": "جهة الداراسة",
         "consultant": "الاستشاري التنفيذي",
@@ -228,12 +231,16 @@
         "monthlyReport": "محضر تقرير شهري",
         "pullContractReport": "محضر عرض بسحب عقد",
         "availableActions": "الاجراءات المتاح تنفيذها",
-        "mainData": "البيانات الأساسية",
         "requests": "الطلبات",
         "reports": "المحاضر",
         "visits": "الزيارات",
         "completed": "المنتهي",
-        "remaining": "المتبقي"
+        "remaining": "المتبقي",
+        "mainData": "البيانات الأساسية",
+        "executionData": "بيانات التنفيذ",
+        "executingParties": "الجهات المنفذة",
+        "supplementaryData": "البيانات التكميلية",
+        "affiliatedMuns": "البلديات التابعة"
     },
     "studies": {
         "title": "الدراسات",
@@ -250,6 +257,8 @@
         },
         "cancel": "إلغاء",
         "save": "حفظ",
-        "saveAndReturn": "حفظ والعودة"
+        "saveAndReturn": "حفظ والعودة",
+        "arName": "الاسم بالعربي",
+        "enName": "الاسم بالانجليزي"
     }
 }
