@@ -4,7 +4,7 @@ import ArchivedProjects from "@/components/DynamicSidebar/ArchivedProjects";
 import ProjectsUnderExecution from "@/components/DynamicSidebar/ProjectsUnderExecution";
 import MainNavLink from "@/components/Sidebar/MainNavLink";
 import SubRoutes from "@/components/Sidebar/SubRoutes";
-import navConfig from "@/lib/navConfig";
+import navConfig, { NavObject } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 import useClientConfigStore from "@/stores/configStore";
 import useRoutesStore from "@/stores/routesStore";

@@ -4,7 +4,6 @@ import navConfig from "@/lib/navConfig";
 import useRoutesStore from "@/stores/routesStore";
 import { Button } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 
 const BackButton = () => {

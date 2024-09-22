@@ -20,7 +20,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="open-book" className="text-inherit w-5 h-5" />}
+        startContent={<Icon icon="ai" className="text-inherit w-5 h-5" />}
       >
         <p>{t("ai")}</p>
       </Button>
@@ -30,7 +30,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="language" className="text-inherit" />}
+        startContent={<Icon icon="iot" className="text-inherit" />}
       >
         <p>{t("iot")}</p>
       </Button>
@@ -40,7 +40,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="add-home" className="text-inherit" />}
+        startContent={<Icon icon="timeline" className="text-inherit" />}
       >
         <p>{t("schedules")}</p>
       </Button>
@@ -50,7 +50,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="contractor" className="text-inherit" />}
+        startContent={<Icon icon="bi" className="text-inherit" />}
       >
         <p>{t("powerBI")}</p>
       </Button>
@@ -60,7 +60,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="medal" className="text-inherit w-5 h-5" />}
+        startContent={<Icon icon="integration" className="text-inherit w-5 h-5" />}
       >
         <p>{t("integration")}</p>
       </Button>
@@ -70,7 +70,7 @@ const QuickActions = async ({ params: { locale } }: { params: { locale: string }
         variant="bordered"
         size="sm"
         color="primary"
-        startContent={<Icon icon="medal" className="text-inherit w-5 h-5" />}
+        startContent={<Icon icon="gis" className="text-inherit w-5 h-5" />}
       >
         <p>{t("GIS")}</p>
       </Button>

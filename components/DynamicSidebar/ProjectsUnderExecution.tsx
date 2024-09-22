@@ -15,7 +15,7 @@ import InfiniteScrollSidebar from "./InfiniteScrollSidebar";
 const ProjectsUnderExecution = () => {
   const locale = useLocale();
 
-  const t = useTranslations();
+  const t = useTranslations("projects");
 
   const pathname = usePathname();
 
@@ -82,7 +82,7 @@ const ProjectsUnderExecution = () => {
                       }}
                       startContent={<p className="text-xs p-1">{item.percentage}%</p>}
                     >
-                      <p className="text-xs">{t(`projects.status.${item.status}`)}</p>
+                      <p className="text-xs">{t(`status.${item.status}`)}</p>
                     </Chip>
 
                     <Button
@@ -109,7 +109,7 @@ const ProjectsUnderExecution = () => {
         )
       ) : (
         <div className="flex flex-col items-center justify-center">
-          <p>{t("projects.none")}</p>
+          <p>{t("none")}</p>
         </div>
       )}
     </InfiniteScrollSidebar>

@@ -96,14 +96,49 @@
     "mainNav": {
         "home": "Home",
         "projects": "PMO",
-        "studies": "Studies"
+        "studies": "Studies",
+        "transactions": "Transactions",
+        "relatedParties": "Related Parties",
+        "reports": "Reports",
+        "bi": "Business Intelligence"
     },
     "subNav": {
-        "projectsUnderExec": "Projects",
-        "portfolios": "Portfolios",
-        "programs": "Programs",
-        "achivedProjects": "Archived Projects",
-        "studiesManagement": "Studies Management"
+        "projects": {
+            "underExecution": "Projects",
+            "portfolios": "Portfolios",
+            "programs": "Programs",
+            "archived": "Archived Projects"
+        },
+        "studies": {
+            "management": "Studies Management"
+        },
+        "transactions": {
+            "management": "Transaction Management",
+            "visits": "Visits",
+            "requests": "Requests",
+            "reports": "Lectures",
+            "extracts": "Extracts"
+        },
+        "relatedParties": {
+            "management": "Stakeholder Management",
+            "contractors": "Contractors",
+            "supervisorCons": "Supervising Consultants",
+            "owners": "Owners / Beneficiaries",
+            "studyAndDesign": "Design Entities and study",
+            "qualityControlParties": "Quality Control Parties",
+            "departments": "Departments and Sections"
+        },
+        "bi": {
+            "biIntegration": "External Integrators",
+            "biTasks": "Business Intelligence Process Management",
+            "biVisualiztionSettings": "Business Intelligence Statistics Settings Management",
+            "biReportSettings": "Business Intelligence Report Settings Management"
+        },
+        "reports": {
+            "biReports": "Business Intelligence Reports",
+            "reviewDocs": "Document Review",
+            "attendanceAndDeparture": "Employee Attendance and Departure"
+        }
     },
     "dynamicNav": {
         "projects": {

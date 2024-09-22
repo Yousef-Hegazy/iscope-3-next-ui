@@ -96,14 +96,49 @@
     "mainNav": {
         "home": "الرئيسية",
         "projects": "ادارة - PMO",
-        "studies": "الدراسات"
+        "studies": "الدراسات",
+        "transactions": "المعاملات",
+        "relatedParties": "الجهات ذات العلاقة",
+        "reports": "التقارير",
+        "bi": "ذكاء الأعمال"
     },
     "subNav": {
-        "projectsUnderExec": "المشاريع",
-        "portfolios": "المحافظ",
-        "programs": "البرامج",
-        "achivedProjects": "المشاريع المؤرشفة",
-        "studiesManagement": "ادارة الدراسات"
+        "projects": {
+            "underExecution": "المشاريع",
+            "portfolios": "المحافظ",
+            "programs": "البرامج",
+            "archived": "المشاريع المؤرشفة"
+        },
+        "studies": {
+            "management": "ادارة الدراسات"
+        },
+        "transactions": {
+            "management": "ادارة المعاملات",
+            "visits": "الزيارات",
+            "requests": "الطلبات",
+            "reports": "المحاضر",
+            "extracts": "المستخلصات"
+        },
+        "relatedParties": {
+            "management": "ادارة الجهات ذات العلاقة",
+            "contractors": "المقاولين",
+            "supervisorCons": "الاستشاريين المشرفين",
+            "owners": "الجهات المالكة / المستفيدة",
+            "studyAndDesign": "جهات التصاميم والدراسة",
+            "qualityControlParties": "جهات ضبط الجودة",
+            "departments": "الإدارات والاقسام"
+        },
+        "bi": {
+            "biIntegration": "جهات الربط الخارجية",
+            "biTasks": "ادارة العمليات لذكاء الأعمال",
+            "biVisualiztionSettings": "ادارة اعدادات احصائيات ذكاء الأعمال",
+            "biReportSettings": "ادارة اعدادات تقارير ذكاء الأعمال"
+        },
+        "reports": {
+            "biReports": "تقارير ذكاء الأعمال",
+            "reviewDocs": "مراجعة الوثائق",
+            "attendanceAndDeparture": "حضور وانصراف الموظفين"
+        }
     },
     "dynamicNav": {
         "projects": {
