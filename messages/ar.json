@@ -275,7 +275,17 @@
         "executionData": "بيانات التنفيذ",
         "executingParties": "الجهات المنفذة",
         "supplementaryData": "البيانات التكميلية",
-        "affiliatedMuns": "البلديات التابعة"
+        "affiliatedMuns": "البلديات التابعة",
+        "basicPeriod": "المدة الأساسية",
+        "actualPeriod": "المدة الفعلية",
+        "estimatedVal": "القيمة التقديرية",
+        "contractualVal": "القيمة التعاقدية",
+        "contractorBidDiscountRate": "نسبة خصم عطاء المقاول",
+        "contractorBidDiscountValue": "قيمة خصم عطاء المقاول",
+        "advanceDiscountRate": "نسبة خصم سلفة مقدمة",
+        "advanceDiscountValue": "قيمة خصم سلفة مقدمة",
+        "budget": "ميزانية",
+        "initiative": "مبادرة"
     },
     "studies": {
         "title": "الدراسات",
@@ -294,6 +304,9 @@
         "save": "حفظ",
         "saveAndReturn": "حفظ والعودة",
         "arName": "الاسم بالعربي",
-        "enName": "الاسم بالانجليزي"
+        "enName": "الاسم بالانجليزي",
+        "day": "يوم",
+        "sar": "ر.س",
+        "type": "النوع"
     }
 }

@@ -4,7 +4,7 @@ import ArchivedProjects from "@/components/DynamicSidebar/ArchivedProjects";
 import ProjectsUnderExecution from "@/components/DynamicSidebar/ProjectsUnderExecution";
 import MainNavLink from "@/components/Sidebar/MainNavLink";
 import SubRoutes from "@/components/Sidebar/SubRoutes";
-import navConfig from "@/lib/navConfig";
+import navConfig, { NavObject } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 import useClientConfigStore from "@/stores/configStore";
 import useRoutesStore from "@/stores/routesStore";
@@ -27,9 +27,17 @@ const variants: Variants = {
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { mainRoute, setMainRoute } = useRoutesStore();
-  const { dynamicNavType } = useRoutesStore();
-  const { isSidebarOpen } = useClientConfigStore();
+
+  const mainRoute = useRoutesStore((store) => store.mainRoute);
+
+  const setMainRoute = useRoutesStore((store) => store.setMainRoute);
+
+  const dynamicNavType = useRoutesStore((store) => store.dynamicNavType);
+
+  const isSidebarOpen = useClientConfigStore((store) => store.isSidebarOpen);
+
+  const setIsSidebarOpen = useClientConfigStore((store) => store.setIsSidebarOpen);
+
   const sidebarClasses = useMemo(
     () =>
       cn(
@@ -72,6 +80,16 @@ const Sidebar = () => {
     }
   }, [dynamicNavType]);
 
+  const handleMainNavBtnClick = useCallback(
+    (item: NavObject) => {
+      setMainRoute(item);
+      if (!item.children || item.children?.length === 0) {
+        setIsSidebarOpen(false);
+      }
+    },
+    [setIsSidebarOpen, setMainRoute]
+  );
+
   return (
     <div className={sidebarClasses}>
       <ScrollShadow
@@ -80,7 +98,7 @@ const Sidebar = () => {
         className="w-32 h-full max-w-full shadow overflow-x-hidden border-e-1 border-e-transparent flex flex-col items-stretch gap-3 p-3 dark:border-e-neutral-600 flex-shrink-0"
       >
         {navConfig.map((item) => (
-          <MainNavLink key={item.route} item={item} />
+          <MainNavLink handleItemClick={handleMainNavBtnClick} key={item.route} item={item} />
         ))}
       </ScrollShadow>
 

@@ -1,8 +1,8 @@
-import { Input, InputProps } from "@nextui-org/react";
-import { forwardRef, InputHTMLAttributes, useEffect } from "react";
+import { Select, SelectProps } from "@nextui-org/react";
+import { forwardRef, SelectHTMLAttributes, useEffect } from "react";
 import { useStepContext } from "./StepContext";
 
-const StepperInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & InputProps>(
+const StepperSelect = forwardRef<HTMLSelectElement, SelectHTMLAttributes<HTMLSelectElement> & SelectProps>(
   ({ ...props }, ref) => {
     const { setErrors } = useStepContext();
 
@@ -31,7 +31,7 @@ const StepperInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
     }, [props.isInvalid, props.name, setErrors]);
 
     return (
-      <Input
+      <Select
         {...props}
         ref={ref}
         variant={props.variant || "bordered"}
@@ -42,6 +42,6 @@ const StepperInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
   }
 );
 
-StepperInput.displayName = "StepperInput";
+StepperSelect.displayName = "StepperSelect";
 
-export default StepperInput;
+export default StepperSelect;

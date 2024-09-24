@@ -9,12 +9,14 @@ import { useMemo } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
 
-const MainNavLink = ({ item }: { item: NavObject }) => {
-  const { mainRoute, setMainRoute } = useRoutesStore();
-  const locale = useLocale();
-  const path = useMemo(() => getRoute(locale, item?.route || ""), [locale, item?.route]);
-  const { setDynamicNavType } = useRoutesStore();
+const MainNavLink = ({ item, handleItemClick }: { item: NavObject; handleItemClick: (item: NavObject) => void }) => {
+  const mainRoute = useRoutesStore((store) => store.mainRoute);
+
   const t = useTranslations("mainNav");
+
+  const locale = useLocale();
+
+  const path = useMemo(() => getRoute(locale, item?.route || ""), [locale, item?.route]);
 
   const selected = useMemo(() => {
     // const split = pathname.split("/");
@@ -30,10 +32,7 @@ const MainNavLink = ({ item }: { item: NavObject }) => {
         variant={selected ? "shadow" : "light"}
         className="h-max w-full px-2 py-3 flex-shrink-0 flex flex-col gap-2 items-center"
         color={selected ? "primary" : "default"}
-        onClick={(e) => {
-          setMainRoute(item);
-          setDynamicNavType();
-        }}
+        onClick={(e) => handleItemClick(item)}
       >
         <Icon icon={item?.icon || ""} />
 

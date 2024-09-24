@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import StepperInput from "../ui/Stepper/StepperInput";
-import { Divider } from "@nextui-org/react";
+import { Divider, SelectItem } from "@nextui-org/react";
+import StepperSelect from "../ui/Stepper/StepperSelect";
 
 const AddProjectForm = () => {
   const t = useTranslations("projects");
@@ -23,8 +24,8 @@ const AddProjectForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full h-full">
       <Stepper onCancel={() => {}}>
-        <Step icon="id-card" stepKey="step 1" title={t("mainData")}>
-          <div className="w-full flex-1 flex flex-col gap-y-4 p-4 h-full shadow-small rounded-small m-2">
+        <Step icon="id-card" stepKey="step 1" title={t("mainData")} className="p-2">
+          <div className="w-full flex-1 flex flex-col gap-y-4 p-4 h-full shadow-small rounded-small">
             <h1 className="font-semibold text-lg">{t("mainData")}</h1>
 
             <Divider />
@@ -32,7 +33,7 @@ const AddProjectForm = () => {
             <section className="grid grid-cols-1 gap-y-5 gap-x-4 md:grid-cols-2 lg:grid-cols-3">
               <StepperInput
                 label={t("code")}
-                placeholder="123"
+                placeholder={t("code")}
                 {...register("code", { required: true })}
                 isInvalid={!!errors.code}
               />
@@ -41,35 +42,35 @@ const AddProjectForm = () => {
                 label={t("eitimadRefNo")}
                 {...register("refNumber", { required: true })}
                 isInvalid={!!errors.refNumber}
-                placeholder="AEG123"
+                placeholder={t("eitimadRefNo")}
               />
 
               <StepperInput
                 label={t("compNo")}
                 {...register("compNumber", { required: true })}
                 isInvalid={!!errors.compNumber}
-                placeholder="AEG123"
+                placeholder={t("compNo")}
               />
 
               <StepperInput
                 label={commonT("arName")}
                 {...register("nameFl", { required: true })}
                 isInvalid={!!errors.nameFl}
-                placeholder="مشروع الرياض"
+                placeholder={commonT("arName")}
               />
 
               <StepperInput
                 label={commonT("enName")}
                 {...register("nameSl", { required: true })}
                 isInvalid={!!errors.nameSl}
-                placeholder="Riyadh Project"
+                placeholder={commonT("enName")}
               />
 
               <StepperInput
                 label={t("finLinkNo")}
                 {...register("finLinkNumber", { required: true })}
                 isInvalid={!!errors.finLinkNumber}
-                placeholder="145698"
+                placeholder={t("finLinkNo")}
               />
             </section>
           </div>
@@ -79,9 +80,74 @@ const AddProjectForm = () => {
           icon="add-home"
           stepKey="step 2"
           title={t("executionData")}
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col items-center justify-center w-full gap-y-4 p-2"
         >
-          <StepperInput label={t("code")} {...register("test", { required: true })} isInvalid={!!errors.test} />
+          <section className="shadow-small rounded-small p-4 w-full grid gap-y-5 gap-x-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <StepperInput
+              label={t("basicPeriod")}
+              {...register("basicPeriod", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.basicPeriod}
+              placeholder={t("basicPeriod")}
+              endContent={<p className="font-light text-small">{commonT("day")}</p>}
+              type="number"
+            />
+
+            <StepperInput
+              label={t("actualPeriod")}
+              {...register("actualPeriod", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.actualPeriod}
+              placeholder={t("actualPeriod")}
+              endContent={<p className="font-light text-small">{commonT("day")}</p>}
+              type="number"
+            />
+
+            <StepperInput
+              label={t("contractualVal")}
+              {...register("contractualVal", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.contractualVal}
+              placeholder={t("contractualVal")}
+              endContent={<p className="font-light text-small">{commonT("sar")}</p>}
+              type="number"
+            />
+          </section>
+
+          <section className="shadow-small rounded-small p-4 w-full grid gap-y-5 gap-x-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <StepperInput
+              label={t("contractorBidDiscountRate")}
+              {...register("contractorBidDiscountRate", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.contractorBidDiscountRate}
+              placeholder={t("contractorBidDiscountRate")}
+              endContent={<p className="font-light text-small">%</p>}
+              type="number"
+            />
+
+            <StepperInput
+              label={t("contractorBidDiscountValue")}
+              {...register("contractorBidDiscountValue", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.contractorBidDiscountValue}
+              placeholder={t("contractorBidDiscountValue")}
+              endContent={<p className="font-light text-small">{commonT("sar")}</p>}
+              type="number"
+            />
+
+            <StepperInput
+              label={t("advanceDiscountRate")}
+              placeholder={t("advanceDiscountRate")}
+              {...register("advanceDiscountRate", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.advanceDiscountRate}
+              endContent={<p className="font-light text-small">%</p>}
+              type="number"
+            />
+
+            <StepperInput
+              label={t("advanceDiscountValue")}
+              placeholder={t("advanceDiscountValue")}
+              {...register("advanceDiscountValue", { required: true, valueAsNumber: true, min: 0 })}
+              isInvalid={!!errors.advanceDiscountValue}
+              endContent={<p className="font-light text-small">{commonT("sar")}</p>}
+              type="number"
+            />
+          </section>
         </Step>
 
         <Step
@@ -90,7 +156,12 @@ const AddProjectForm = () => {
           title={t("executingParties")}
           className="flex flex-col items-center justify-center"
         >
-          <StepperInput label={t("code")} {...register("test2", { required: true })} isInvalid={!!errors.test2} />
+          <section className="shadow-small rounded-small p-4 w-full grid gap-y-5 gap-x-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <StepperSelect label={commonT("type")} {...register("type", { required: true })} isInvalid={!!errors.type}>
+              <SelectItem key="budget">{t("budget")}</SelectItem>
+              <SelectItem key="initiative">{t("initiative")}</SelectItem>
+            </StepperSelect>
+          </section>
         </Step>
 
         <Step

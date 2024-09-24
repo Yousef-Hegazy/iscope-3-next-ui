@@ -79,7 +79,7 @@ const StepButton = ({ activeStepIndex, index, setActiveStepKey, step, stepsCount
           variant="bordered"
           color={isError ? "danger" : activeStepIndex >= index ? "primary" : "default"}
           className="flex-shrink-0 text-lg relative overflow-hidden p-2 w-max h-max max-w-full max-h-full"
-          onClick={() => setActiveStepKey(stepKey)}
+          onPress={() => setActiveStepKey(stepKey)}
         >
           <motion.div
             className={cn(

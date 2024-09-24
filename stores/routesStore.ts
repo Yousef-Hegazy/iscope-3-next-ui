@@ -20,7 +20,7 @@ const routesStore: StateCreator<RoutesState & RoutesActions> = (set) => ({
   dynamicNavType: undefined,
   setDynamicNavType: (dynamicNavType) => set({ dynamicNavType }),
   setSubRoutes: (subRoutes) => set({ subRoutes }),
-  setMainRoute: (mainRoute) => set({ mainRoute }),
+  setMainRoute: (mainRoute) => set({ mainRoute, dynamicNavType: undefined }),
 });
 
 const useRoutesStore = create<RoutesState & RoutesActions>()(

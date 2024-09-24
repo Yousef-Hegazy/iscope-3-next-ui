@@ -266,7 +266,17 @@
         "executionData": "Execution Data",
         "executingParties": "Executing Parties",
         "supplementaryData": "Supplementary Data",
-        "affiliatedMuns": "Affiliated Municipalities"
+        "affiliatedMuns": "Affiliated Municipalities",
+        "basicPeriod": "Basic Period",
+        "actualPeriod": "Actual Period",
+        "estimatedVal": "Estimated Value",
+        "contractualVal": "Contract Value",
+        "contractorBidDiscountRate": "Contractor Bid Discount Percentage",
+        "contractorBidDiscountValue": "Contractor Bid Discount Value",
+        "advanceDiscountRate": "Advance Discount Percentage",
+        "advanceDiscountValue": "Advance Discount Value",
+        "budget": "budget",
+        "initiative": "initiative"
     },
     "studies": {
         "title": "Studies",
@@ -285,6 +295,9 @@
         "save": "Save",
         "saveAndReturn": "Save & Return",
         "arName": "Name in Arabic",
-        "enName": "Name in English"
+        "enName": "Name in English",
+        "day": "Day",
+        "sar": "SAR",
+        "type": "Type"
     }
 }

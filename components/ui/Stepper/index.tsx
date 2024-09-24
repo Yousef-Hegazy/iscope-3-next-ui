@@ -33,11 +33,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
 
   const [activeStepKey, setActiveStepKey] = useState(steps[0]);
 
-  const activeStepIndex = useMemo(
-    () =>
-      activeStepKey ? (children as ReactElement<StepProps>[])?.map((c) => c?.props.stepKey).indexOf(activeStepKey) : -1,
-    [activeStepKey, children]
-  );
+  const activeStepIndex = useMemo(() => (activeStepKey ? steps.indexOf(activeStepKey) : -1), [activeStepKey, steps]);
 
   const handlePrev = useCallback(() => {
     const index = activeStepIndex - 1;
@@ -99,7 +95,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
           <div className="flex flex-row gap-x-2">
             <Button
               size="sm"
-              onClick={handlePrev}
+              onPress={handlePrev}
               color={activeStepIndex === 0 ? "default" : "primary"}
               disabled={activeStepIndex === 0}
               startContent={<Icon icon="menu-arrow-left" className="w-4 h-4 rtl:rotate-180" />}
@@ -109,7 +105,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
 
             <Button
               size="sm"
-              onClick={handleNext}
+              onPress={handleNext}
               color={activeStepIndex === stepsCount - 1 ? "default" : "primary"}
               disabled={activeStepIndex === stepsCount - 1}
               endContent={<Icon icon="menu-arrow-right" className="w-4 h-4 rtl:rotate-180" />}
@@ -126,7 +122,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
                 color="success"
                 type="submit"
                 variant="solid"
-                onClick={() => setIsReturn?.(false)}
+                onPress={() => setIsReturn?.(false)}
               >
                 {t("save")}
               </Button>
@@ -139,7 +135,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
                 color="primary"
                 type="submit"
                 variant="ghost"
-                onClick={() => setIsReturn?.(true)}
+                onPress={() => setIsReturn?.(true)}
               >
                 {t("saveAndReturn")}
               </Button>
@@ -152,7 +148,7 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
                 color="danger"
                 variant="light"
                 type="button"
-                onClick={onCancel}
+                onPress={onCancel}
               >
                 {t("cancel")}
               </Button>
