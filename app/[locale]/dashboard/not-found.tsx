@@ -1,9 +1,9 @@
 import BackButton from "@/components/ui/BackButton";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const NotFound = async () => {
-  const t = await getTranslations();
+const NotFound = () => {
+  const t = useTranslations("common");
 
   return (
     <main className="relative p-4 flex flex-col items-center justify-start pt-20 w-full h-full gap-3">

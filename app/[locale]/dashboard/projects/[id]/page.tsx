@@ -7,6 +7,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AvailableActions from "@/components/projects/AvailableActions";
+import AppTooltip from "@/components/ui/AppTooltip";
 
 const getProject = async (id: string, locale: string): Promise<Project | null> => {
   try {
@@ -43,6 +44,7 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
     }
 
     const t = await getTranslations("projects");
+    const commonT = await getTranslations("common");
 
     return (
       <main className="flex flex-col flex-1 w-full h-full gap-3 p-4">
@@ -64,16 +66,18 @@ const ProjectDetails = async ({ params: { id, locale } }: { params: { id: string
               <Icon icon="more-vertical" />
             </Button>
 
-            <Button
-              variant="light"
-              as={Link}
-              href={`/${locale}/dashboard/projects`}
-              isIconOnly
-              size="sm"
-              title="Go back"
-            >
-              <Icon icon={locale === "ar" ? "menu-arrow-left" : "menu-arrow-right"} />
-            </Button>
+            <AppTooltip content={commonT("goBack")}>
+              <Button
+                variant="light"
+                as={Link}
+                href={`/${locale}/dashboard/projects`}
+                isIconOnly
+                size="sm"
+                title={commonT("goBack")}
+              >
+                <Icon icon={locale === "ar" ? "menu-arrow-left" : "menu-arrow-right"} />
+              </Button>
+            </AppTooltip>
           </div>
         </div>
 

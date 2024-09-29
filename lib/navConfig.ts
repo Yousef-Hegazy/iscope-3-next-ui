@@ -1,9 +1,9 @@
 export type DynamicNavType =
   | "projects.underExecution"
-  | "projects.archived"
+  | "projects.finished"
   | "projects.portfolios"
   | "projects.programs"
-  | "studies.management"
+  | "advertisementAndCompetition.management"
   | "transactions.visits"
   | "transactions.requests"
   | "transactions.reports"
@@ -45,6 +45,12 @@ const navConfig: NavObject[] = [
     route: "dashboard/projects",
     children: [
       {
+        title: "underExecution",
+        icon: "hourglass",
+        route: "dashboard/projects",
+        key: "projects.underExecution",
+      },
+      {
         title: "programs",
         icon: "program",
         route: "dashboard/projects",
@@ -58,31 +64,25 @@ const navConfig: NavObject[] = [
         key: "projects.portfolios",
         asSubLink: true,
       },
-      {
-        title: "underExecution",
-        icon: "project-outlined",
-        route: "dashboard/projects",
-        key: "projects.underExecution",
-      },
 
       {
-        title: "archived",
-        icon: "archive",
-        route: "dashboard/projects/archived",
-        key: "projects.archived",
+        title: "finished",
+        icon: "finished",
+        route: "dashboard/projects/finished",
+        key: "projects.finished",
       },
     ],
   },
   {
-    title: "studies",
+    title: "advertisementAndCompetition",
     icon: "open-book",
-    route: "dashboard/studies",
+    route: "dashboard/competition",
     children: [
       {
         title: "management",
         icon: "open-book",
         route: "dashboard/studies",
-        key: "studies.management",
+        key: "advertisementAndCompetition.management",
         asSubLink: true,
       },
     ],
@@ -102,7 +102,7 @@ const navConfig: NavObject[] = [
       {
         title: "requests",
         icon: "transactions",
-        route: "dashboard/transactions",
+        route: "dashboard/transactions/requests",
         key: "transactions.requests",
         asSubLink: true,
       },

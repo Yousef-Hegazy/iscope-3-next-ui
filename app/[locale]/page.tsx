@@ -12,7 +12,7 @@ import { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@
 import Icon from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import { Button, Chip, Divider } from "@nextui-org/react";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,9 +54,9 @@ const carouselImags = [
   },
 ];
 
-const LandingPage = async ({ params: { locale } }: { params: { locale: string } }) => {
-  unstable_setRequestLocale(locale);
-  const t = await getTranslations("landingPage");
+const LandingPage = ({ params: { locale } }: { params: { locale: string } }) => {
+  // unstable_setRequestLocale(locale);
+  const t = useTranslations("landingPage");
 
   return (
     <AppScrollShadow id="main" as="main" size={5} hideScrollBar className="flex-1 overflow-x-hidden max-w-full">

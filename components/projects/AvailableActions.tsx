@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
 
@@ -23,7 +23,7 @@ const AvailableActions = () => {
   const t = useTranslations("projects");
 
   return (
-    <>
+    <Fragment>
       <AppTooltip closeDelay={0} title={t("availableActions")} content={t("availableActions")}>
         <Button variant="light" isIconOnly size="sm" onClick={() => setIsOpen(true)}>
           <Icon icon="stack" />
@@ -33,7 +33,7 @@ const AvailableActions = () => {
       <Modal size="xs" isOpen={isOpen} onOpenChange={setIsOpen}>
         <ModalContent className="absolute end-0 h-full m-0 sm:m-0 overflow-y-auto">
           {(onClose) => (
-            <>
+            <Fragment>
               <ModalHeader>
                 <h1>{t("availableActions")}</h1>
               </ModalHeader>
@@ -143,11 +143,11 @@ const AvailableActions = () => {
                   />
                 </Listbox>
               </ModalBody>
-            </>
+            </Fragment>
           )}
         </ModalContent>
       </Modal>
-    </>
+    </Fragment>
   );
 };
 

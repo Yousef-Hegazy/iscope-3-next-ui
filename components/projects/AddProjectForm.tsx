@@ -15,6 +15,7 @@ const AddProjectForm = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    control,
   } = useForm();
 
   const onSubmit = useCallback((data: any) => {
@@ -157,7 +158,13 @@ const AddProjectForm = () => {
           className="flex flex-col items-center justify-center"
         >
           <section className="shadow-small rounded-small p-4 w-full grid gap-y-5 gap-x-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <StepperSelect label={commonT("type")} {...register("type", { required: true })} isInvalid={!!errors.type}>
+            <StepperSelect
+              control={control}
+              name="type"
+              label={t("type")}
+              placeholder={t("type")}
+              rules={{ required: true }}
+            >
               <SelectItem key="budget">{t("budget")}</SelectItem>
               <SelectItem key="initiative">{t("initiative")}</SelectItem>
             </StepperSelect>

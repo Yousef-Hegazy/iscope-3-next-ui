@@ -89,14 +89,17 @@
         "ai": "Artificial Intelligence",
         "iot": "Internet of Things",
         "schedules": "Timelines",
+        "timelines": "Timelines",
         "powerBI": "Business Intelligence",
         "integration": "Integration",
-        "GIS": "Geographic Information Systems"
+        "GIS": "Geographic Information Systems",
+        "addProject": "Add a Project"
     },
     "mainNav": {
         "home": "Home",
         "projects": "PMO",
         "studies": "Studies",
+        "advertisementAndCompetition": "Advertisements and Competitions",
         "transactions": "Transactions",
         "relatedParties": "Related Parties",
         "reports": "Reports",
@@ -107,10 +110,16 @@
             "underExecution": "Projects",
             "portfolios": "Portfolios",
             "programs": "Programs",
-            "archived": "Archived Projects"
+            "archived": "Archived Projects",
+            "finished": "Finished Projects"
         },
         "studies": {
             "management": "Studies Management"
+        },
+        "advertisementAndCompetition": {
+            "management": "Advertisements and Competitions Management",
+            "announcements": "Advertisements",
+            "competitions": "Competitions"
         },
         "transactions": {
             "management": "Transaction Management",
@@ -146,8 +155,6 @@
             "archived": "Archived Projects"
         }
     },
-    "notFound": "The requested page does not exist",
-    "backToHome": "Back to the home page",
     "settings": {
         "title": "Theme Settings",
         "color": "Color",
@@ -278,6 +285,11 @@
         "budget": "budget",
         "initiative": "initiative"
     },
+    "requests": {
+        "addIR": "Add an Items Inspection Request",
+        "notFound": "No Requests",
+        "chooseProject": "Choose a Project"
+    },
     "studies": {
         "title": "Studies",
         "management": "Studies Management"
@@ -298,6 +310,9 @@
         "enName": "Name in English",
         "day": "Day",
         "sar": "SAR",
-        "type": "Type"
+        "type": "Type",
+        "notFound": "The requested page does not exist",
+        "backToHome": "Back to the home page",
+        "goBack": "Go Back"
     }
 }

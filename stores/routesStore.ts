@@ -14,7 +14,9 @@ export interface RoutesActions {
   setDynamicNavType: (name?: DynamicNavType) => void;
 }
 
-const routesStore: StateCreator<RoutesState & RoutesActions> = (set) => ({
+export type RoutesStoreType = RoutesState & RoutesActions;
+
+const routesStore: StateCreator<RoutesStoreType> = (set) => ({
   mainRoute: null,
   subRoutes: [],
   dynamicNavType: undefined,
@@ -23,7 +25,7 @@ const routesStore: StateCreator<RoutesState & RoutesActions> = (set) => ({
   setMainRoute: (mainRoute) => set({ mainRoute, dynamicNavType: undefined }),
 });
 
-const useRoutesStore = create<RoutesState & RoutesActions>()(
+const useRoutesStore = create<RoutesStoreType>()(
   persist(routesStore, {
     name: "routes",
     storage: createJSONStorage(() => localStorage),

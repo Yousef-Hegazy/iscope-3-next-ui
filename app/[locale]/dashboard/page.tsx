@@ -1,10 +1,10 @@
 import SectionDescription from "@/components/LandingPage/Common/SectionDescription";
 import SectionH1 from "@/components/LandingPage/Common/SectionH1";
 import { Chip } from "@nextui-org/react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
-export default async function DashboardPage({ params: { locale } }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale });
+export default function DashboardPage({ params: { locale } }: { params: { locale: string } }) {
+  const t = useTranslations();
 
   return (
     <main className="p-4 text-foreground">

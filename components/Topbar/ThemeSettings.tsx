@@ -1,13 +1,13 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Button, Divider, Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { memo, Suspense, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import AppTooltip from "../ui/AppTooltip";
 import Icon from "../ui/Icon";
-import { cn } from "@/lib/utils";
 
 const lightColors: { [key: string]: string } = {
   orange: `hsl(24.6, 95%, 53.1%)`,
@@ -55,7 +55,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
   };
 
   return (
-    <>
+    <Fragment>
       <Button
         variant="light"
         type="button"
@@ -71,7 +71,7 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
       <Modal size="xs" hideCloseButton isOpen={isOpen} onOpenChange={setIsOpen}>
         <ModalContent className="absolute start-0 h-full m-0 sm:m-0 overflow-y-auto">
           {(onClose) => (
-            <>
+            <Fragment>
               <ModalHeader>
                 <div className="flex flex-row gap-2 items-center justify-between w-full">
                   <p>{t("title")}</p>
@@ -205,23 +205,13 @@ const ThemeSettings = memo(({ className }: { className?: string }) => {
                   </div>
                 </div>
               </ModalBody>
-            </>
+            </Fragment>
           )}
         </ModalContent>
       </Modal>
-    </>
+    </Fragment>
   );
 });
-
-// ThemeSettingsComponent.displayName = "ThemeSettingsComponent";
-
-// const ThemeSettings = memo(({className}: {className?: string}) => {
-//   return (
-//     <Suspense>
-//       <ThemeSettingsComponent />
-//     </Suspense>
-//   );
-// });
 
 ThemeSettings.displayName = "ThemeSettings";
 

@@ -1,12 +1,10 @@
 import Icon from "@/components/ui/Icon";
 import { Button } from "@nextui-org/react";
-import { getLocale, getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import React from "react";
 
-const ProjectsPage = async () => {
-  const t = await getTranslations("projects");
-  const locale = await getLocale();
+const ProjectsPage = ({ params: { locale } }: { params: { locale: string } }) => {
+  const t = useTranslations("projects");
 
   return (
     <main className="h-full w-full">

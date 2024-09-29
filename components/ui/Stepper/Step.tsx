@@ -50,7 +50,7 @@ export type StepProps = {
 
 export const Step = memo(({ children, stepKey, title, className }: StepProps) => {
   const [errors, setErrors] = useState<{ [k: string]: boolean }>({});
-  const { activeStepKey, setErrorSteps, errorSteps } = useStepperContext();
+  const { activeStepKey, setErrorSteps } = useStepperContext();
 
   useEffect(() => {
     const hasError = Object.values(errors).some((v) => v === true);
@@ -72,7 +72,7 @@ export const Step = memo(({ children, stepKey, title, className }: StepProps) =>
     <StepProvider stepKey={stepKey} errors={errors} setErrors={setErrors}>
       <motion.div
         key={title}
-        className={cn("w-full flex-1", className)}
+        className={cn("flex-1 w-full h-full", className)}
         variants={contentVars}
         aria-label="Step contents"
         initial="initial"

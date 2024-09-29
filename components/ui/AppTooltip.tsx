@@ -20,7 +20,14 @@ const AppTooltip: FC<TooltipProps> = ({ children, ...props }) => {
   }, [isMobile]);
 
   return (
-    <Tooltip isOpen={isMobile ? open : undefined} {...props}>
+    <Tooltip
+      showArrow={false}
+      classNames={{
+        content: "bg-foreground/80 backdrop-blur-3xl text-background",
+      }}
+      isOpen={isMobile ? open : undefined}
+      {...props}
+    >
       <span className="content" onMouseEnter={handleOpen} onMouseLeave={handleClose}>
         {children}
       </span>

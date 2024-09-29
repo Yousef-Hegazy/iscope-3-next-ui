@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
 const BackButton = () => {
-  const t = useTranslations();
+  const t = useTranslations("common");
   const locale = useLocale();
   const { setMainRoute } = useRoutesStore();
 

@@ -1,12 +1,12 @@
 import ClientInitializers from "@/components/ClientInitializers";
 import SVGs from "@/components/ui/SVGs";
-import { locales } from "@/lib/i18n";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { routing } from "../i18n/routing";
 import "./globals.css";
 import Providers from "./providers";
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LangLayout({
@@ -42,11 +42,10 @@ export default async function LangLayout({
 }>) {
   unstable_setRequestLocale(locale);
 
-  const header = headers(); // new lines
-  const localeHeader = header.get("x-next-intl-locale"); // new lines
+  const header = headers();
+  const localeHeader = header.get("x-next-intl-locale");
   if (localeHeader === null) {
-    // new lines
-    notFound(); // new lines
+    notFound();
   }
 
   const messages = await getMessages();

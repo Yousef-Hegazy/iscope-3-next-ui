@@ -4,6 +4,7 @@ import { Card, CardBody, colors } from "@nextui-org/react";
 import momentH from "moment-hijri";
 import AppTooltip from "../ui/AppTooltip";
 import ProjectCardChart from "./ProjectCardChart";
+import { Fragment } from "react";
 
 const yDay = momentH().add(-1, "day");
 
@@ -69,10 +70,10 @@ const ProjectFirstTab = ({ project, locale, t }: { project: Project; locale: str
     {
       title: t("financialPercentage"),
       pie: [
-        { name: "completed", value: 60, fill: colors.cyan[600] },
+        { name: "completed", value: 45, fill: colors.cyan[600] },
         {
           name: "remaining",
-          value: 40,
+          value: 65,
           fill: colors.cyan[900],
         },
       ],
@@ -88,7 +89,7 @@ const ProjectFirstTab = ({ project, locale, t }: { project: Project; locale: str
   ];
 
   return (
-    <>
+    <Fragment>
       <Card
         shadow="sm"
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-evenly items-start gap-4 px-4 py-3"
@@ -169,7 +170,7 @@ const ProjectFirstTab = ({ project, locale, t }: { project: Project; locale: str
           </Card>
         ))}
       </div>
-    </>
+    </Fragment>
   );
 };
 

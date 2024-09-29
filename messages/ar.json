@@ -89,14 +89,17 @@
         "ai": "الذكاء اصطناعي",
         "iot": "انترنت الأشياء",
         "schedules": "الجداول الزمنية",
+        "timelines": "الجداول الزمنية",
         "powerBI": "ذكاء الأعمال",
         "integration": "التكامل",
-        "GIS": "نظم المعلومات الجغرافية"
+        "GIS": "نظم المعلومات الجغرافية",
+        "addProject": "اضافة مشروع"
     },
     "mainNav": {
         "home": "الرئيسية",
         "projects": "ادارة - PMO",
         "studies": "الدراسات",
+        "advertisementAndCompetition": "الاعلانات والمنافسات",
         "transactions": "المعاملات",
         "relatedParties": "الجهات ذات العلاقة",
         "reports": "التقارير",
@@ -107,10 +110,16 @@
             "underExecution": "المشاريع",
             "portfolios": "المحافظ",
             "programs": "البرامج",
-            "archived": "المشاريع المؤرشفة"
+            "archived": "المشاريع المؤرشفة",
+            "finished": "المشاريع المنتهية"
         },
         "studies": {
             "management": "ادارة الدراسات"
+        },
+        "advertisementAndCompetition": {
+            "management": "ادارة الاعلانات والمنافسات",
+            "announcements": "الاعلانات",
+            "competitions": "المنافسات"
         },
         "transactions": {
             "management": "ادارة المعاملات",
@@ -146,8 +155,6 @@
             "archived": "المشاريع المؤرشفة"
         }
     },
-    "notFound": "الصفحة المطلوبة غير موجودة",
-    "backToHome": "العودة للصفحة الرئيسية",
     "settings": {
         "title": "اعدادات الواجهة",
         "color": "اللون",
@@ -287,6 +294,11 @@
         "budget": "ميزانية",
         "initiative": "مبادرة"
     },
+    "requests": {
+        "addIR": "اضافة طلب استلام بنود",
+        "notFound": "لا يوجد طلبات",
+        "chooseProject": "اختر مشروع"
+    },
     "studies": {
         "title": "الدراسات",
         "management": "ادارة الدراسات"
@@ -307,6 +319,9 @@
         "enName": "الاسم بالانجليزي",
         "day": "يوم",
         "sar": "ر.س",
-        "type": "النوع"
+        "type": "النوع",
+        "notFound": "الصفحة المطلوبة غير موجودة",
+        "backToHome": "العودة للصفحة الرئيسية",
+        "goBack": "العودة"
     }
 }

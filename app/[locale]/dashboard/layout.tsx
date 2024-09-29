@@ -1,6 +1,6 @@
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export default function DashboardLayout({
   children,

@@ -73,7 +73,7 @@ const Sidebar = () => {
     switch (dynamicNavType) {
       case "projects.underExecution":
         return <ProjectsUnderExecution />;
-      case "projects.archived":
+      case "projects.finished":
         return <ArchivedProjects />;
       default:
         return null;
