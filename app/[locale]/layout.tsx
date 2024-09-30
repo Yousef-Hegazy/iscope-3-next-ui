@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "../i18n/routing";
 import "./globals.css";
 import Providers from "./providers";
+import { Metadata } from "next";
 
 const inter = localFont({
   src: "../../assets/fonts/Bahij_TheSansArabic-Plain.ttf",
@@ -26,7 +27,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
   return {
     title: t("landingPage.title"),
-  };
+    description: t("landingPage.description"),
+    icons: ["icon.ico", "favicon.ico"],
+  } satisfies Metadata;
 }
 
 export function generateStaticParams() {
