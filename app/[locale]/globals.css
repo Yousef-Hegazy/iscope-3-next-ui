@@ -13,6 +13,15 @@
     @apply bg-background text-foreground box-border;
   }
 
+  /* [data-slot="calendar"] [data-slot="prev-button"]>svg,
+  [data-slot="calendar"] [data-slot="next-button"]>svg {
+    @apply rtl:rotate-180;
+  } */
+
+  [data-slot="calendar"] [data-slot="header-wrapper"] {
+    @apply rtl:flex-row-reverse;
+  }
+
 }
 
 @layer utilities {

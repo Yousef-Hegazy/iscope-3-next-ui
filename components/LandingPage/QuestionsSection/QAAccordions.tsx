@@ -437,7 +437,7 @@ const QAAccordions = () => {
               request.
             </Step>
             <Step>
-              4. The authorized person (municipality) approves the consultant to request the quantity schedule
+              4. The authorized person (municipality) approves the executiveConsultant to request the quantity schedule
               modification.
             </Step>
             <Step>

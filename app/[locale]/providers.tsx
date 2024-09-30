@@ -2,11 +2,10 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useLocale } from "next-intl";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
-import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 const themes = [
   "light-yellow",
@@ -46,15 +45,44 @@ const client = new QueryClient({
   },
 });
 
+// const umAlqura = new IslamicUmalquraCalendar();
+// const greg = new GregorianCalendar();
+
 const Providers = ({ children }: { children: ReactNode }) => {
-  const locale = useLocale();
   const router = useRouter();
+  // const locale = useLocale();
+
+  // const localeOpts = useMemo(
+  //   () =>
+  //     locale === "ar"
+  //       ? {
+  //           lang: "ar-SA",
+  //           localeString: new Intl.Locale("ar", {
+  //             calendar: "islamic",
+  //             hourCycle: "h12",
+  //             language: "ar",
+  //             region: "SA",
+  //           }).toString(),
+  //           dir: "rtl",
+  //         }
+  //       : {
+  //           lang: "en-US",
+  //           localeString: new Intl.Locale("en", {
+  //             calendar: "gregory",
+  //             hourCycle: "h12",
+  //             language: "en",
+  //             region: "SA",
+  //           }).toString(),
+  //           dir: "ltr",
+  //         },
+  //   [locale]
+  // );
 
   return (
     <NextUIProvider
       className="h-full overflow-hidden flex flex-col"
-      locale={locale === "ar" ? "ar-SA" : "en-US"}
       navigate={router.push}
+      // locale={localeOpts.localeString}
     >
       <NextThemeProvider attribute="class" defaultTheme={themes[0]} themes={themes}>
         <QueryClientProvider client={client}>

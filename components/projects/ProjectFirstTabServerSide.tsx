@@ -129,10 +129,10 @@ const ProjectFirstTab = ({ project, locale, t }: { project: Project; locale: str
           </div>
         </AppTooltip>
 
-        <AppTooltip content={project.consultant} closeDelay={3} className="max-w-xs">
+        <AppTooltip content={project.executiveConsultant} closeDelay={3} className="max-w-xs">
           <div className="flex flex-col gap-0.5 items-start justify-start">
-            <p className="text-neutral-400 font-semibold text-xs">{t("consultant")}</p>
-            <p className="font-normal line-clamp-2 text-small">{project.consultant}</p>
+            <p className="text-neutral-400 font-semibold text-xs">{t("executiveConsultant")}</p>
+            <p className="font-normal line-clamp-2 text-small">{project.executiveConsultant}</p>
           </div>
         </AppTooltip>
 

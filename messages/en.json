@@ -131,7 +131,7 @@
         "relatedParties": {
             "management": "Stakeholder Management",
             "contractors": "Contractors",
-            "supervisorCons": "Supervising Consultants",
+            "supervisorCons": "Supervising executiveConsultants",
             "owners": "Owners / Beneficiaries",
             "studyAndDesign": "Design Entities and study",
             "qualityControlParties": "Quality Control Parties",
@@ -152,7 +152,8 @@
     "dynamicNav": {
         "projects": {
             "underExecution": "Projects",
-            "archived": "Archived Projects"
+            "archived": "Archived Projects",
+            "finished": "Finished Projects"
         }
     },
     "settings": {
@@ -238,10 +239,27 @@
         "finLinkNo": "Financial Link Number",
         "owner": "Owner/Beneficiary",
         "studyOrg": "Study Entity",
-        "consultant": "Executive Consultant",
+        "executiveConsultant": "Executive executiveConsultant",
         "contractor": "Contractor",
         "department": "Department",
+        "area": "Area",
+        "city": "City",
+        "budgetClassification": "Budget Classification",
+        "purposeOf": "Purpose of the Project",
+        "notes": "Notes",
+        "addLocation": "Add Location",
+        "firstDoor": "First Door",
+        "secondDoor": "Second Door",
+        "thirdDoor": "Third Door",
+        "fourthDoor": "Fourth Door",
         "type": "Type | Subtype",
+        "typeOnly": "Type",
+        "subType": "Subtype",
+        "contractionType": "Contract Type",
+        "studyConsultant": "Study Consultant",
+        "lumpSum": "Lump Sum",
+        "unitPrice": "Unit Price",
+        "costPlus": "Cost Plus",
         "percentageOnSite": "Site Completion Technical Receipts",
         "percentageOnSitePayable": "Site Completion Payable Financial Technical Receipts",
         "plannedPercentage": "Planned Completion Timelines",
@@ -313,6 +331,8 @@
         "type": "Type",
         "notFound": "The requested page does not exist",
         "backToHome": "Back to the home page",
-        "goBack": "Go Back"
+        "goBack": "Go Back",
+        "hijri": "Hijri",
+        "gregorian": "Gregorian"
     }
 }

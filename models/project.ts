@@ -6,7 +6,7 @@ export interface Project {
   studyEntity: string;
   owner: string;
   contractor: string;
-  consultant: string;
+  executiveConsultant: string;
   department: string;
   type: string;
 }

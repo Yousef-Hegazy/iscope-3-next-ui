@@ -72,7 +72,7 @@ export const Step = memo(({ children, stepKey, title, className }: StepProps) =>
     <StepProvider stepKey={stepKey} errors={errors} setErrors={setErrors}>
       <motion.div
         key={title}
-        className={cn("flex-1 w-full h-full", className)}
+        className={cn("flex-1 w-full h-fit min-h-full", className)}
         variants={contentVars}
         aria-label="Step contents"
         initial="initial"

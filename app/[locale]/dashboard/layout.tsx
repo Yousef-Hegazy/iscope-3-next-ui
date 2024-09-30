@@ -1,6 +1,11 @@
+import { routing } from "@/app/i18n/routing";
 import AppScrollShadow from "@/components/ui/AppScrollShadow";
 import { unstable_setRequestLocale } from "next-intl/server";
 import React, { ReactNode } from "react";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default function DashboardLayout({
   children,

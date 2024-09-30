@@ -4,7 +4,7 @@ import SidebarControl from "@/components/Topbar/SidebarControl";
 import ThemeModeSwitch from "@/components/Topbar/ThemeModeSwitch";
 import ThemeSettings from "@/components/Topbar/ThemeSettings";
 import Icon from "@/components/ui/Icon";
-import { Button, Listbox, ListboxItem } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 

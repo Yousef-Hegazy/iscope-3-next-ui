@@ -146,8 +146,8 @@ const Stepper = memo(({ children, onCancel, hideSubmit, setIsReturn }: Props) =>
                 startContent={<Icon icon="close" className="w-5 h-5" />}
                 size="sm"
                 color="danger"
-                variant="light"
                 type="button"
+                variant="bordered"
                 onPress={onCancel}
               >
                 {t("cancel")}

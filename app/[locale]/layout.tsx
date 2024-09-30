@@ -51,7 +51,7 @@ export default async function LangLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html lang={locale === "ar" ? "ar-SA" : "en-US"} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={locale === "ar" ? inter.className : interEnglish.className}>
         <NextIntlClientProvider messages={messages}>
           <Providers>

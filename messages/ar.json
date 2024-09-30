@@ -152,7 +152,8 @@
     "dynamicNav": {
         "projects": {
             "underExecution": "المشاريع",
-            "archived": "المشاريع المؤرشفة"
+            "archived": "المشاريع المؤرشفة",
+            "finished": "المشاريع المنتهية"
         }
     },
     "settings": {
@@ -247,10 +248,27 @@
         "finLinkNo": "رقم الارتباط المالي",
         "owner": "الجهة المالكة/المستفيدة",
         "studyOrg": "جهة الداراسة",
-        "consultant": "الاستشاري التنفيذي",
+        "executiveConsultant": "الاستشاري التنفيذي",
+        "studyConsultant": "استشاري الدراسة",
         "contractor": "المقاول",
         "department": "الادارة",
+        "area": "المنطقة",
+        "city": "المدينة",
+        "budgetClassification": "تصنيف الميزانية",
+        "purposeOf": "الغرض منه",
+        "notes": "ملاحظات",
+        "addLocation": "اضافة موقع",
+        "firstDoor": "الباب الأول",
+        "secondDoor": "الباب الثاني",
+        "thirdDoor": "الباب الثالث",
+        "fourthDoor": "الباب الرابع",
         "type": "النوع | النوع الفرعي",
+        "typeOnly": "النوع",
+        "subType": "النوع الفرعي",
+        "contractionType": "نوع التعاقد",
+        "lumpSum": "مبلغ مقطوع",
+        "unitPrice": "سعر الوحدة",
+        "costPlus": "التكلفة زائد هامش الربح",
         "percentageOnSite": "الانجاز بالمواقع الاستلامات الفنية",
         "percentageOnSitePayable": "الانجاز بالمواقع القابل للصرف الاستلامات المالية الفنية",
         "plannedPercentage": "الانجاز المخطط الجداول الزمنية",
@@ -322,6 +340,8 @@
         "type": "النوع",
         "notFound": "الصفحة المطلوبة غير موجودة",
         "backToHome": "العودة للصفحة الرئيسية",
-        "goBack": "العودة"
+        "goBack": "العودة",
+        "hijri": "هجري",
+        "gregorian": "ميلادي"
     }
 }
