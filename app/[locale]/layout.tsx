@@ -29,6 +29,18 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     title: t("landingPage.title"),
     description: t("landingPage.description"),
     icons: ["icon.ico", "favicon.ico"],
+    twitter: {
+      card: "summary_large_image",
+      title: t("landingPage.title"),
+      description: t("landingPage.description"),
+      images: ["icon.ico", "favicon.ico"],
+    },
+    openGraph: {
+      type: "website",
+      title: t("landingPage.title"),
+      description: t("landingPage.description"),
+      images: ["icon.ico", "favicon.ico"],
+    },
   } satisfies Metadata;
 }
 
