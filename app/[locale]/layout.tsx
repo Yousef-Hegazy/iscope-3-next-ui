@@ -30,16 +30,18 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     description: t("landingPage.aboutIscope"),
     icons: ["icon.ico", "favicon.ico"],
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: t("landingPage.title"),
       description: t("landingPage.aboutIscope"),
-      images: ["icon.ico", "favicon.ico"],
+      images: ["./icon.ico", "./favicon.ico"],
     },
     openGraph: {
       type: "website",
       title: t("landingPage.title"),
       description: t("landingPage.aboutIscope"),
-      images: ["icon.ico", "favicon.ico"],
+      images: ["./icon.ico", "./favicon.ico"],
+      siteName: "iScope",
+      url: "https://iscope-3-next-ui.vercel.app/",
     },
   } satisfies Metadata;
 }

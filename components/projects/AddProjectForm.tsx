@@ -8,8 +8,10 @@ import { useForm } from "react-hook-form";
 import StepperDatePicker from "../ui/Stepper/StepperDatePicker";
 import StepperInput from "../ui/Stepper/StepperInput";
 import StepperSelect from "../ui/Stepper/StepperSelect";
+import { useRouter } from "next/navigation";
 
 const AddProjectForm = () => {
+  const router = useRouter();
   const t = useTranslations("projects");
   const commonT = useTranslations("common");
   const {
@@ -25,7 +27,7 @@ const AddProjectForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full h-full">
-      <Stepper onCancel={() => {}}>
+      <Stepper onCancel={() => router.back()}>
         <Step icon="id-card" stepKey="step 1" title={t("mainData")} className="p-2">
           <div className="w-full flex-1 flex flex-col gap-y-4 p-4 h-full shadow-small rounded-small">
             <h1 className="font-semibold text-lg">{t("mainData")}</h1>
